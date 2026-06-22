@@ -4,7 +4,7 @@
  * ~130 KES/USD — adjust when the client confirms USD pricing.
  */
 
-export type Category = "apparel" | "drinkware" | "accessories" | "bundles";
+export type Category = "apparel" | "drinkware" | "accessories";
 
 export interface ProductVariant {
   id: string;
@@ -30,7 +30,6 @@ export const CATEGORIES: { id: Category; label: string }[] = [
   { id: "apparel", label: "Apparel" },
   { id: "drinkware", label: "Drinkware" },
   { id: "accessories", label: "Accessories" },
-  { id: "bundles", label: "Bundles & Gifts" },
 ];
 
 const sizeVariants = (stock = 8): ProductVariant[] => [
@@ -139,30 +138,6 @@ export const PRODUCTS: Product[] = [
     priceKES: 1500,
     priceUSD: 12,
     accent: "brand-dark",
-  },
-  {
-    slug: "hive-dynamic-duo",
-    name: "The Hive Dynamic Duo",
-    category: "bundles",
-    shortDescription: "Two iconic Spur·Hive flasks, one bundle.",
-    description:
-      "The Dynamic Duo brings together two of our most-loved Spur·Hive flasks at a bundle price. A perfect gift for two.",
-    priceKES: 4300,
-    priceUSD: 33,
-    accent: "brand",
-    badge: "Bundle",
-  },
-  {
-    slug: "christmas-bucket-gift",
-    name: "Christmas Bucket Gift",
-    category: "bundles",
-    shortDescription: "Share the joy of giving this festive season.",
-    description:
-      "Sponsor a Christmas Bucket — a curated food bundle delivered to a family through our partner communities in Kibera and Dandora. A meaningful way to give back this festive season.",
-    priceKES: 4500,
-    priceUSD: 35,
-    accent: "brand-dark",
-    badge: "Give back",
   },
 ];
 
