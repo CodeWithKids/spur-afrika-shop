@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Youtube, Mail } from "lucide-react";
+import charityBadge from "@/assets/registered-charity-badge.png.asset.json";
 
 function FooterLogo() {
   return (
@@ -59,42 +60,18 @@ export function SiteFooter() {
 
 function CharityBadge() {
   return (
-    <svg
-      width="110"
-      height="110"
-      viewBox="0 0 110 110"
-      style={{ color: "var(--white-text)", opacity: 0.85 }}
+    <a
+      href="https://www.acnc.gov.au/charity/charities/bcc5a650-3aaf-e811-a961-000d3ad24182/profile"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="View Spur Afrika on the ACNC charity register"
+      className="transition hover:opacity-80"
     >
-      <defs>
-        <path
-          id="charity-top"
-          d="M 55,55 m -42,0 a 42,42 0 1,1 84,0"
-          fill="none"
-        />
-        <path
-          id="charity-bottom"
-          d="M 55,55 m -42,0 a 42,42 0 1,0 84,0"
-          fill="none"
-        />
-      </defs>
-      <circle cx="55" cy="55" r="52" fill="none" stroke="currentColor" strokeWidth="1" />
-      <circle cx="55" cy="55" r="46" fill="none" stroke="currentColor" strokeWidth="0.5" />
-      <text fill="currentColor" fontSize="9" fontWeight="700" letterSpacing="2">
-        <textPath href="#charity-top" startOffset="50%" textAnchor="middle">
-          REGISTERED CHARITY
-        </textPath>
-      </text>
-      <text fill="currentColor" fontSize="6" letterSpacing="1">
-        <textPath href="#charity-bottom" startOffset="50%" textAnchor="middle">
-          acnc.gov.au/charityregister
-        </textPath>
-      </text>
-      {/* Simple ribbon mark in center */}
-      <path
-        d="M 47 42 Q 55 56 47 70 L 55 64 L 63 70 Q 55 56 63 42 L 55 48 Z"
-        fill="currentColor"
-        opacity="0.7"
+      <img
+        src={charityBadge.url}
+        alt="ACNC Registered Charity"
+        className="h-24 w-24"
       />
-    </svg>
+    </a>
   );
 }
