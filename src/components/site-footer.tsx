@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Youtube, Mail } from "lucide-react";
+import charityBadge from "@/assets/registered-charity-badge.png.asset.json";
 
 function FooterLogo() {
   return (
