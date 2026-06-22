@@ -30,7 +30,6 @@ export const CATEGORIES: { id: Category; label: string }[] = [
   { id: "apparel", label: "Apparel" },
   { id: "drinkware", label: "Drinkware" },
   { id: "accessories", label: "Accessories" },
-  { id: "bundles", label: "Bundles & Gifts" },
 ];
 
 const sizeVariants = (stock = 8): ProductVariant[] => [
