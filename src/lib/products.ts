@@ -139,30 +139,6 @@ export const PRODUCTS: Product[] = [
     priceUSD: 12,
     accent: "brand-dark",
   },
-  {
-    slug: "hive-dynamic-duo",
-    name: "The Hive Dynamic Duo",
-    category: "bundles",
-    shortDescription: "Two iconic Spur·Hive flasks, one bundle.",
-    description:
-      "The Dynamic Duo brings together two of our most-loved Spur·Hive flasks at a bundle price. A perfect gift for two.",
-    priceKES: 4300,
-    priceUSD: 33,
-    accent: "brand",
-    badge: "Bundle",
-  },
-  {
-    slug: "christmas-bucket-gift",
-    name: "Christmas Bucket Gift",
-    category: "bundles",
-    shortDescription: "Share the joy of giving this festive season.",
-    description:
-      "Sponsor a Christmas Bucket — a curated food bundle delivered to a family through our partner communities in Kibera and Dandora. A meaningful way to give back this festive season.",
-    priceKES: 4500,
-    priceUSD: 35,
-    accent: "brand-dark",
-    badge: "Give back",
-  },
 ];
 
 export function getProduct(slug: string) {
