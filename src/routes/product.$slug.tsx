@@ -6,10 +6,10 @@ import { ProductCard } from "@/components/product-card";
 import { ProductImage } from "@/components/product-image";
 import { useCart } from "@/lib/cart-store";
 import { formatPrice } from "@/lib/currency";
-import { getProduct, relatedProducts } from "@/lib/products";
+import { getProduct, relatedProducts, type Product } from "@/lib/products";
 
 export const Route = createFileRoute("/product/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): { product: Product } => {
     const product = getProduct(params.slug);
     if (!product) throw notFound();
     return { product };
