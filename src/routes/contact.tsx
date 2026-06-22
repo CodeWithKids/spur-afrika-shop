@@ -16,7 +16,7 @@ export const Route = createFileRoute("/contact")({
 function ContactPage() {
   return (
     <>
-      <article className="mx-auto max-w-3xl px-4 py-16">
+      <article className="mx-auto max-w-3xl px-4 py-12 sm:py-16">
         <span className="type-eyebrow text-brand-dark">Contact</span>
         <h1 className="mt-2 type-h-large text-foreground">We'd love to hear from you</h1>
         <p className="mt-4 type-body text-muted-foreground">

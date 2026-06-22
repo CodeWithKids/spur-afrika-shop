@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ProductCard } from "@/components/product-card";
+import heroImage from "@/assets/hero-team.jpg";
 import { PRODUCTS } from "@/lib/products";
 
 export const Route = createFileRoute("/")({
@@ -23,22 +24,43 @@ function Index() {
 
   return (
     <div>
-      {/* Hero — Off White background with Dark Green accents (Brand Guide v1). */}
-      <section className="mx-auto max-w-6xl px-4 pt-12 pb-16 md:pt-20 md:pb-24">
-        <div className="grid items-center gap-12 md:grid-cols-2">
-          <div>
-            <span className="type-eyebrow text-brand-dark">Spur Afrika · Merch</span>
-            <h1 className="mt-4 type-display text-foreground" style={{ fontSize: "clamp(2.25rem, 5vw, 3.5rem)" }}>
-              Wear the mission. <span className="text-brand-dark">Fund the impact.</span>
+      {/* Hero — team photo with mission copy overlay */}
+      <section className="relative min-h-[min(85vh,640px)] overflow-hidden md:min-h-[min(72vh,640px)]">
+        <img
+          src={heroImage}
+          alt="Spur Afrika team members wearing branded hoodies outdoors"
+          className="absolute inset-0 h-full w-full object-cover object-[center_30%] md:object-[center_35%]"
+          fetchPriority="high"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-[#0D1D23]/92 via-[#0D1D23]/82 to-[#0D1D23]/45 md:hidden"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 hidden md:block"
+          style={{
+            background:
+              "linear-gradient(105deg, rgba(13, 29, 35, 0.88) 0%, rgba(13, 29, 35, 0.72) 42%, rgba(13, 29, 35, 0.2) 100%)",
+          }}
+          aria-hidden
+        />
+        <div className="relative mx-auto flex min-h-[min(85vh,640px)] max-w-6xl items-end px-4 py-12 sm:items-center sm:py-16 md:min-h-[min(72vh,640px)] md:py-24">
+          <div className="max-w-xl">
+            <span className="type-eyebrow" style={{ color: "var(--brand-light-green)" }}>
+              Spur Afrika · Merch
+            </span>
+            <h1 className="mt-4 type-display" style={{ color: "var(--white-text)" }}>
+              Wear the mission.{" "}
+              <span style={{ color: "var(--brand-light-green)" }}>Fund the impact.</span>
             </h1>
-            <p className="mt-6 max-w-lg type-body-lg text-muted-foreground">
+            <p className="mt-4 max-w-lg type-body-lg sm:mt-6" style={{ color: "var(--white-text)", opacity: 0.9 }}>
               Every tee, hoodie and mug helps fund education, mentorship and
               community programs for children and families in Kenya.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:mt-8">
               <Link
                 to="/shop"
-                className="inline-flex items-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand"
+                className="inline-flex items-center justify-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand"
               >
                 Shop the collection
               </Link>
@@ -46,38 +68,18 @@ function Index() {
                 href="https://spurafrika.org"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition hover:bg-muted"
+                className="inline-flex items-center justify-center rounded-full border border-[var(--white-text)]/30 bg-[var(--white-text)]/10 px-6 py-3 text-center text-sm font-semibold text-[var(--white-text)] backdrop-blur-sm transition hover:bg-[var(--white-text)]/20"
               >
                 Learn about Spur Afrika
               </a>
             </div>
-          </div>
-          <div
-            className="relative aspect-square w-full rounded-3xl"
-            style={{ background: "var(--muted-green)" }}
-            aria-hidden
-          >
-            <div
-              className="absolute inset-8 rounded-2xl"
-              style={{ background: "var(--brand-dark-green)" }}
-            />
-            <div
-              className="absolute left-12 top-12 right-12 bottom-12 rounded-xl"
-              style={{ background: "var(--brand-light-green)" }}
-            />
-            <span
-              className="absolute inset-0 flex items-center justify-center type-display"
-              style={{ color: "var(--off-white)", fontSize: "clamp(3rem, 8vw, 5rem)" }}
-            >
-              SA
-            </span>
           </div>
         </div>
       </section>
 
       {/* Mission strip — Dark Spruce background (Brand Guide v1 dark sections). */}
       <section style={{ background: "var(--dark-spruce)", color: "var(--white-text)" }}>
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-3">
+        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:py-12 md:grid-cols-3">
           {[
             { n: "100%", t: "of profit reinvested in programs" },
             { n: "12+", t: "years serving Kenyan communities" },
@@ -92,10 +94,10 @@ function Index() {
       </section>
 
       {/* Featured products */}
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="flex items-end justify-between">
-          <h2 className="type-h-large text-foreground">Featured products</h2>
-          <Link to="/shop" className="type-body-sm font-semibold text-brand-dark hover:underline">
+      <section className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <h2 className="type-h-large min-w-0 text-foreground">Featured products</h2>
+          <Link to="/shop" className="shrink-0 type-body-sm font-semibold text-brand-dark hover:underline">
             View all →
           </Link>
         </div>

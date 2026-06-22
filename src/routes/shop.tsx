@@ -34,7 +34,7 @@ function ShopPage() {
   }, [category, query]);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12">
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:py-12">
       <header className="mb-8">
         <span className="type-eyebrow text-brand-dark">Catalogue</span>
         <h1 className="mt-2 type-h-large text-foreground">Shop Spur Afrika</h1>
@@ -44,7 +44,7 @@ function ShopPage() {
       </header>
 
       <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div className="flex flex-wrap gap-2">
+        <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 md:mx-0 md:flex-wrap md:overflow-visible md:px-0">
           <CategoryChip active={category === "all"} onClick={() => setCategory("all")}>All</CategoryChip>
           {CATEGORIES.map((c) => (
             <CategoryChip key={c.id} active={category === c.id} onClick={() => setCategory(c.id)}>
@@ -93,7 +93,7 @@ function CategoryChip({
       type="button"
       onClick={onClick}
       className={
-        "rounded-full border px-4 py-1.5 text-sm font-semibold transition " +
+        "shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition " +
         (active
           ? "border-brand-dark bg-brand-dark text-[var(--white-text)]"
           : "border-border bg-card text-foreground hover:bg-muted")

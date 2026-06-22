@@ -1,18 +1,36 @@
-import { ACCENT_BG, type Product } from "@/lib/products";
+import { productImages, ACCENT_BG, type Product } from "@/lib/products";
 import { cn } from "@/lib/utils";
 
-/**
- * Brand-compliant placeholder visual. Solid brand-tinted background with the
- * product initials — never the logo on a photo (Brand Guide v1).
- * Swap this for real product imagery when assets land.
- */
 export function ProductImage({
   product,
   className,
+  imageIndex = 0,
+  colorId,
+  images: imagesOverride,
 }: {
   product: Product;
   className?: string;
+  imageIndex?: number;
+  colorId?: string;
+  images?: string[];
 }) {
+  const images = imagesOverride ?? productImages(product, colorId);
+  const safeIndex = Math.min(imageIndex, Math.max(0, (images?.length ?? 1) - 1));
+  const image = images?.[safeIndex];
+
+  if (image) {
+    return (
+      <img
+        src={image}
+        alt={product.name}
+        className={cn(
+          "aspect-square w-full rounded-lg object-cover object-[center_20%]",
+          className,
+        )}
+      />
+    );
+  }
+
   const initials = product.name
     .split(" ")
     .slice(0, 2)

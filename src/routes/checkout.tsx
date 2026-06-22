@@ -40,7 +40,7 @@ function CheckoutPage() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12">
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:py-12">
       <h1 className="type-h-large text-foreground">Checkout</h1>
 
       <div
@@ -48,7 +48,7 @@ function CheckoutPage() {
         role="status"
       >
         <Info className="mt-0.5 size-5 shrink-0 text-brand-dark" />
-        <div className="type-body-sm">
+        <div className="min-w-0 type-body-sm text-pretty">
           <strong className="font-semibold">Payments not yet live.</strong>{" "}
           This is the storefront preview. PayHero and Grassroots checkout will be
           wired up in the next phase, once API credentials and a backend are in
@@ -57,7 +57,7 @@ function CheckoutPage() {
       </div>
 
       <form
-        className="mt-8 grid gap-10 lg:grid-cols-[1fr_360px]"
+        className="mt-8 grid gap-8 md:grid-cols-[1fr_min(360px,100%)] md:gap-10"
         onSubmit={(e) => {
           e.preventDefault();
           alert("Payments coming soon. Order not placed.");
@@ -111,13 +111,17 @@ function CheckoutPage() {
           <h2 className="type-h-small text-foreground">Order summary</h2>
           <ul className="mt-4 divide-y divide-border text-sm">
             {priced.map(({ line, product, subtotal }) => (
-              <li key={`${product.slug}-${line.variantId ?? ""}`} className="flex justify-between gap-3 py-3">
-                <span className="text-foreground">
+              <li
+                key={`${product.slug}-${line.colorId ?? ""}-${line.variantId ?? ""}`}
+                className="flex justify-between gap-3 py-3"
+              >
+                <span className="min-w-0 flex-1 text-foreground">
                   {product.name}
+                  {line.colorLabel && <span className="text-muted-foreground"> · {line.colorLabel}</span>}
                   {line.variantLabel && <span className="text-muted-foreground"> · {line.variantLabel}</span>}
                   <span className="text-muted-foreground"> × {line.quantity}</span>
                 </span>
-                <span className="font-semibold">{formatPrice(subtotal, currency)}</span>
+                <span className="shrink-0 font-semibold">{formatPrice(subtotal, currency)}</span>
               </li>
             ))}
           </ul>

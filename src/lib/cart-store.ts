@@ -1,12 +1,14 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { Currency } from "./currency";
-import { PRODUCTS, type Product } from "./products";
+import { PRODUCTS, productPrice, type Product } from "./products";
 
 export interface CartLine {
   productSlug: string;
   variantId?: string;
   variantLabel?: string;
+  colorId?: string;
+  colorLabel?: string;
   quantity: number;
 }
 
@@ -15,13 +17,20 @@ interface CartState {
   currency: Currency;
   setCurrency: (c: Currency) => void;
   addLine: (line: CartLine) => void;
-  updateQuantity: (slug: string, variantId: string | undefined, qty: number) => void;
-  removeLine: (slug: string, variantId: string | undefined) => void;
+  updateQuantity: (
+    slug: string,
+    variantId: string | undefined,
+    colorId: string | undefined,
+    qty: number,
+  ) => void;
+  removeLine: (slug: string, variantId: string | undefined, colorId: string | undefined) => void;
   clear: () => void;
 }
 
-const sameLine = (a: CartLine, slug: string, variantId?: string) =>
-  a.productSlug === slug && (a.variantId ?? null) === (variantId ?? null);
+const sameLine = (a: CartLine, slug: string, variantId?: string, colorId?: string) =>
+  a.productSlug === slug &&
+  (a.variantId ?? null) === (variantId ?? null) &&
+  (a.colorId ?? null) === (colorId ?? null);
 
 export const useCart = create<CartState>()(
   persist(
@@ -32,12 +41,12 @@ export const useCart = create<CartState>()(
       addLine: (line) =>
         set((state) => {
           const existing = state.lines.find((l) =>
-            sameLine(l, line.productSlug, line.variantId),
+            sameLine(l, line.productSlug, line.variantId, line.colorId),
           );
           if (existing) {
             return {
               lines: state.lines.map((l) =>
-                sameLine(l, line.productSlug, line.variantId)
+                sameLine(l, line.productSlug, line.variantId, line.colorId)
                   ? { ...l, quantity: l.quantity + line.quantity }
                   : l,
               ),
@@ -45,15 +54,15 @@ export const useCart = create<CartState>()(
           }
           return { lines: [...state.lines, line] };
         }),
-      updateQuantity: (slug, variantId, qty) =>
+      updateQuantity: (slug, variantId, colorId, qty) =>
         set((state) => ({
           lines: state.lines
-            .map((l) => (sameLine(l, slug, variantId) ? { ...l, quantity: qty } : l))
+            .map((l) => (sameLine(l, slug, variantId, colorId) ? { ...l, quantity: qty } : l))
             .filter((l) => l.quantity > 0),
         })),
-      removeLine: (slug, variantId) =>
+      removeLine: (slug, variantId, colorId) =>
         set((state) => ({
-          lines: state.lines.filter((l) => !sameLine(l, slug, variantId)),
+          lines: state.lines.filter((l) => !sameLine(l, slug, variantId, colorId)),
         })),
       clear: () => set({ lines: [] }),
     }),
@@ -73,7 +82,7 @@ export function priceLines(lines: CartLine[], currency: Currency): PricedLine[] 
     .map((line) => {
       const product = PRODUCTS.find((p) => p.slug === line.productSlug);
       if (!product) return null;
-      const unitPrice = currency === "KES" ? product.priceKES : product.priceUSD;
+      const unitPrice = productPrice(product, currency);
       return {
         line,
         product,

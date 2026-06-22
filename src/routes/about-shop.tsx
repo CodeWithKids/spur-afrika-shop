@@ -14,7 +14,7 @@ export const Route = createFileRoute("/about-shop")({
 
 function AboutShop() {
   return (
-    <article className="mx-auto max-w-3xl px-4 py-16">
+    <article className="mx-auto max-w-3xl px-4 py-12 sm:py-16">
       <span className="type-eyebrow text-brand-dark">About</span>
       <h1 className="mt-2 type-h-large text-foreground">More than merch</h1>
       <p className="mt-6 type-body-lg text-muted-foreground">

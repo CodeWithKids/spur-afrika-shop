@@ -14,8 +14,7 @@ export function SpurLogo({
     <img
       src={logoSrc}
       alt="Spur Afrika"
-      className={className}
-      style={{ height: "40px", width: "auto", display: "inline-block" }}
+      className={`h-8 w-auto sm:h-10 ${className ?? ""}`}
       loading="eager"
     />
   );

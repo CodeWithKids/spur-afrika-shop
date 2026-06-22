@@ -120,20 +120,42 @@
 
 @layer base {
   * { border-color: var(--color-border); }
+  html {
+    overflow-x: clip;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
   }
 
-  /* Brand Guide v1 type hierarchy */
-  .type-display { font-weight: 900; font-size: 3rem; line-height: 3.25rem; letter-spacing: -0.02em; }
-  .type-h-large { font-weight: 900; font-size: 2rem; line-height: 2.25rem; letter-spacing: -0.015em; }
-  .type-h        { font-weight: 900; font-size: 1.5rem; line-height: 1.75rem; letter-spacing: -0.01em; }
-  .type-h-small  { font-weight: 900; font-size: 1.25rem; line-height: 1.5rem; }
-  .type-body-lg  { font-weight: 400; font-size: 1.125rem; line-height: 1.7rem; }
+  /* Brand Guide v1 type hierarchy — fluid sizes for small screens */
+  .type-display {
+    font-weight: 900;
+    font-size: clamp(2rem, 5vw + 1rem, 3rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  .type-h-large {
+    font-weight: 900;
+    font-size: clamp(1.5rem, 2.5vw + 1rem, 2rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  .type-h {
+    font-weight: 900;
+    font-size: clamp(1.25rem, 1.5vw + 0.9rem, 1.5rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .type-h-small  { font-weight: 900; font-size: clamp(1.0625rem, 1vw + 0.9rem, 1.25rem); line-height: 1.25; }
+  .type-body-lg  { font-weight: 400; font-size: clamp(1rem, 0.5vw + 0.9rem, 1.125rem); line-height: 1.65; }
   .type-body     { font-weight: 400; font-size: 1rem; line-height: 1.6rem; }
   .type-body-sm  { font-weight: 400; font-size: 0.875rem; line-height: 1.35rem; }
   .type-eyebrow  { font-weight: 700; font-size: 0.75rem; line-height: 1rem; letter-spacing: 0.12em; text-transform: uppercase; }

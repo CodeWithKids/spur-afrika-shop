@@ -6,7 +6,7 @@ import { ProductCard } from "@/components/product-card";
 import { ProductImage } from "@/components/product-image";
 import { useCart } from "@/lib/cart-store";
 import { formatPrice } from "@/lib/currency";
-import { getProduct, relatedProducts, type Product } from "@/lib/products";
+import { getProduct, categoryLabel, productImages, productPrice, relatedProducts, type Product } from "@/lib/products";
 
 export const Route = createFileRoute("/product/$slug")({
   loader: ({ params }): { product: Product } => {
@@ -43,10 +43,12 @@ function ProductPage() {
   const currency = useCart((s) => s.currency);
   const addLine = useCart((s) => s.addLine);
 
-  const price = currency === "KES" ? product.priceKES : product.priceUSD;
+  const price = productPrice(product, currency);
+  const [colorId, setColorId] = useState(product.colors?.[0]?.id);
   const [variantId, setVariantId] = useState(product.variants?.[0]?.id);
   const [qty, setQty] = useState(1);
 
+  const selectedColor = product.colors?.find((c) => c.id === colorId);
   const selectedVariant = product.variants?.find((v) => v.id === variantId);
   const inStock = !product.variants || (selectedVariant?.stock ?? 0) > 0;
 
@@ -58,6 +60,8 @@ function ProductPage() {
       productSlug: product.slug,
       variantId,
       variantLabel: selectedVariant?.label,
+      colorId,
+      colorLabel: selectedColor?.label,
       quantity: qty,
     });
     toast.success(`Added ${qty} × ${product.name} to your cart`);
@@ -65,22 +69,53 @@ function ProductPage() {
   };
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12">
-      <nav className="mb-6 type-body-sm text-muted-foreground">
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:py-12">
+      <nav className="mb-6 flex flex-wrap items-center gap-x-2 gap-y-1 type-body-sm text-muted-foreground">
         <Link to="/shop" className="hover:text-brand-dark">Shop</Link>
-        <span className="mx-2">/</span>
-        <span className="text-foreground">{product.name}</span>
+        <span aria-hidden>/</span>
+        <span className="min-w-0 break-words text-foreground">{product.name}</span>
       </nav>
 
-      <div className="grid gap-10 md:grid-cols-2">
+      <div className="grid gap-8 md:grid-cols-2 md:gap-10">
+        <ProductGallery key={colorId} product={product} colorId={colorId} />
         <div>
-          <ProductImage product={product} />
-        </div>
-        <div>
-          <span className="type-eyebrow text-brand-dark">{product.category}</span>
+          <span className="type-eyebrow text-brand-dark">{categoryLabel(product.category)}</span>
           <h1 className="mt-2 type-h-large text-foreground">{product.name}</h1>
           <p className="mt-4 type-h text-brand-dark">{formatPrice(price, currency)}</p>
           <p className="mt-6 type-body text-muted-foreground">{product.description}</p>
+
+          {product.colors && product.colorLabel && (
+            <div className="mt-8">
+              <div className="type-eyebrow text-foreground">{product.colorLabel}</div>
+              <div className="mt-3 flex flex-wrap gap-3">
+                {product.colors.map((c) => {
+                  const active = c.id === colorId;
+                  return (
+                    <button
+                      key={c.id}
+                      type="button"
+                      aria-label={c.label}
+                      aria-pressed={active}
+                      onClick={() => setColorId(c.id)}
+                      className={
+                        "flex min-h-11 items-center gap-2 rounded-full border px-3 py-2 text-sm font-semibold transition " +
+                        (active
+                          ? "border-brand-dark bg-brand-dark text-[var(--white-text)]"
+                          : "border-border bg-card text-foreground hover:border-brand")
+                      }
+                    >
+                      <span
+                        className="size-5 shrink-0 rounded-full border border-black/10"
+                        style={{ backgroundColor: c.swatch }}
+                        aria-hidden
+                      />
+                      {c.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           {product.variants && product.variantLabel && (
             <div className="mt-8">
@@ -96,7 +131,7 @@ function ProductPage() {
                       disabled={out}
                       onClick={() => setVariantId(v.id)}
                       className={
-                        "min-w-12 rounded-md border px-4 py-2 text-sm font-semibold transition " +
+                        "min-h-11 min-w-12 rounded-md border px-4 py-2 text-sm font-semibold transition " +
                         (out
                           ? "cursor-not-allowed border-border text-[var(--text-disabled)] line-through"
                           : active
@@ -112,13 +147,13 @@ function ProductPage() {
             </div>
           )}
 
-          <div className="mt-8 flex items-center gap-3">
-            <div className="inline-flex items-center rounded-full border border-border bg-card">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="inline-flex w-fit items-center rounded-full border border-border bg-card">
               <button
                 type="button"
                 aria-label="Decrease quantity"
                 onClick={() => setQty((q) => Math.max(1, q - 1))}
-                className="p-3 text-foreground hover:text-brand-dark"
+                className="min-h-11 min-w-11 p-3 text-foreground hover:text-brand-dark"
               >
                 <Minus className="size-4" />
               </button>
@@ -127,7 +162,7 @@ function ProductPage() {
                 type="button"
                 aria-label="Increase quantity"
                 onClick={() => setQty((q) => q + 1)}
-                className="p-3 text-foreground hover:text-brand-dark"
+                className="min-h-11 min-w-11 p-3 text-foreground hover:text-brand-dark"
               >
                 <Plus className="size-4" />
               </button>
@@ -136,7 +171,7 @@ function ProductPage() {
               type="button"
               disabled={!inStock}
               onClick={() => handleAdd(false)}
-              className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand disabled:cursor-not-allowed disabled:opacity-50"
+              className="inline-flex min-h-11 w-full flex-1 items-center justify-center gap-2 rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
             >
               <ShoppingBag className="size-4" />
               {inStock ? "Add to cart" : "Out of stock"}
@@ -150,15 +185,11 @@ function ProductPage() {
           >
             Buy now
           </button>
-
-          <p className="mt-6 type-body-sm text-muted-foreground">
-            Ships from Nairobi. Pickup available in-store; flat-rate delivery worldwide.
-          </p>
         </div>
       </div>
 
       {related.length > 0 && (
-        <section className="mt-20">
+        <section className="mt-12 sm:mt-20">
           <h2 className="type-h text-foreground">You may also like</h2>
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {related.map((p) => (
@@ -166,6 +197,49 @@ function ProductPage() {
             ))}
           </div>
         </section>
+      )}
+    </div>
+  );
+}
+
+function ProductGallery({ product, colorId }: { product: Product; colorId?: string }) {
+  const images = productImages(product, colorId) ?? [];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const safeIndex = Math.min(activeIndex, Math.max(0, images.length - 1));
+
+  if (!images.length) {
+    return <ProductImage product={product} colorId={colorId} />;
+  }
+
+  return (
+    <div className="space-y-3">
+      <ProductImage
+        product={product}
+        colorId={colorId}
+        imageIndex={safeIndex}
+        images={images}
+      />
+      {images.length > 1 && (
+        <div className="flex gap-3 overflow-x-auto pb-1 sm:grid sm:grid-cols-4 sm:overflow-visible">
+          {images.map((src, index) => (
+            <button
+              key={`${colorId ?? "default"}-${index}`}
+              type="button"
+              aria-label={`View image ${index + 1} of ${images.length}`}
+              onClick={() => setActiveIndex(index)}
+              className={
+                "size-[4.5rem] shrink-0 overflow-hidden rounded-lg border-2 transition sm:size-auto sm:w-full " +
+                (safeIndex === index ? "border-brand-dark" : "border-transparent hover:border-border")
+              }
+            >
+              <img
+                src={src}
+                alt=""
+                className="aspect-square w-full object-cover object-[center_20%]"
+              />
+            </button>
+          ))}
+        </div>
       )}
     </div>
   );

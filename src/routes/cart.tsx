@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { useCart, priceLines } from "@/lib/cart-store";
-import { formatPrice } from "@/lib/currency";
+import { formatPrice, CURRENCIES } from "@/lib/currency";
 import { ProductImage } from "@/components/product-image";
 
 export const Route = createFileRoute("/cart")({
@@ -43,11 +43,11 @@ function CartPage() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12">
-      <header className="mb-8 flex items-end justify-between">
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:py-12">
+      <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <h1 className="type-h-large text-foreground">Your cart</h1>
-        <div className="inline-flex items-center rounded-full border border-border bg-card p-0.5 text-xs font-semibold">
-          {(["KES", "USD"] as const).map((c) => (
+        <div className="inline-flex w-fit items-center rounded-full border border-border bg-card p-0.5 text-xs font-semibold">
+          {CURRENCIES.map((c) => (
             <button
               key={c}
               type="button"
@@ -65,23 +65,31 @@ function CartPage() {
         </div>
       </header>
 
-      <div className="grid gap-10 lg:grid-cols-[1fr_360px]">
+      <div className="grid gap-8 md:grid-cols-[1fr_min(360px,100%)] md:gap-10">
         <ul className="divide-y divide-border rounded-xl border border-border bg-card">
           {priced.map(({ line, product, unitPrice, subtotal: rowTotal }) => (
-            <li key={`${product.slug}-${line.variantId ?? ""}`} className="flex gap-4 p-4">
-              <div className="w-24 shrink-0">
-                <ProductImage product={product} />
+            <li
+              key={`${product.slug}-${line.colorId ?? ""}-${line.variantId ?? ""}`}
+              className="flex flex-col gap-4 p-4 sm:flex-row"
+            >
+              <div className="w-full shrink-0 sm:w-24">
+                <ProductImage product={product} colorId={line.colorId} />
               </div>
-              <div className="flex flex-1 flex-col">
+              <div className="flex min-w-0 flex-1 flex-col">
                 <div className="flex items-start justify-between gap-4">
-                  <div>
+                  <div className="min-w-0">
                     <Link
                       to="/product/$slug"
                       params={{ slug: product.slug }}
-                      className="type-h-small text-foreground hover:text-brand-dark"
+                      className="type-h-small break-words text-foreground hover:text-brand-dark"
                     >
                       {product.name}
                     </Link>
+                    {line.colorLabel && (
+                      <p className="type-body-sm text-muted-foreground">
+                        {product.colorLabel ?? "Colour"}: {line.colorLabel}
+                      </p>
+                    )}
                     {line.variantLabel && (
                       <p className="type-body-sm text-muted-foreground">{product.variantLabel}: {line.variantLabel}</p>
                     )}
@@ -90,8 +98,8 @@ function CartPage() {
                   <button
                     type="button"
                     aria-label="Remove item"
-                    onClick={() => removeLine(product.slug, line.variantId)}
-                    className="p-2 text-muted-foreground hover:text-destructive"
+                    onClick={() => removeLine(product.slug, line.variantId, line.colorId)}
+                    className="min-h-11 min-w-11 shrink-0 p-2 text-muted-foreground hover:text-destructive"
                   >
                     <Trash2 className="size-4" />
                   </button>
@@ -101,7 +109,7 @@ function CartPage() {
                     <button
                       type="button"
                       aria-label="Decrease"
-                      onClick={() => updateQuantity(product.slug, line.variantId, line.quantity - 1)}
+                      onClick={() => updateQuantity(product.slug, line.variantId, line.colorId, line.quantity - 1)}
                       className="p-2"
                     >
                       <Minus className="size-3.5" />
@@ -110,13 +118,13 @@ function CartPage() {
                     <button
                       type="button"
                       aria-label="Increase"
-                      onClick={() => updateQuantity(product.slug, line.variantId, line.quantity + 1)}
+                      onClick={() => updateQuantity(product.slug, line.variantId, line.colorId, line.quantity + 1)}
                       className="p-2"
                     >
                       <Plus className="size-3.5" />
                     </button>
                   </div>
-                  <span className="type-h-small text-brand-dark">{formatPrice(rowTotal, currency)}</span>
+                  <span className="type-h-small whitespace-nowrap text-brand-dark">{formatPrice(rowTotal, currency)}</span>
                 </div>
               </div>
             </li>
