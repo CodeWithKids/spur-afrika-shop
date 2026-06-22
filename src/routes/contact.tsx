@@ -21,11 +21,11 @@ export const Route = createFileRoute("/contact")({
       <ul className="mt-10 space-y-5 type-body text-foreground">
         <li className="flex items-start gap-3">
           <Mail className="mt-0.5 size-5 text-brand-dark" />
-          <a className="hover:underline" href="mailto:shop@spurafrika.org">shop@spurafrika.org</a>
+          <a className="hover:underline" href="mailto:info@spurafrika.org">info@spurafrika.org</a>
         </li>
         <li className="flex items-start gap-3">
           <Phone className="mt-0.5 size-5 text-brand-dark" />
-          <span>+254 700 000 000</span>
+          <a className="hover:underline" href="tel:+254119011808">+254 119 011808</a>
         </li>
         <li className="flex items-start gap-3">
           <MapPin className="mt-0.5 size-5 text-brand-dark" />
