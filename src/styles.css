@@ -48,33 +48,33 @@
   --color-muted-green: var(--muted-green);
   --color-grey: var(--grey);
 
-  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
   --radius: 0.5rem;
 
-  /* Brand greens — HEX #86C432 / #48A428 / #18611C */
-  --brand-light-green: oklch(0.78 0.19 132);
-  --brand-green: oklch(0.65 0.19 137);
-  --brand-dark-green: oklch(0.48 0.15 142);
+  /* Spur Afrika primary greens (from spurafrika.org) */
+  --brand-light-green: oklch(0.88 0.15 130);   /* #C9E4A5 primary-200 */
+  --brand-green: oklch(0.78 0.18 132);         /* #97C93D primary */
+  --brand-dark-green: oklch(0.71 0.17 132);    /* #85B234 primary-500 */
 
-  /* Secondary dark — #0B312F / #0D1D23 */
-  --spruce: oklch(0.27 0.03 188);
-  --dark-spruce: oklch(0.21 0.02 220);
+  /* Secondary greys (from spurafrika.org) */
+  --spruce: oklch(0.34 0 0);                   /* #434343 secondary */
+  --dark-spruce: oklch(0.28 0 0);              /* #2F2F2F secondary-600 */
 
   /* Neutrals */
-  --off-white: oklch(0.985 0 0);    /* #FAFAFA */
-  --muted-grey: oklch(0.955 0 0);   /* #F1F1F1 */
-  --muted-green: oklch(0.92 0.03 138); /* #D9E6D4 */
-  --grey: oklch(0.9 0 0);           /* #E3E3E3 */
+  --off-white: oklch(1 0 0);                   /* #FFFFFF */
+  --muted-grey: oklch(0.945 0 0);              /* #EAEAEA secondary-50 */
+  --muted-green: oklch(0.95 0.06 132);         /* very soft green tint */
+  --grey: oklch(0.89 0 0);                     /* #DDDDDD secondary-100 */
 
   /* Text */
-  --text: oklch(0.21 0 0);          /* #222 */
-  --text-muted: oklch(0.44 0 0);    /* #565656 */
-  --text-disabled: oklch(0.62 0 0); /* #8D8D8D */
-  --white-text: oklch(0.995 0 0);   /* #FEFEFE */
+  --text: oklch(0.34 0 0);                     /* #434343 secondary */
+  --text-muted: oklch(0.5 0 0);                /* #696969 secondary-300 */
+  --text-disabled: oklch(0.63 0 0);            /* #8F8F8F secondary-200 */
+  --white-text: oklch(0.97 0 0);               /* #EAEAEA secondary-50 */
 
   /* shadcn semantic mapping */
   --background: var(--off-white);
@@ -83,13 +83,13 @@
   --card-foreground: var(--text);
   --popover: oklch(1 0 0);
   --popover-foreground: var(--text);
-  --primary: var(--brand-dark-green);
+  --primary: var(--brand-green);
   --primary-foreground: var(--white-text);
-  --secondary: var(--muted-green);
-  --secondary-foreground: var(--brand-dark-green);
+  --secondary: var(--spruce);
+  --secondary-foreground: var(--white-text);
   --muted: var(--muted-grey);
   --muted-foreground: var(--text-muted);
-  --accent: var(--brand-green);
+  --accent: var(--brand-dark-green);
   --accent-foreground: var(--white-text);
   --destructive: oklch(0.55 0.22 27);
   --destructive-foreground: var(--white-text);
@@ -129,10 +129,10 @@
   }
 
   /* Brand Guide v1 type hierarchy */
-  .type-display { font-weight: 800; font-size: 3rem; line-height: 3.25rem; letter-spacing: -0.02em; }
-  .type-h-large { font-weight: 800; font-size: 2rem; line-height: 2.25rem; letter-spacing: -0.015em; }
-  .type-h        { font-weight: 800; font-size: 1.5rem; line-height: 1.75rem; letter-spacing: -0.01em; }
-  .type-h-small  { font-weight: 800; font-size: 1.25rem; line-height: 1.5rem; }
+  .type-display { font-weight: 900; font-size: 3rem; line-height: 3.25rem; letter-spacing: -0.02em; }
+  .type-h-large { font-weight: 900; font-size: 2rem; line-height: 2.25rem; letter-spacing: -0.015em; }
+  .type-h        { font-weight: 900; font-size: 1.5rem; line-height: 1.75rem; letter-spacing: -0.01em; }
+  .type-h-small  { font-weight: 900; font-size: 1.25rem; line-height: 1.5rem; }
   .type-body-lg  { font-weight: 400; font-size: 1.125rem; line-height: 1.7rem; }
   .type-body     { font-weight: 400; font-size: 1rem; line-height: 1.6rem; }
   .type-body-sm  { font-weight: 400; font-size: 0.875rem; line-height: 1.35rem; }
