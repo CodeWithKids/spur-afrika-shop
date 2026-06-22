@@ -129,10 +129,10 @@
   }
 
   /* Brand Guide v1 type hierarchy */
-  .type-display { font-weight: 800; font-size: 3rem; line-height: 3.25rem; letter-spacing: -0.02em; }
-  .type-h-large { font-weight: 800; font-size: 2rem; line-height: 2.25rem; letter-spacing: -0.015em; }
-  .type-h        { font-weight: 800; font-size: 1.5rem; line-height: 1.75rem; letter-spacing: -0.01em; }
-  .type-h-small  { font-weight: 800; font-size: 1.25rem; line-height: 1.5rem; }
+  .type-display { font-weight: 900; font-size: 3rem; line-height: 3.25rem; letter-spacing: -0.02em; }
+  .type-h-large { font-weight: 900; font-size: 2rem; line-height: 2.25rem; letter-spacing: -0.015em; }
+  .type-h        { font-weight: 900; font-size: 1.5rem; line-height: 1.75rem; letter-spacing: -0.01em; }
+  .type-h-small  { font-weight: 900; font-size: 1.25rem; line-height: 1.5rem; }
   .type-body-lg  { font-weight: 400; font-size: 1.125rem; line-height: 1.7rem; }
   .type-body     { font-weight: 400; font-size: 1rem; line-height: 1.6rem; }
   .type-body-sm  { font-weight: 400; font-size: 0.875rem; line-height: 1.35rem; }
