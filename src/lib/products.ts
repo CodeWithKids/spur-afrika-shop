@@ -4,7 +4,7 @@
  * ~130 KES/USD — adjust when the client confirms USD pricing.
  */
 
-export type Category = "apparel" | "drinkware" | "accessories" | "bundles";
+export type Category = "apparel" | "drinkware" | "accessories";
 
 export interface ProductVariant {
   id: string;
