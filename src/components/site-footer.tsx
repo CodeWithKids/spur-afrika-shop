@@ -4,10 +4,7 @@ import { SpurLogo } from "./logo";
 
 export function SiteFooter() {
   return (
-    <footer
-      className="mt-20"
-      style={{ background: "#3a3a3a", color: "var(--white-text)" }}
-    >
+    <footer className="mt-20 bg-spruce text-[var(--white-text)]">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-[1fr_auto]">
         {/* Left column */}
         <div className="flex flex-col gap-8">
