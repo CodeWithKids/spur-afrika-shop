@@ -45,9 +45,13 @@ export function SiteFooter() {
         </div>
 
         {/* Right column */}
-        <div className="flex flex-col items-start justify-between gap-10 md:items-end">
+        <div className="flex flex-col items-start gap-8 md:items-end md:justify-between">
           <CharityBadge />
-          <nav className="flex flex-wrap items-center gap-8 type-body-sm" style={{ opacity: 0.85 }}>
+          <nav
+            aria-label="Footer"
+            className="flex flex-wrap items-center gap-6 type-body-sm md:gap-8"
+            style={{ opacity: 0.85 }}
+          >
             <Link to="/contact">Contact</Link>
             <a href="#">Policies</a>
             <a href="#">Terms of Use</a>
@@ -58,19 +62,54 @@ export function SiteFooter() {
   );
 }
 
+const ACNC_URL =
+  "https://www.acnc.gov.au/charity/charities/bcc5a650-3aaf-e811-a961-000d3ad24182/profile";
+
+function trackAcncClick() {
+  if (typeof window === "undefined") return;
+  // Fire analytics events if a provider is wired up (GA4, GTM, Plausible, Fathom).
+  type AnalyticsWindow = Window & {
+    gtag?: (...args: unknown[]) => void;
+    dataLayer?: Array<Record<string, unknown>>;
+    plausible?: (event: string, opts?: Record<string, unknown>) => void;
+    fathom?: { trackEvent: (name: string) => void };
+  };
+  const w = window as AnalyticsWindow;
+  const payload = {
+    event: "acnc_badge_click",
+    link_url: ACNC_URL,
+    link_location: "footer",
+  };
+  try {
+    w.gtag?.("event", "acnc_badge_click", payload);
+    w.dataLayer?.push(payload);
+    w.plausible?.("ACNC Badge Click", { props: { location: "footer" } });
+    w.fathom?.trackEvent("ACNC Badge Click");
+  } catch {
+    /* analytics is best-effort */
+  }
+}
+
 function CharityBadge() {
   return (
     <a
-      href="https://www.acnc.gov.au/charity/charities/bcc5a650-3aaf-e811-a961-000d3ad24182/profile"
+      href={ACNC_URL}
       target="_blank"
-      rel="noreferrer"
-      aria-label="View Spur Afrika on the ACNC charity register"
-      className="transition hover:opacity-80"
+      rel="noopener noreferrer"
+      aria-label="View Spur Afrika's profile on the ACNC charity register (opens in a new tab)"
+      title="Registered with the ACNC — view profile"
+      data-analytics-id="acnc-badge"
+      onClick={trackAcncClick}
+      className="inline-flex shrink-0 rounded-full transition hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-spruce"
     >
       <img
         src={charityBadge.url}
-        alt="ACNC Registered Charity"
-        className="h-24 w-24"
+        alt="ACNC Registered Charity — Australian Charities and Not-for-profits Commission"
+        width={96}
+        height={96}
+        loading="lazy"
+        decoding="async"
+        className="h-20 w-20 md:h-24 md:w-24"
       />
     </a>
   );
