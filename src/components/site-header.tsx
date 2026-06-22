@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ShoppingBag } from "lucide-react";
+import { Menu, ShoppingBag } from "lucide-react";
 import { useCart, cartCount } from "@/lib/cart-store";
 import { SpurLogo } from "./logo";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
 
 const nav = [
   { to: "/shop", label: "Shop" },
@@ -15,14 +17,16 @@ export function SiteHeader() {
   const currency = useCart((s) => s.currency);
   const setCurrency = useCart((s) => s.setCurrency);
   const count = cartCount(lines);
+  const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-[var(--off-white)]/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-        <Link to="/" aria-label="Spur Afrika home">
+      <div className="mx-auto grid max-w-6xl grid-cols-[auto_1fr_auto] items-center gap-3 px-4 py-3 sm:py-4">
+        <Link to="/" aria-label="Spur Afrika home" className="shrink-0">
           <SpurLogo variant="dark-green" />
         </Link>
-        <nav className="hidden items-center gap-7 md:flex">
+
+        <nav className="hidden items-center justify-center gap-7 md:flex">
           {nav.map((n) => (
             <Link
               key={n.to}
@@ -34,7 +38,8 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-2">
+
+        <div className="flex items-center justify-end gap-2">
           <div className="hidden items-center rounded-full border border-border bg-card p-0.5 text-xs font-semibold sm:flex">
             {(["KES", "USD"] as const).map((c) => (
               <button
@@ -52,18 +57,71 @@ export function SiteHeader() {
               </button>
             ))}
           </div>
+
           <Link
             to="/cart"
-            className="relative inline-flex items-center gap-2 rounded-full bg-brand-dark px-4 py-2 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand"
+            aria-label={`Cart, ${count} item${count === 1 ? "" : "s"}`}
+            className="relative inline-flex items-center gap-2 rounded-full bg-brand-dark px-3 py-2 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand sm:px-4"
           >
             <ShoppingBag className="size-4" aria-hidden />
-            <span>Cart</span>
+            <span className="hidden sm:inline">Cart</span>
             {count > 0 && (
-              <span className="ml-1 rounded-full bg-[var(--brand-light-green)] px-2 py-0.5 text-xs font-bold text-[var(--brand-dark-green)]">
+              <span className="ml-0.5 rounded-full bg-[var(--brand-light-green)] px-2 py-0.5 text-xs font-bold text-[var(--brand-dark-green)] sm:ml-1">
                 {count}
               </span>
             )}
           </Link>
+
+          {/* Mobile menu */}
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <button
+                type="button"
+                aria-label="Open menu"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground transition hover:bg-muted md:hidden"
+              >
+                <Menu className="size-5" aria-hidden />
+              </button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-72 bg-[var(--off-white)]">
+              <SheetHeader>
+                <SheetTitle className="text-left text-brand-dark">Menu</SheetTitle>
+              </SheetHeader>
+              <nav className="mt-4 flex flex-col">
+                {nav.map((n) => (
+                  <Link
+                    key={n.to}
+                    to={n.to}
+                    onClick={() => setOpen(false)}
+                    className="border-b border-border py-3 type-body font-semibold text-foreground transition hover:text-brand-dark"
+                    activeProps={{ className: "text-brand-dark" }}
+                  >
+                    {n.label}
+                  </Link>
+                ))}
+              </nav>
+              <div className="mt-6 flex items-center gap-2">
+                <span className="type-eyebrow text-muted-foreground">Currency</span>
+                <div className="flex items-center rounded-full border border-border bg-card p-0.5 text-xs font-semibold">
+                  {(["KES", "USD"] as const).map((c) => (
+                    <button
+                      key={c}
+                      type="button"
+                      onClick={() => setCurrency(c)}
+                      className={
+                        "rounded-full px-3 py-1 transition " +
+                        (currency === c
+                          ? "bg-brand-dark text-[var(--white-text)]"
+                          : "text-muted-foreground hover:text-foreground")
+                      }
+                    >
+                      {c}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
