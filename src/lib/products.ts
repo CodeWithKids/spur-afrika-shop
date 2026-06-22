@@ -1,13 +1,14 @@
 /**
- * Seed catalogue for the Spur Afrika merch shop.
- * Replace prices, copy, and imagery with client-supplied content before launch.
+ * Spur Afrika catalogue.
+ * Prices supplied by the client (KES). USD shown is a rough conversion at
+ * ~130 KES/USD — adjust when the client confirms USD pricing.
  */
 
-export type Category = "apparel" | "accessories" | "stationery" | "bundles";
+export type Category = "apparel" | "drinkware" | "accessories" | "bundles";
 
 export interface ProductVariant {
   id: string;
-  label: string; // e.g. "M", "L", "Forest"
+  label: string;
   stock: number;
 }
 
@@ -19,129 +20,149 @@ export interface Product {
   description: string;
   priceKES: number;
   priceUSD: number;
-  variantLabel?: string; // e.g. "Size", "Colour"
+  variantLabel?: string;
   variants?: ProductVariant[];
-  /** Solid-fill placeholder so the logo/UI never overlays on photos with insufficient contrast. */
   accent: "brand" | "brand-dark" | "brand-light" | "spruce" | "muted-green";
   badge?: string;
 }
 
 export const CATEGORIES: { id: Category; label: string }[] = [
   { id: "apparel", label: "Apparel" },
+  { id: "drinkware", label: "Drinkware" },
   { id: "accessories", label: "Accessories" },
-  { id: "stationery", label: "Stationery" },
-  { id: "bundles", label: "Bundles" },
+  { id: "bundles", label: "Bundles & Gifts" },
+];
+
+const sizeVariants = (stock = 8): ProductVariant[] => [
+  { id: "s", label: "S", stock },
+  { id: "m", label: "M", stock: stock + 4 },
+  { id: "l", label: "L", stock: stock + 2 },
+  { id: "xl", label: "XL", stock },
 ];
 
 export const PRODUCTS: Product[] = [
   {
-    slug: "spur-classic-tee",
-    name: "Spur Classic T-Shirt",
+    slug: "spur-hoodie",
+    name: "Spur Hoodie",
     category: "apparel",
-    shortDescription: "Soft cotton tee in brand green.",
+    shortDescription: "Stay warm, stylish, and purposeful.",
     description:
-      "Our everyday tee in 100% combed cotton, printed in Nairobi. Every purchase helps fund Spur Afrika programs for children and families in Kibera and Dandora.",
-    priceKES: 1800,
-    priceUSD: 18,
+      "A premium heavyweight hoodie with the Spur Afrika mark. Cozy, durable, and made to be worn often — your purchase fuels our programs across Kenya.",
+    priceKES: 5000,
+    priceUSD: 38,
     variantLabel: "Size",
-    variants: [
-      { id: "s", label: "S", stock: 12 },
-      { id: "m", label: "M", stock: 20 },
-      { id: "l", label: "L", stock: 18 },
-      { id: "xl", label: "XL", stock: 10 },
-    ],
-    accent: "brand",
+    variants: sizeVariants(6),
+    accent: "spruce",
     badge: "Best seller",
   },
   {
-    slug: "hope-hoodie",
-    name: "Hope Hoodie",
+    slug: "heavy-polyester-tee",
+    name: "Heavy Polyester Tee",
     category: "apparel",
-    shortDescription: "Heavyweight hoodie embroidered with the Spur mark.",
+    shortDescription: "A durable, breathable heavy polyester t-shirt.",
     description:
-      "A heavyweight 400gsm hoodie with embroidered Spur Afrika wordmark on the chest. Lined hood, kangaroo pocket, ribbed cuffs.",
-    priceKES: 4500,
-    priceUSD: 42,
+      "A durable, breathable heavy-polyester tee built for everyday wear. Subtle Spur·Hive branding; comfortable, fast-drying fabric.",
+    priceKES: 2200,
+    priceUSD: 17,
     variantLabel: "Size",
+    variants: sizeVariants(),
+    accent: "muted-green",
+  },
+  {
+    slug: "baseball-cap",
+    name: "Baseball Cap",
+    category: "apparel",
+    shortDescription: "Classic, adjustable baseball cap.",
+    description:
+      "A classic adjustable baseball cap featuring embroidered Spur·Hive branding. Available in cream, navy and burgundy.",
+    priceKES: 1500,
+    priceUSD: 12,
+    variantLabel: "Colour",
     variants: [
-      { id: "s", label: "S", stock: 6 },
-      { id: "m", label: "M", stock: 9 },
-      { id: "l", label: "L", stock: 7 },
-      { id: "xl", label: "XL", stock: 4 },
+      { id: "cream", label: "Cream", stock: 10 },
+      { id: "navy", label: "Navy", stock: 8 },
+      { id: "burgundy", label: "Burgundy", stock: 6 },
     ],
     accent: "brand-dark",
   },
   {
-    slug: "supporter-wristband",
-    name: "Supporter Wristband",
-    category: "accessories",
-    shortDescription: "Silicone wristband, light green.",
-    description: "Show your support with a Spur Afrika silicone wristband. Sold in singles.",
-    priceKES: 250,
-    priceUSD: 3,
-    accent: "brand-light",
-    badge: "Under KES 500",
-  },
-  {
-    slug: "brand-keychain",
-    name: "Brand Keychain",
-    category: "accessories",
-    shortDescription: "Metal keychain with enamel inlay.",
-    description: "A weighty metal keychain finished with enamel inlay in Spur green.",
-    priceKES: 600,
-    priceUSD: 6,
-    accent: "muted-green",
-  },
-  {
-    slug: "morning-mug",
-    name: "Morning Mug",
-    category: "accessories",
-    shortDescription: "Ceramic mug, 350ml.",
+    slug: "bamboo-flask",
+    name: "The Bamboo Flask",
+    category: "drinkware",
+    shortDescription: "Sip sustainably with our premium bamboo flask.",
     description:
-      "A 350ml ceramic mug glazed in matte off-white with the Spur mark in Dark Green.",
-    priceKES: 950,
-    priceUSD: 10,
+      "A sustainably designed insulated flask with a natural bamboo body. Keeps drinks hot or cold for hours — and looks beautiful doing it.",
+    priceKES: 2200,
+    priceUSD: 17,
+    accent: "brand",
+  },
+  {
+    slug: "premium-hex-flask",
+    name: "Premium Hex Flask",
+    category: "drinkware",
+    shortDescription: "A modern, stylish hex-shaped flask.",
+    description:
+      "A modern hex-shaped stainless-steel flask with a leather carry loop and Spur·Hive branding. Double-walled vacuum insulation.",
+    priceKES: 2500,
+    priceUSD: 19,
+    accent: "brand-light",
+  },
+  {
+    slug: "reusable-water-bottle",
+    name: "Reusable Water Bottle",
+    category: "drinkware",
+    shortDescription: "Stay hydrated while supporting the mission.",
+    description:
+      "A reusable insulated water bottle with a leak-proof flip lid and the Spur·Hive wordmark. Holds 750ml.",
+    priceKES: 2000,
+    priceUSD: 15,
     accent: "spruce",
   },
   {
-    slug: "field-notebook",
-    name: "Field Notebook",
-    category: "stationery",
-    shortDescription: "A5 dotted notebook, 120 pages.",
+    slug: "two-tone-mug",
+    name: "Two Tone Mug",
+    category: "drinkware",
+    shortDescription: "Start your day with gratitude.",
     description:
-      "An A5 dotted notebook, perfect for journaling or note-taking. Soft-touch cover with the Spur wordmark debossed.",
-    priceKES: 1200,
+      "A two-tone ceramic mug featuring the Spur Afrika thank-you motif. Holds 350ml, dishwasher safe.",
+    priceKES: 1500,
+    priceUSD: 12,
+    accent: "muted-green",
+  },
+  {
+    slug: "charging-kit",
+    name: "Charging Kit",
+    category: "accessories",
+    shortDescription: "Stay powered throughout the day.",
+    description:
+      "A compact wooden-cased charging kit with multi-tip USB cables, branded with the Spur·Hive mark. Travel-ready.",
+    priceKES: 1500,
     priceUSD: 12,
     accent: "brand-dark",
   },
   {
-    slug: "sticker-pack",
-    name: "Sticker Pack",
-    category: "stationery",
-    shortDescription: "Set of 6 vinyl stickers.",
-    description: "Six vinyl stickers in assorted Spur Afrika brand designs.",
-    priceKES: 400,
-    priceUSD: 4,
-    accent: "brand-light",
+    slug: "hive-dynamic-duo",
+    name: "The Hive Dynamic Duo",
+    category: "bundles",
+    shortDescription: "Two iconic Spur·Hive flasks, one bundle.",
+    description:
+      "The Dynamic Duo brings together two of our most-loved Spur·Hive flasks at a bundle price. A perfect gift for two.",
+    priceKES: 4300,
+    priceUSD: 33,
+    accent: "brand",
+    badge: "Bundle",
   },
   {
-    slug: "supporter-bundle",
-    name: "Supporter Bundle",
+    slug: "christmas-bucket-gift",
+    name: "Christmas Bucket Gift",
     category: "bundles",
-    shortDescription: "Tee + mug + sticker pack.",
+    shortDescription: "Share the joy of giving this festive season.",
     description:
-      "Our most-loved gear in one go: Classic Tee, Morning Mug, and Sticker Pack. Save 10%.",
-    priceKES: 2800,
-    priceUSD: 28,
-    variantLabel: "Tee size",
-    variants: [
-      { id: "s", label: "S", stock: 5 },
-      { id: "m", label: "M", stock: 8 },
-      { id: "l", label: "L", stock: 6 },
-      { id: "xl", label: "XL", stock: 3 },
-    ],
-    accent: "brand",
-    badge: "Save 10%",
+      "Sponsor a Christmas Bucket — a curated food bundle delivered to a family through our partner communities in Kibera and Dandora. A meaningful way to give back this festive season.",
+    priceKES: 4500,
+    priceUSD: 35,
+    accent: "brand-dark",
+    badge: "Give back",
   },
 ];
 
