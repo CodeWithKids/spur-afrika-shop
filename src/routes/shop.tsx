@@ -1,0 +1,105 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { useMemo, useState } from "react";
+import { Search } from "lucide-react";
+import { ProductCard } from "@/components/product-card";
+import { CATEGORIES, PRODUCTS, type Category } from "@/lib/products";
+
+export const Route = createFileRoute("/shop")({
+  head: () => ({
+    meta: [
+      { title: "Shop — Spur Afrika" },
+      { name: "description", content: "Browse all Spur Afrika merchandise — apparel, accessories, stationery and bundles." },
+      { property: "og:title", content: "Shop — Spur Afrika" },
+      { property: "og:description", content: "Browse all Spur Afrika merchandise." },
+    ],
+  }),
+  component: ShopPage,
+});
+
+function ShopPage() {
+  const [category, setCategory] = useState<Category | "all">("all");
+  const [query, setQuery] = useState("");
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return PRODUCTS.filter((p) => {
+      if (category !== "all" && p.category !== category) return false;
+      if (!q) return true;
+      return (
+        p.name.toLowerCase().includes(q) ||
+        p.shortDescription.toLowerCase().includes(q) ||
+        p.description.toLowerCase().includes(q)
+      );
+    });
+  }, [category, query]);
+
+  return (
+    <div className="mx-auto max-w-6xl px-4 py-12">
+      <header className="mb-8">
+        <span className="type-eyebrow text-brand-dark">Catalogue</span>
+        <h1 className="mt-2 type-h-large text-foreground">Shop Spur Afrika</h1>
+        <p className="mt-2 max-w-2xl type-body text-muted-foreground">
+          Every purchase supports our programs in Kenya.
+        </p>
+      </header>
+
+      <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-wrap gap-2">
+          <CategoryChip active={category === "all"} onClick={() => setCategory("all")}>All</CategoryChip>
+          {CATEGORIES.map((c) => (
+            <CategoryChip key={c.id} active={category === c.id} onClick={() => setCategory(c.id)}>
+              {c.label}
+            </CategoryChip>
+          ))}
+        </div>
+        <label className="relative w-full md:w-72">
+          <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search products"
+            className="w-full rounded-full border border-border bg-card py-2 pl-9 pr-4 type-body-sm text-foreground placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+          />
+        </label>
+      </div>
+
+      {filtered.length === 0 ? (
+        <p className="rounded-lg bg-muted px-6 py-16 text-center type-body text-muted-foreground">
+          No products match your search.
+        </p>
+      ) : (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {filtered.map((p) => (
+            <ProductCard key={p.slug} product={p} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CategoryChip({
+  children,
+  active,
+  onClick,
+}: {
+  children: React.ReactNode;
+  active?: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={
+        "rounded-full border px-4 py-1.5 text-sm font-semibold transition " +
+        (active
+          ? "border-brand-dark bg-brand-dark text-[var(--white-text)]"
+          : "border-border bg-card text-foreground hover:bg-muted")
+      }
+    >
+      {children}
+    </button>
+  );
+}
