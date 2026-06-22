@@ -8,7 +8,7 @@ export const Route = createFileRoute("/shop")({
   head: () => ({
     meta: [
       { title: "Shop — Spur Afrika" },
-      { name: "description", content: "Browse all Spur Afrika merchandise — apparel, accessories, stationery and bundles." },
+      { name: "description", content: "Browse all Spur Afrika merchandise — apparel, drinkware and accessories." },
       { property: "og:title", content: "Shop — Spur Afrika" },
       { property: "og:description", content: "Browse all Spur Afrika merchandise." },
     ],
