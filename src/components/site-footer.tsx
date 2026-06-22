@@ -26,7 +26,7 @@ export function SiteFooter() {
             <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube">
               <Youtube className="h-5 w-5" />
             </a>
-            <a href="mailto:hello@spurafrika.org" aria-label="Email">
+            <a href="mailto:info@spurafrika.org" aria-label="Email">
               <Mail className="h-5 w-5" />
             </a>
           </div>
