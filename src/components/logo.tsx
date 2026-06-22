@@ -1,4 +1,4 @@
-import logoAsset from "@/assets/spur-afrika-logo.png.asset.json";
+import logoSrc from "@/assets/spur-afrika-logo.png";
 
 export function SpurLogo({
   variant,
@@ -12,7 +12,7 @@ export function SpurLogo({
   void variant;
   return (
     <img
-      src={logoAsset.url}
+      src={logoSrc}
       alt="Spur Afrika"
       className={className}
       style={{ height: "40px", width: "auto", display: "inline-block" }}

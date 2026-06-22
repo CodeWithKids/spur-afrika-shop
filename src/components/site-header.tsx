@@ -7,9 +7,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/co
 
 const nav = [
   { to: "/shop", label: "Shop" },
-  { to: "/about-shop", label: "About" },
   { to: "/shipping-returns", label: "Shipping" },
-  { to: "/contact", label: "Contact" },
 ] as const;
 
 export function SiteHeader() {

@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Youtube, Mail } from "lucide-react";
-import charityBadge from "@/assets/registered-charity-badge.png.asset.json";
+import charityBadge from "@/assets/registered-charity-badge.png";
 
 function FooterLogo() {
   return (
@@ -103,10 +103,10 @@ function CharityBadge() {
       className="inline-flex shrink-0 rounded-full transition hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-spruce"
     >
       <img
-        src={charityBadge.url}
+        src={charityBadge}
         alt="ACNC Registered Charity — Australian Charities and Not-for-profits Commission"
-        width={96}
-        height={96}
+        width={262}
+        height={262}
         loading="lazy"
         decoding="async"
         className="h-20 w-20 md:h-24 md:w-24"
