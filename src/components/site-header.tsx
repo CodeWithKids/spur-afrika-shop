@@ -11,7 +11,46 @@ const nav = [
   { to: "/shipping-returns", label: "Shipping" },
   { to: "/about-shop", label: "About" },
   { to: "/contact", label: "Contact" },
+  { href: "https://spurafrika.org/", label: "Spur Afrika" },
 ] as const;
+
+const navLinkClass =
+  "type-body-sm font-medium text-foreground transition hover:text-brand-dark";
+
+function NavItem({
+  item,
+  onNavigate,
+  className = navLinkClass,
+}: {
+  item: (typeof nav)[number];
+  onNavigate?: () => void;
+  className?: string;
+}) {
+  if ("href" in item) {
+    return (
+      <a
+        href={item.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={onNavigate}
+        className={className}
+      >
+        {item.label}
+      </a>
+    );
+  }
+
+  return (
+    <Link
+      to={item.to}
+      onClick={onNavigate}
+      className={className}
+      activeProps={{ className: "text-brand-dark underline underline-offset-4" }}
+    >
+      {item.label}
+    </Link>
+  );
+}
 
 export function SiteHeader() {
   const lines = useCart((s) => s.lines);
@@ -29,14 +68,7 @@ export function SiteHeader() {
 
         <nav className="hidden items-center justify-center gap-7 md:flex">
           {nav.map((n) => (
-            <Link
-              key={n.to}
-              to={n.to}
-              className="type-body-sm font-medium text-foreground transition hover:text-brand-dark"
-              activeProps={{ className: "text-brand-dark underline underline-offset-4" }}
-            >
-              {n.label}
-            </Link>
+            <NavItem key={"href" in n ? n.href : n.to} item={n} />
           ))}
         </nav>
 
@@ -90,15 +122,13 @@ export function SiteHeader() {
               </SheetHeader>
               <nav className="mt-4 flex flex-col">
                 {nav.map((n) => (
-                  <Link
-                    key={n.to}
-                    to={n.to}
-                    onClick={() => setOpen(false)}
-                    className="border-b border-border py-3 type-body font-semibold text-foreground transition hover:text-brand-dark"
-                    activeProps={{ className: "text-brand-dark" }}
-                  >
-                    {n.label}
-                  </Link>
+                  <div key={"href" in n ? n.href : n.to} className="border-b border-border py-3">
+                    <NavItem
+                      item={n}
+                      onNavigate={() => setOpen(false)}
+                      className="type-body font-semibold text-foreground transition hover:text-brand-dark"
+                    />
+                  </div>
                 ))}
               </nav>
               <div className="mt-6 flex flex-wrap items-center gap-2">

@@ -4,6 +4,7 @@ import spurHoodieSandHood from "@/assets/spur-hoodie-hood.jpg";
 import spurHoodieMustardBack from "@/assets/spur-hoodie-mustard-back.jpg";
 import spurHoodieMustardFront from "@/assets/spur-hoodie-mustard-front.jpg";
 import spurHoodieMustardDetail from "@/assets/spur-hoodie-mustard-detail.jpg";
+import hoodieRedFront from "@/assets/hoodie-red-front.png";
 import jacketWhiteFront1 from "@/assets/jackets/white-front-1.jpg";
 import jacketWhiteFront2 from "@/assets/jackets/white-front-2.jpg";
 import jacketWhiteFront3 from "@/assets/jackets/white-front-3.jpg";
@@ -15,7 +16,6 @@ import jacketBlackManFront from "@/assets/jackets/black-man-front.jpg";
 import jacketBlackCoupleBack from "@/assets/jackets/black-couple-back.jpg";
 import jacketOrangeFront1 from "@/assets/jackets/orange-front-1.jpg";
 import jacketOrangeFront2 from "@/assets/jackets/orange-front-2.jpg";
-import jacketRedFront from "@/assets/jackets/red-front.jpg";
 import teeFrontBack from "@/assets/products/tee-front-back.jpg";
 import hoodieCharcoal from "@/assets/products/hoodie-charcoal.jpg";
 import capsTrio1 from "@/assets/products/caps-trio-1.jpg";
@@ -44,7 +44,7 @@ import christmasBucketFlyer from "@/assets/products/christmas-bucket-flyer.jpg";
  * (~130 KES/USD, ~1.55 USD/AUD) — adjust when the client confirms pricing.
  */
 
-export type Category = "apparel" | "jackets" | "drinkware" | "accessories" | "gifts";
+export type Category = "apparel" | "drinkware" | "accessories" | "gifts";
 
 export interface ProductVariant {
   id: string;
@@ -79,7 +79,6 @@ export interface Product {
 
 export const CATEGORIES: { id: Category; label: string }[] = [
   { id: "apparel", label: "Apparel" },
-  { id: "jackets", label: "Jackets" },
   { id: "drinkware", label: "Drinkware" },
   { id: "accessories", label: "Accessories" },
   { id: "gifts", label: "Gifts" },
@@ -99,7 +98,7 @@ export const PRODUCTS: Product[] = [
     category: "apparel",
     shortDescription: "Stay warm, stylish, and purposeful.",
     description:
-      "A premium heavyweight hoodie with the Spur Afrika mark. Available in Sand, Mustard, and Charcoal. Cozy, durable, and made to be worn often — your purchase fuels our programs across Kenya.",
+      "A premium heavyweight hoodie with the Spur Afrika mark. Available in Sand, Mustard, Charcoal, and Red. Cozy, durable, and made to be worn often — your purchase fuels our programs across Kenya.",
     priceKES: 5000,
     priceUSD: 38,
     priceAUD: 59,
@@ -123,6 +122,12 @@ export const PRODUCTS: Product[] = [
         swatch: "#4A4A4A",
         images: [hoodieCharcoal],
       },
+      {
+        id: "red",
+        label: "Red",
+        swatch: "#C41E3A",
+        images: [hoodieRedFront],
+      },
     ],
     variantLabel: "Size",
     variants: sizeVariants(6),
@@ -132,10 +137,10 @@ export const PRODUCTS: Product[] = [
   {
     slug: "spur-jacket",
     name: "Spur Jacket",
-    category: "jackets",
+    category: "apparel",
     shortDescription: "Lightweight hooded jacket for every season.",
     description:
-      "A versatile zip-up windbreaker with the Spur Afrika mark. Available in White, Black, Orange and Red. Water-resistant, packable, and built for everyday wear — your purchase fuels our programs across Kenya.",
+      "A versatile zip-up windbreaker with the Spur Afrika mark. Available in White, Black, and Orange. Water-resistant, packable, and built for everyday wear — your purchase fuels our programs across Kenya.",
     priceKES: 4500,
     priceUSD: 35,
     priceAUD: 54,
@@ -165,12 +170,6 @@ export const PRODUCTS: Product[] = [
         label: "Orange",
         swatch: "#E85D04",
         images: [jacketOrangeFront1, jacketOrangeFront2],
-      },
-      {
-        id: "red",
-        label: "Red",
-        swatch: "#C41E3A",
-        images: [jacketRedFront],
       },
     ],
     variantLabel: "Size",
