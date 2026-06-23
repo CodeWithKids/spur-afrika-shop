@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Info } from "lucide-react";
 import { useCart, priceLines } from "@/lib/cart-store";
 import { formatPrice, SHIPPING_FLAT } from "@/lib/currency";
 
@@ -42,19 +41,6 @@ function CheckoutPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:py-12">
       <h1 className="type-h-large text-foreground">Checkout</h1>
-
-      <div
-        className="mt-6 flex gap-3 rounded-lg border border-border bg-muted-green p-4 text-foreground"
-        role="status"
-      >
-        <Info className="mt-0.5 size-5 shrink-0 text-brand-dark" />
-        <div className="min-w-0 type-body-sm text-pretty">
-          <strong className="font-semibold">Payments not yet live.</strong>{" "}
-          This is the storefront preview. PayHero and Grassroots checkout will be
-          wired up in the next phase, once API credentials and a backend are in
-          place. You can still review the order flow below.
-        </div>
-      </div>
 
       <form
         className="mt-8 grid gap-8 md:grid-cols-[1fr_min(360px,100%)] md:gap-10"
@@ -103,7 +89,6 @@ function CheckoutPage() {
           <fieldset className="space-y-3 rounded-xl border border-border bg-card p-6">
             <legend className="type-h-small px-2 text-foreground">Payment method</legend>
             <RadioCard checked title="PayHero (M-Pesa & cards)" desc="Recommended for Kenyan customers" name="payment" defaultChecked />
-            <RadioCard title="Grassroots (cards, international)" desc="Best for international supporters" name="payment" />
           </fieldset>
         </div>
 

@@ -7,11 +7,11 @@ import { SpurLogo } from "./logo";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
 
 const nav = [
-  { to: "/shop", label: "Shop" },
-  { to: "/shipping-returns", label: "Shipping" },
-  { to: "/about-shop", label: "About" },
-  { to: "/contact", label: "Contact" },
   { href: "https://spurafrika.org/", label: "Spur Afrika" },
+  { to: "/shop", label: "Shop" },
+  { to: "/about-shop", label: "About" },
+  { to: "/shipping-returns", label: "Shipping" },
+  { to: "/contact", label: "Contact" },
 ] as const;
 
 const navLinkClass =
