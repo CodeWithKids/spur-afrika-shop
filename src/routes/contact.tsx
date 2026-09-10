@@ -26,7 +26,7 @@ function ContactPage() {
         <ul className="mt-10 space-y-5 type-body text-foreground">
           <li className="flex items-start gap-3">
             <Mail className="mt-0.5 size-5 text-brand-dark" />
-            <a className="hover:underline" href="mailto:info@spurafrika.org">info@spurafrika.org</a>
+            <a className="hover:underline" href="mailto:spurafrikake@gmail.com">spurafrikake@gmail.com</a>
           </li>
           <li className="flex items-start gap-3">
             <Phone className="mt-0.5 size-5 text-brand-dark" />
