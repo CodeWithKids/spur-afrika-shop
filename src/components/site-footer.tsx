@@ -38,7 +38,7 @@ export function SiteFooter() {
             <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube">
               <Youtube className="h-5 w-5" />
             </a>
-            <a href="mailto:info@spurafrika.org" aria-label="Email">
+            <a href="mailto:spurafrikake@gmail.com" aria-label="Email">
               <Mail className="h-5 w-5" />
             </a>
           </div>
@@ -53,6 +53,7 @@ export function SiteFooter() {
             style={{ opacity: 0.85 }}
           >
             <Link to="/contact">Contact</Link>
+            <Link to="/shipping-returns">Shipping & Returns</Link>
             <a href="#">Policies</a>
             <a href="#">Terms of Use</a>
           </nav>

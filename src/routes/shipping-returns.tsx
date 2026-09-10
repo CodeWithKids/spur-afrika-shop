@@ -25,8 +25,8 @@ export const Route = createFileRoute("/shipping-returns")({
       <p className="mt-4 type-body text-muted-foreground">
         We accept returns of unworn, unwashed items within 14 days of delivery
         for store credit or exchange. Custom and sale items are final. Email{" "}
-        <a className="text-brand-dark underline" href="mailto:info@spurafrika.org">
-          info@spurafrika.org
+        <a className="text-brand-dark underline" href="mailto:spurafrikake@gmail.com">
+          spurafrikake@gmail.com
         </a>{" "}
         with your order number to start a return.
       </p>
