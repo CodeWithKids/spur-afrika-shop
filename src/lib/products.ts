@@ -37,6 +37,17 @@ import chargingKitOpen from "@/assets/products/charging-kit-open.jpg";
 import dynamicDuoSet from "@/assets/products/dynamic-duo-set.jpg";
 import christmasBucketCampaign from "@/assets/products/christmas-bucket-campaign.jpg";
 import christmasBucketFlyer from "@/assets/products/christmas-bucket-flyer.jpg";
+import varsityCrewneckBlack from "@/assets/varsity/crewneck-black.png.asset.json";
+import varsityCrewneckWhite from "@/assets/varsity/crewneck-white.png.asset.json";
+import varsityCrewneckNavy from "@/assets/varsity/crewneck-navy.png.asset.json";
+import varsityHoodieNavyGreen from "@/assets/varsity/hoodie-navy-green.png.asset.json";
+import varsityHoodieForestGreen from "@/assets/varsity/hoodie-forest-green.webp.asset.json";
+import varsityHoodieRed from "@/assets/varsity/hoodie-red.webp.asset.json";
+import varsityHoodieGrey from "@/assets/varsity/hoodie-grey.webp.asset.json";
+import varsityHoodieWhite from "@/assets/varsity/hoodie-white.png.asset.json";
+import varsityHoodieBlack from "@/assets/varsity/hoodie-black.webp.asset.json";
+import varsityHoodieDeepRed from "@/assets/varsity/hoodie-deep-red.webp.asset.json";
+
 
 /**
  * Spur Afrika catalogue.
@@ -44,7 +55,7 @@ import christmasBucketFlyer from "@/assets/products/christmas-bucket-flyer.jpg";
  * (~130 KES/USD, ~1.55 USD/AUD) — adjust when the client confirms pricing.
  */
 
-export type Category = "apparel" | "drinkware" | "accessories" | "gifts";
+export type Category = "apparel" | "drinkware" | "accessories" | "gifts" | "spur-varsity";
 
 export interface ProductVariant {
   id: string;
@@ -82,7 +93,9 @@ export const CATEGORIES: { id: Category; label: string }[] = [
   { id: "drinkware", label: "Drinkware" },
   { id: "accessories", label: "Accessories" },
   { id: "gifts", label: "Gifts" },
+  { id: "spur-varsity", label: "Spur Varsity Collection" },
 ];
+
 
 const sizeVariants = (stock = 8): ProductVariant[] => [
   { id: "s", label: "S", stock },
@@ -317,7 +330,102 @@ export const PRODUCTS: Product[] = [
     badge: "Seasonal",
     images: [christmasBucketCampaign, christmasBucketFlyer],
   },
+  {
+    slug: "spur-varsity-crewneck",
+    name: "Spur Varsity Crewneck Sweatshirt",
+    category: "spur-varsity",
+    shortDescription: "Premium crewneck sweatshirt with the Spur Afrika varsity mark.",
+    description:
+      "A comfortable, heavyweight crewneck sweatshirt featuring the Spur Afrika varsity design. Soft fleece lining, durable construction, and a relaxed fit make it perfect for everyday wear or representing the mission on cooler days.",
+    priceKES: 4500,
+    priceUSD: 35,
+    priceAUD: 54,
+    colorLabel: "Colour",
+    colors: [
+      {
+        id: "black",
+        label: "Black",
+        swatch: "#1C1C1C",
+        images: [varsityCrewneckBlack.url],
+      },
+      {
+        id: "white",
+        label: "White",
+        swatch: "#F4F4F0",
+        images: [varsityCrewneckWhite.url],
+      },
+      {
+        id: "navy",
+        label: "Navy",
+        swatch: "#1B2A4A",
+        images: [varsityCrewneckNavy.url],
+      },
+    ],
+    variantLabel: "Size",
+    variants: sizeVariants(6),
+    accent: "brand-dark",
+  },
+  {
+    slug: "spur-varsity-hoodie",
+    name: "Spur Varsity Hoodie",
+    category: "spur-varsity",
+    shortDescription: "Heavyweight hoodie with the Spur Afrika varsity mark.",
+    description:
+      "A cozy, heavyweight hoodie built for everyday comfort. Features the Spur Afrika varsity front design and our 'Every initiative spurs impact' statement on the back. Available in a range of colours to match your style.",
+    priceKES: 5500,
+    priceUSD: 42,
+    priceAUD: 65,
+    colorLabel: "Colour",
+    colors: [
+      {
+        id: "navy-green",
+        label: "Navy / Green",
+        swatch: "#1B2A4A",
+        images: [varsityHoodieNavyGreen.url],
+      },
+      {
+        id: "forest-green",
+        label: "Forest Green",
+        swatch: "#18611C",
+        images: [varsityHoodieForestGreen.url],
+      },
+      {
+        id: "red",
+        label: "Red",
+        swatch: "#C41E3A",
+        images: [varsityHoodieRed.url],
+      },
+      {
+        id: "grey",
+        label: "Grey",
+        swatch: "#8D8D8D",
+        images: [varsityHoodieGrey.url],
+      },
+      {
+        id: "white",
+        label: "White",
+        swatch: "#F4F4F0",
+        images: [varsityHoodieWhite.url],
+      },
+      {
+        id: "black",
+        label: "Black",
+        swatch: "#1C1C1C",
+        images: [varsityHoodieBlack.url],
+      },
+      {
+        id: "deep-red",
+        label: "Deep Red",
+        swatch: "#9B1B30",
+        images: [varsityHoodieDeepRed.url],
+      },
+    ],
+    variantLabel: "Size",
+    variants: sizeVariants(6),
+    accent: "brand-dark",
+  },
 ];
+
 
 export function categoryLabel(id: Category): string {
   return CATEGORIES.find((c) => c.id === id)?.label ?? id;
