@@ -136,14 +136,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "spur-jacket",
-    name: "Spur Jacket",
+    name: "Elimisha Trail Jacket",
     category: "apparel",
     shortDescription: "Lightweight hooded jacket for every season.",
     description:
       "A versatile zip-up windbreaker with the Spur Afrika mark. Available in White, Black, and Orange. Water-resistant, packable, and built for everyday wear — your purchase fuels our programs across Kenya.",
-    priceKES: 4500,
-    priceUSD: 35,
-    priceAUD: 54,
+    priceKES: 7500,
+    priceUSD: 58,
+    priceAUD: 89,
     colorLabel: "Colour",
     colors: [
       {
