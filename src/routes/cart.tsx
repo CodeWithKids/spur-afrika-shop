@@ -43,7 +43,7 @@ function CartPage() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:py-12">
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
       <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <h1 className="type-h-large text-foreground">Your cart</h1>
         <div className="inline-flex w-fit items-center rounded-full border border-border bg-card p-0.5 text-xs font-semibold">
@@ -70,9 +70,9 @@ function CartPage() {
           {priced.map(({ line, product, unitPrice, subtotal: rowTotal }) => (
             <li
               key={`${product.slug}-${line.colorId ?? ""}-${line.variantId ?? ""}`}
-              className="flex flex-col gap-4 p-4 sm:flex-row"
+              className="grid grid-cols-[5rem_minmax(0,1fr)] gap-3 p-3 sm:grid-cols-[6rem_minmax(0,1fr)] sm:gap-4 sm:p-4"
             >
-              <div className="w-full shrink-0 sm:w-24">
+              <div className="w-20 shrink-0 sm:w-24">
                 <ProductImage product={product} colorId={line.colorId} />
               </div>
               <div className="flex min-w-0 flex-1 flex-col">
@@ -104,13 +104,13 @@ function CartPage() {
                     <Trash2 className="size-4" />
                   </button>
                 </div>
-                <div className="mt-auto flex items-center justify-between pt-3">
+                <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-3">
                   <div className="inline-flex items-center rounded-full border border-border">
                     <button
                       type="button"
                       aria-label="Decrease"
                       onClick={() => updateQuantity(product.slug, line.variantId, line.colorId, line.quantity - 1)}
-                      className="p-2"
+                      className="min-h-11 min-w-11 p-2"
                     >
                       <Minus className="size-3.5" />
                     </button>
@@ -119,7 +119,7 @@ function CartPage() {
                       type="button"
                       aria-label="Increase"
                       onClick={() => updateQuantity(product.slug, line.variantId, line.colorId, line.quantity + 1)}
-                      className="p-2"
+                      className="min-h-11 min-w-11 p-2"
                     >
                       <Plus className="size-3.5" />
                     </button>
@@ -131,11 +131,11 @@ function CartPage() {
           ))}
         </ul>
 
-        <aside className="h-fit rounded-xl border border-border bg-card p-6">
+        <aside className="h-fit rounded-xl border border-border bg-card p-4 sm:p-6 md:sticky md:top-24">
           <h2 className="type-h-small text-foreground">Order summary</h2>
           <dl className="mt-6 space-y-3 type-body-sm">
             <div className="flex justify-between"><dt className="text-muted-foreground">Subtotal</dt><dd className="font-semibold">{formatPrice(subtotal, currency)}</dd></div>
-            <div className="flex justify-between"><dt className="text-muted-foreground">Shipping</dt><dd className="text-muted-foreground">Calculated at checkout</dd></div>
+            <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-4"><dt className="text-muted-foreground">Shipping</dt><dd className="text-right text-muted-foreground">Calculated at checkout</dd></div>
           </dl>
           <div className="mt-6 flex items-center justify-between border-t border-border pt-4">
             <span className="type-h-small text-foreground">Total</span>

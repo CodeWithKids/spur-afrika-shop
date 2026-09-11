@@ -69,16 +69,16 @@ function ProductPage() {
   };
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:py-12">
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
       <nav className="mb-6 flex flex-wrap items-center gap-x-2 gap-y-1 type-body-sm text-muted-foreground">
         <Link to="/shop" className="hover:text-brand-dark">Shop</Link>
         <span aria-hidden>/</span>
         <span className="min-w-0 break-words text-foreground">{product.name}</span>
       </nav>
 
-      <div className="grid gap-8 md:grid-cols-2 md:gap-10">
+      <div className="grid min-w-0 gap-8 md:grid-cols-2 md:gap-8 lg:gap-10">
         <ProductGallery key={colorId} product={product} colorId={colorId} />
-        <div>
+        <div className="min-w-0">
           <span className="type-eyebrow text-brand-dark">{categoryLabel(product.category)}</span>
           <h1 className="mt-2 type-h-large text-foreground">{product.name}</h1>
           <p className="mt-4 type-h text-brand-dark">{formatPrice(price, currency)}</p>
@@ -147,7 +147,7 @@ function ProductPage() {
             </div>
           )}
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-center">
             <div className="inline-flex w-fit items-center rounded-full border border-border bg-card">
               <button
                 type="button"
@@ -191,7 +191,7 @@ function ProductPage() {
       {related.length > 0 && (
         <section className="mt-12 sm:mt-20">
           <h2 className="type-h text-foreground">You may also like</h2>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-6 grid max-w-3xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((p) => (
               <ProductCard key={p.slug} product={p} />
             ))}
@@ -228,7 +228,7 @@ function ProductGallery({ product, colorId }: { product: Product; colorId?: stri
               aria-label={`View image ${index + 1} of ${images.length}`}
               onClick={() => setActiveIndex(index)}
               className={
-                "size-[4.5rem] shrink-0 overflow-hidden rounded-lg border-2 transition sm:size-auto sm:w-full " +
+                "size-16 shrink-0 overflow-hidden rounded-lg border-2 transition sm:size-auto sm:w-full " +
                 (safeIndex === index ? "border-brand-dark" : "border-transparent hover:border-border")
               }
             >
