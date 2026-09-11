@@ -7,6 +7,7 @@ import { SpurLogo } from "./logo";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
 
 const nav = [
+  { to: "/", label: "Home" },
   { href: "https://spurafrika.org/", label: "Spur Afrika" },
   { to: "/shop", label: "Shop" },
   { to: "/contact", label: "Contact" },
@@ -59,7 +60,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-[var(--off-white)]/95 backdrop-blur">
-      <div className="mx-auto grid max-w-6xl grid-cols-[auto_1fr_auto] items-center gap-2 px-4 py-3 sm:gap-3 sm:py-4">
+      <div className="mx-auto grid max-w-6xl grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 px-4 py-3 sm:gap-3 sm:py-4">
         <Link to="/" aria-label="Spur Afrika home" className="shrink-0">
           <SpurLogo variant="dark-green" />
         </Link>
@@ -70,8 +71,8 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="flex min-w-0 items-center justify-end gap-1.5 sm:gap-2">
-          <div className="flex items-center rounded-full border border-border bg-card p-0.5 text-[10px] font-semibold sm:text-xs">
+        <div className="flex min-w-0 items-center justify-end gap-2">
+          <div className="hidden items-center rounded-full border border-border bg-card p-0.5 text-xs font-semibold sm:flex">
             {CURRENCIES.map((c) => (
               <button
                 key={c}

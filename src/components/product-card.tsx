@@ -12,7 +12,7 @@ export function ProductCard({ product }: { product: Product }) {
     <Link
       to="/product/$slug"
       params={{ slug: product.slug }}
-      className="group flex h-full flex-col gap-3 rounded-xl bg-card p-3 transition hover:shadow-md"
+      className="group flex h-full min-w-0 flex-col gap-3 rounded-xl bg-card p-3 transition hover:shadow-md"
     >
       <div className="relative">
         <ProductImage product={product} />
@@ -23,10 +23,10 @@ export function ProductCard({ product }: { product: Product }) {
         )}
       </div>
       <div className="flex flex-1 flex-col gap-1 px-1 pb-1">
-        <h3 className="type-h-small text-foreground">{product.name}</h3>
+        <h3 className="type-h-small break-words text-foreground">{product.name}</h3>
         <p className="line-clamp-2 type-body-sm text-muted-foreground">{product.shortDescription}</p>
         <div className="mt-auto flex items-center justify-between gap-2 pt-2">
-          <span className="type-h-small text-brand-dark">{formatPrice(price, currency)}</span>
+          <span className="min-w-0 break-words type-h-small text-brand-dark">{formatPrice(price, currency)}</span>
           <span className="text-xs font-semibold uppercase tracking-wider text-brand-dark group-hover:underline">
             View
           </span>

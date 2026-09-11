@@ -25,7 +25,7 @@ function Index() {
   return (
     <div>
       {/* Hero — team photo with mission copy overlay */}
-      <section className="relative min-h-[min(85vh,640px)] overflow-hidden md:min-h-[min(72vh,640px)]">
+      <section className="relative min-h-[min(78svh,640px)] overflow-hidden md:min-h-[min(72vh,640px)]">
         <img
           src={heroImage}
           alt="Spur Afrika team members wearing branded hoodies outdoors"
@@ -44,7 +44,7 @@ function Index() {
           }}
           aria-hidden
         />
-        <div className="relative mx-auto flex min-h-[min(85vh,640px)] max-w-6xl items-end px-4 py-12 sm:items-center sm:py-16 md:min-h-[min(72vh,640px)] md:py-24">
+        <div className="relative mx-auto flex min-h-[min(78svh,640px)] max-w-6xl items-end px-4 py-10 sm:items-center sm:px-6 sm:py-16 md:min-h-[min(72vh,640px)] md:py-24">
           <div className="max-w-xl">
             <span className="type-eyebrow" style={{ color: "var(--brand-light-green)" }}>
               Spur Afrika · Merch
@@ -79,7 +79,7 @@ function Index() {
 
       {/* Mission strip — Dark Spruce background (Brand Guide v1 dark sections). */}
       <section style={{ background: "var(--dark-spruce)", color: "var(--white-text)" }}>
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:py-12 md:grid-cols-3">
+        <div className="mx-auto grid max-w-6xl gap-7 px-4 py-9 sm:grid-cols-3 sm:px-6 sm:py-12">
           {[
             { n: "100%", t: "of profit reinvested in programs" },
             { n: "12+", t: "years serving Kenyan communities" },
@@ -94,7 +94,7 @@ function Index() {
       </section>
 
       {/* About — merged from the About page */}
-      <section className="mx-auto max-w-3xl px-4 py-12 sm:py-16">
+      <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
         <span className="type-eyebrow text-brand-dark">About</span>
         <h2 className="mt-2 type-h-large text-foreground">More than merch</h2>
         <p className="mt-6 type-body-lg text-muted-foreground">
@@ -124,8 +124,8 @@ function Index() {
 
       {/* Featured products */}
       <section className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
-        <div className="flex flex-wrap items-end justify-between gap-3">
-          <h2 className="type-h-large min-w-0 text-foreground">Featured products</h2>
+        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-3">
+          <h2 className="min-w-0 type-h-large text-foreground">Featured products</h2>
           <Link to="/shop" className="shrink-0 type-body-sm font-semibold text-brand-dark hover:underline">
             View all →
           </Link>

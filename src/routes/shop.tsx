@@ -34,7 +34,7 @@ function ShopPage() {
   }, [category, query]);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:py-12">
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
       <header className="mb-8">
         <span className="type-eyebrow text-brand-dark">Catalogue</span>
         <h1 className="mt-2 type-h-large text-foreground">Shop Spur Afrika</h1>
@@ -43,8 +43,8 @@ function ShopPage() {
         </p>
       </header>
 
-      <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 md:mx-0 md:flex-wrap md:overflow-visible md:px-0">
+      <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="-mx-4 flex snap-x gap-2 overflow-x-auto px-4 pb-2 sm:-mx-6 sm:px-6 lg:mx-0 lg:flex-wrap lg:overflow-visible lg:px-0">
           <CategoryChip active={category === "all"} onClick={() => setCategory("all")}>All</CategoryChip>
           {CATEGORIES.map((c) => (
             <CategoryChip key={c.id} active={category === c.id} onClick={() => setCategory(c.id)}>
@@ -52,14 +52,14 @@ function ShopPage() {
             </CategoryChip>
           ))}
         </div>
-        <label className="relative w-full md:w-72">
+        <label className="relative w-full lg:w-72 lg:shrink-0">
           <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           <input
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search products"
-            className="w-full rounded-full border border-border bg-card py-2 pl-9 pr-4 type-body-sm text-foreground placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+            className="min-h-11 w-full rounded-full border border-border bg-card py-2 pl-9 pr-4 type-body-sm text-foreground placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
           />
         </label>
       </div>
@@ -93,7 +93,7 @@ function CategoryChip({
       type="button"
       onClick={onClick}
       className={
-        "shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition " +
+        "min-h-11 shrink-0 snap-start rounded-full border px-4 py-2 text-sm font-semibold transition " +
         (active
           ? "border-brand-dark bg-brand-dark text-[var(--white-text)]"
           : "border-border bg-card text-foreground hover:bg-muted")
