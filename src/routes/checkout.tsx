@@ -88,7 +88,7 @@ function CheckoutPage() {
 
           <fieldset className="min-w-0 space-y-3 rounded-xl border border-border bg-card p-4 sm:p-6">
             <legend className="type-h-small px-2 text-foreground">Payment method</legend>
-            <RadioCard checked title="PayHero (M-Pesa & cards)" desc="Recommended for Kenyan customers" name="payment" defaultChecked />
+            <RadioCard checked title="PayHero (M-Pesa & cards)" desc="Recommended for Kenyan customers" name="payment" onChange={() => {}} />
           </fieldset>
         </div>
 
