@@ -8,6 +8,10 @@ export const Route = createFileRoute("/checkout")({
     meta: [
       { title: "Checkout — Spur Afrika Shop" },
       { name: "description", content: "Complete your Spur Afrika merchandise order." },
+      { property: "og:title", content: "Checkout — Spur Afrika Shop" },
+      { property: "og:description", content: "Complete your Spur Afrika merchandise order." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: CheckoutPage,

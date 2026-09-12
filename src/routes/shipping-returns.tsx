@@ -7,6 +7,8 @@ export const Route = createFileRoute("/shipping-returns")({
       { name: "description", content: "Shipping rates, delivery timelines and returns policy for Spur Afrika merchandise." },
       { property: "og:title", content: "Shipping & Returns — Spur Afrika" },
       { property: "og:description", content: "Shipping, delivery and returns for Spur Afrika merch." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: () => (

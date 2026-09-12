@@ -14,6 +14,8 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:title", content: "Spur Afrika Shop — Wear the mission" },
       { property: "og:description", content: "Branded merchandise that funds Spur Afrika's programs in Kenya." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Index,
