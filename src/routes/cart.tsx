@@ -9,6 +9,10 @@ export const Route = createFileRoute("/cart")({
     meta: [
       { title: "Your Cart — Spur Afrika Shop" },
       { name: "description", content: "Review the items in your Spur Afrika cart." },
+      { property: "og:title", content: "Your Cart — Spur Afrika Shop" },
+      { property: "og:description", content: "Review the items in your Spur Afrika cart." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: CartPage,

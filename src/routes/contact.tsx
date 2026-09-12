@@ -8,6 +8,8 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: "Get in touch with the Spur Afrika shop team." },
       { property: "og:title", content: "Contact — Spur Afrika Shop" },
       { property: "og:description", content: "Get in touch with the Spur Afrika shop team." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: ContactPage,

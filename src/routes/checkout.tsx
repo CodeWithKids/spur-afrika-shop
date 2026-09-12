@@ -8,6 +8,10 @@ export const Route = createFileRoute("/checkout")({
     meta: [
       { title: "Checkout — Spur Afrika Shop" },
       { name: "description", content: "Complete your Spur Afrika merchandise order." },
+      { property: "og:title", content: "Checkout — Spur Afrika Shop" },
+      { property: "og:description", content: "Complete your Spur Afrika merchandise order." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: CheckoutPage,
@@ -88,7 +92,7 @@ function CheckoutPage() {
 
           <fieldset className="min-w-0 space-y-3 rounded-xl border border-border bg-card p-4 sm:p-6">
             <legend className="type-h-small px-2 text-foreground">Payment method</legend>
-            <RadioCard checked title="PayHero (M-Pesa & cards)" desc="Recommended for Kenyan customers" name="payment" defaultChecked />
+            <RadioCard checked title="PayHero (M-Pesa & cards)" desc="Recommended for Kenyan customers" name="payment" onChange={() => {}} />
           </fieldset>
         </div>
 
