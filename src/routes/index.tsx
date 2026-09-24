@@ -126,76 +126,26 @@ function Index() {
         </Link>
       </section>
 
-      {/* Spur Hive — community of changemakers */}
+      {/* Spur Hive teaser — full details on /spur-hive */}
       <section style={{ background: "var(--muted-grey)" }}>
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+        <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-12 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-14">
           <div className="max-w-2xl">
             <span className="type-eyebrow text-brand-dark">Spur Hive</span>
             <h2 className="mt-2 type-h-large text-foreground">
               A community of changemakers
             </h2>
-            <p className="mt-4 type-body text-muted-foreground">
-              The Spur Hive is more than a giving community — it is a platform
-              that lets members actively participate in experiences and
-              initiatives that create meaningful impact for learners and
-              communities, investing in education one learner at a time.
+            <p className="mt-3 type-body text-muted-foreground">
+              Experience Kibera, attend the Fundraising Gala, run the Spur
+              Marathon — see how the Hive invests in education one learner at a
+              time.
             </p>
           </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                t: "The Kibera Community Experience",
-                s: "Experience Impact. Build Connection.",
-                d: "Step into the communities where Spur Afrika works through guided visits and community engagements, and witness firsthand the impact of education-focused interventions.",
-                cta: "Experience Kibera with us",
-              },
-              {
-                t: "The Spur Fundraising Gala",
-                s: "Invest in the future of young people",
-                d: "Our flagship fundraising event brings together partners, supporters and corporate organizations. Every ticket and sponsorship helps unlock opportunities for learners pursuing their dreams.",
-                cta: "Attend the next Gala",
-              },
-              {
-                t: "The Spur Marathon",
-                s: "Every step creates opportunity",
-                d: "Runners, walkers and supporters commit their kilometres to a greater purpose — raising awareness and funds so children from underserved communities can access life-changing education.",
-                cta: "Run for a cause",
-              },
-            ].map((item) => (
-              <article
-                key={item.t}
-                className="flex flex-col rounded-2xl bg-background p-6 shadow-sm"
-              >
-                <h3 className="type-h-small text-foreground">{item.t}</h3>
-                <p className="mt-1 type-body-sm font-semibold text-brand-dark">{item.s}</p>
-                <p className="mt-3 type-body-sm text-muted-foreground">{item.d}</p>
-                <a
-                  href="https://spurafrika.org"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-4 inline-flex items-center type-body-sm font-semibold text-brand-dark hover:underline"
-                >
-                  {item.cta} →
-                </a>
-              </article>
-            ))}
-          </div>
-          <div className="mt-10 rounded-2xl px-6 py-8 text-center" style={{ background: "var(--spruce)", color: "var(--white-text)" }}>
-            <h3 className="type-h">Join the Hive</h3>
-            <p className="mx-auto mt-3 max-w-xl type-body" style={{ opacity: 0.85 }}>
-              Become part of a community that believes every learner deserves the
-              opportunity to thrive. Join the Spur Hive today and support
-              initiatives that create lasting impact.
-            </p>
-            <a
-              href="https://spurafrika.org"
-              target="_blank"
-              rel="noreferrer"
-              className="mt-6 inline-flex items-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand"
-            >
-              Join the Spur Hive
-            </a>
-          </div>
+          <Link
+            to="/spur-hive"
+            className="inline-flex shrink-0 items-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand"
+          >
+            Explore the Spur Hive
+          </Link>
         </div>
       </section>
 
