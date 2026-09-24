@@ -79,17 +79,18 @@ function Index() {
         </div>
       </section>
 
-      {/* Mission strip — Dark Spruce background (Brand Guide v1 dark sections). */}
+      {/* Mission strip — real Spur Afrika impact stats */}
       <section style={{ background: "var(--dark-spruce)", color: "var(--white-text)" }}>
-        <div className="mx-auto grid max-w-6xl gap-7 px-4 py-9 sm:grid-cols-3 sm:px-6 sm:py-12">
+        <div className="mx-auto grid max-w-6xl gap-7 px-4 py-9 sm:grid-cols-2 sm:px-6 sm:py-12 lg:grid-cols-4">
           {[
-            { n: "100%", t: "of profit reinvested in programs" },
-            { n: "12+", t: "years serving Kenyan communities" },
-            { n: "1000s", t: "of children supported each year" },
+            { n: "100%", t: "of profit reinvested in our Elimisha sponsorship kitty, keeping more children in school" },
+            { n: "16", t: "years transforming lives through education, mentorship and opportunity" },
+            { n: "214", t: "children supported through the Elimisha sponsorship program" },
+            { n: "172", t: "children currently active in the Elimisha program" },
           ].map((s) => (
             <div key={s.n}>
               <div className="type-h-large" style={{ color: "var(--brand-light-green)" }}>{s.n}</div>
-              <p className="mt-2 type-body" style={{ opacity: 0.85 }}>{s.t}</p>
+              <p className="mt-2 type-body-sm" style={{ opacity: 0.85 }}>{s.t}</p>
             </div>
           ))}
         </div>
@@ -98,16 +99,17 @@ function Index() {
       {/* About — merged from the About page */}
       <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
         <span className="type-eyebrow text-brand-dark">About</span>
-        <h2 className="mt-2 type-h-large text-foreground">More than merch</h2>
+        <h2 className="mt-2 type-h-large text-foreground">More than merchandise</h2>
         <p className="mt-6 type-body-lg text-muted-foreground">
-          Spur Afrika is a Kenya-based nonprofit working alongside children and
-          families in Kibera, Dandora, and surrounding communities. Our programs
-          cover education, mentorship, family support, and community health.
+          Every purchase from the Spur Afrika Shop helps fund programs that equip
+          children and young people with education, mentorship, and opportunities
+          to thrive. From classrooms to communities, your support helps transform
+          lives and create lasting impact.
         </p>
         <p className="mt-4 type-body text-muted-foreground">
-          This shop exists so supporters around the world can carry a piece of the
-          mission with them. Every product is produced ethically and 100% of profit
-          is reinvested in our programs.
+          Spur Afrika Kenya is based at Olympic Estate, House No. 166, Nairobi,
+          working alongside children and families in Kibera and surrounding
+          communities. Shop with purpose — impact a future.
         </p>
         <h3 className="mt-12 type-h text-foreground">Where the money goes</h3>
         <ul className="mt-4 space-y-3 type-body text-muted-foreground">
@@ -122,6 +124,79 @@ function Index() {
         >
           Shop the collection
         </Link>
+      </section>
+
+      {/* Spur Hive — community of changemakers */}
+      <section style={{ background: "var(--muted-grey)" }}>
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+          <div className="max-w-2xl">
+            <span className="type-eyebrow text-brand-dark">Spur Hive</span>
+            <h2 className="mt-2 type-h-large text-foreground">
+              A community of changemakers
+            </h2>
+            <p className="mt-4 type-body text-muted-foreground">
+              The Spur Hive is more than a giving community — it is a platform
+              that lets members actively participate in experiences and
+              initiatives that create meaningful impact for learners and
+              communities, investing in education one learner at a time.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                t: "The Kibera Community Experience",
+                s: "Experience Impact. Build Connection.",
+                d: "Step into the communities where Spur Afrika works through guided visits and community engagements, and witness firsthand the impact of education-focused interventions.",
+                cta: "Experience Kibera with us",
+              },
+              {
+                t: "The Spur Fundraising Gala",
+                s: "Invest in the future of young people",
+                d: "Our flagship fundraising event brings together partners, supporters and corporate organizations. Every ticket and sponsorship helps unlock opportunities for learners pursuing their dreams.",
+                cta: "Attend the next Gala",
+              },
+              {
+                t: "The Spur Marathon",
+                s: "Every step creates opportunity",
+                d: "Runners, walkers and supporters commit their kilometres to a greater purpose — raising awareness and funds so children from underserved communities can access life-changing education.",
+                cta: "Run for a cause",
+              },
+            ].map((item) => (
+              <article
+                key={item.t}
+                className="flex flex-col rounded-2xl bg-background p-6 shadow-sm"
+              >
+                <h3 className="type-h-small text-foreground">{item.t}</h3>
+                <p className="mt-1 type-body-sm font-semibold text-brand-dark">{item.s}</p>
+                <p className="mt-3 type-body-sm text-muted-foreground">{item.d}</p>
+                <a
+                  href="https://spurafrika.org"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-4 inline-flex items-center type-body-sm font-semibold text-brand-dark hover:underline"
+                >
+                  {item.cta} →
+                </a>
+              </article>
+            ))}
+          </div>
+          <div className="mt-10 rounded-2xl px-6 py-8 text-center" style={{ background: "var(--spruce)", color: "var(--white-text)" }}>
+            <h3 className="type-h">Join the Hive</h3>
+            <p className="mx-auto mt-3 max-w-xl type-body" style={{ opacity: 0.85 }}>
+              Become part of a community that believes every learner deserves the
+              opportunity to thrive. Join the Spur Hive today and support
+              initiatives that create lasting impact.
+            </p>
+            <a
+              href="https://spurafrika.org"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-6 inline-flex items-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand"
+            >
+              Join the Spur Hive
+            </a>
+          </div>
+        </div>
       </section>
 
       {/* Featured products */}
