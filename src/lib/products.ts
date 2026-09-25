@@ -118,16 +118,16 @@ export const PRODUCTS: Product[] = [
     colorLabel: "Colour",
     colors: [
       {
-        id: "sand",
-        label: "Sand",
-        swatch: "#C8B89A",
-        images: [spurHoodieSandFront, spurHoodieSandHood],
-      },
-      {
         id: "mustard",
         label: "Mustard",
         swatch: "#D4A82A",
         images: [spurHoodieMustardFront, spurHoodieMustardBack, spurHoodieMustardDetail],
+      },
+      {
+        id: "sand",
+        label: "Sand",
+        swatch: "#C8B89A",
+        images: [spurHoodieSandFront, spurHoodieSandHood],
       },
       {
         id: "charcoal",
