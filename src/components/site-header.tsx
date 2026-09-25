@@ -8,10 +8,10 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/co
 
 const nav = [
   { to: "/", label: "Home" },
-  { href: "https://spurafrika.org/", label: "Spur Afrika" },
   { to: "/shop", label: "Shop" },
   { to: "/spur-hive", label: "Spur Hive" },
   { to: "/contact", label: "Contact" },
+  { href: "https://spurafrika.org/", label: "Spur Afrika" },
 ] as const;
 
 const navLinkClass =

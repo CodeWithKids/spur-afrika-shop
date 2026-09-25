@@ -85,7 +85,7 @@ function Index() {
           {[
             { n: "100%", t: "of profit reinvested in our Elimisha sponsorship kitty, keeping more children in school" },
             { n: "16", t: "years transforming lives through education, mentorship and opportunity" },
-            { n: "214", t: "children supported through the Elimisha sponsorship program" },
+            { n: "227", t: "children supported through the Elimisha sponsorship program" },
             { n: "172", t: "children currently active in the Elimisha program" },
           ].map((s) => (
             <div key={s.n}>
@@ -107,11 +107,11 @@ function Index() {
           lives and create lasting impact.
         </p>
         <p className="mt-4 type-body text-muted-foreground">
-          Spur Afrika Kenya is based at Olympic Estate, House No. 166, Nairobi,
+          Spur Afrika Kenya is based at Olympic Estate, Nairobi,
           working alongside children and families in Kibera and surrounding
           communities. Shop with purpose — impact a future.
         </p>
-        <h3 className="mt-12 type-h text-foreground">Where the money goes</h3>
+        <h3 className="mt-12 type-h text-foreground">From your cart to their future</h3>
         <ul className="mt-4 space-y-3 type-body text-muted-foreground">
           <li>• School fees, uniforms and learning materials for sponsored children.</li>
           <li>• Mentorship and life-skills programming for teens and young adults.</li>
