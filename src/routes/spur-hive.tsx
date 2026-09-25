@@ -69,7 +69,7 @@ function SpurHivePage() {
         <h2 className="type-h-large text-foreground">What the Hive makes possible</h2>
         <p className="mt-5 type-body-lg text-muted-foreground">
           Hive members pool their time, skills and resources to keep children in
-          school through the Elimisha sponsorship program — 214 children supported
+          school through the Elimisha sponsorship program — 227 children supported
           to date, with 172 currently active. Members get front-row access to the
           work their generosity makes possible.
         </p>

@@ -111,7 +111,7 @@ export const PRODUCTS: Product[] = [
     category: "apparel",
     shortDescription: "Stay warm, stylish, and purposeful.",
     description:
-      "A premium heavyweight hoodie with the Spur Afrika mark. Available in Sand, Mustard, Charcoal, and Red. Cozy, durable, and made to be worn often — your purchase fuels our programs across Kenya.",
+      "A premium heavyweight hoodie with the Spur Afrika mark. Available in Mustard, Sand, Charcoal, and Red. Cozy, durable, and made to be worn often — your purchase fuels our programs across Kenya.",
     priceKES: 5000,
     priceUSD: 38,
     priceAUD: 59,
