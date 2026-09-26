@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ProductCard } from "@/components/product-card";
 import { HomeHeroSlider } from "@/components/home-hero-slider";
+import { ImpactStatsStrip } from "@/components/impact-stats-strip";
 import heroImage from "@/assets/hero-team.jpg";
 import { pageShell } from "@/lib/layout";
 import { PRODUCTS } from "@/lib/products";
@@ -30,36 +31,21 @@ function Index() {
     <div>
       <HomeHeroSlider />
 
-      {/* Mission strip — real Spur Afrika impact stats */}
-      <section style={{ background: "var(--dark-spruce)", color: "var(--white-text)" }}>
-        <div className={`grid gap-7 py-9 sm:grid-cols-2 sm:py-12 lg:grid-cols-4 ${pageShell}`}>
-          {[
-            { n: "100%", t: "of profit reinvested in our Elimisha sponsorship kitty, keeping more children in school" },
-            { n: "16", t: "years transforming lives through education, mentorship and opportunity" },
-            { n: "227", t: "children supported through the Elimisha sponsorship program" },
-            { n: "172", t: "children currently active in the Elimisha program" },
-          ].map((s) => (
-            <div key={s.n}>
-              <div className="type-h-large" style={{ color: "var(--brand-light-green)" }}>{s.n}</div>
-              <p className="mt-2 type-body-sm" style={{ opacity: 0.85 }}>{s.t}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <ImpactStatsStrip />
 
       {/* About — merged from the About page */}
       <section className={`py-12 sm:py-16 ${pageShell}`}>
-        <div className="grid items-center gap-8 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:gap-10 lg:gap-14">
-          <div className="overflow-hidden rounded-2xl bg-muted-grey">
+        <div className="grid gap-8 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:gap-10 lg:gap-14">
+          <div className="relative min-h-64 overflow-hidden rounded-2xl bg-muted-grey md:min-h-0 md:h-full md:self-stretch">
             <img
               src={heroImage}
               alt="Spur Afrika team members in branded apparel outdoors"
-              className="aspect-[4/3] w-full object-cover object-[center_30%] md:aspect-[3/4] md:min-h-[420px]"
+              className="absolute inset-0 h-full w-full object-cover object-[center_30%]"
               loading="lazy"
               decoding="async"
             />
           </div>
-          <div className="min-w-0">
+          <div className="min-w-0 md:flex md:flex-col md:justify-center">
             <span className="type-eyebrow text-brand-dark">About</span>
             <h2 className="mt-2 type-h-large text-foreground">More than merchandise</h2>
             <p className="mt-6 type-body-lg text-muted-foreground">
@@ -82,7 +68,7 @@ function Index() {
             </ul>
             <Link
               to="/shop"
-              className="mt-10 inline-flex items-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] hover:bg-brand"
+              className="mt-10 inline-flex w-fit max-w-full items-center justify-center self-start rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] hover:bg-brand"
             >
               Shop the collection
             </Link>
