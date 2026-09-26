@@ -6,6 +6,7 @@ import { ProductCard } from "@/components/product-card";
 import { ProductImage } from "@/components/product-image";
 import { useCart } from "@/lib/cart-store";
 import { formatPrice } from "@/lib/currency";
+import { pageShell } from "@/lib/layout";
 import { getProduct, categoryLabel, productImages, productPrice, relatedProducts, type Product } from "@/lib/products";
 
 export const Route = createFileRoute("/product/$slug")({
@@ -29,7 +30,7 @@ export const Route = createFileRoute("/product/$slug")({
     };
   },
   notFoundComponent: () => (
-    <div className="mx-auto max-w-3xl px-4 py-24 text-center">
+    <div className={`py-24 text-center ${pageShell}`}>
       <h1 className="type-h-large text-foreground">Product not found</h1>
       <Link to="/shop" className="mt-6 inline-block text-brand-dark underline">
         Back to shop
@@ -71,7 +72,7 @@ function ProductPage() {
   };
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+    <div className={`py-8 sm:py-12 ${pageShell}`}>
       <nav className="mb-6 flex flex-wrap items-center gap-x-2 gap-y-1 type-body-sm text-muted-foreground">
         <Link to="/shop" className="hover:text-brand-dark">Shop</Link>
         <span aria-hidden>/</span>
@@ -193,7 +194,7 @@ function ProductPage() {
       {related.length > 0 && (
         <section className="mt-12 sm:mt-20">
           <h2 className="type-h text-foreground">You may also like</h2>
-          <div className="mt-6 grid max-w-3xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {related.map((p) => (
               <ProductCard key={p.slug} product={p} />
             ))}

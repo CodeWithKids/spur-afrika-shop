@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useCart, priceLines } from "@/lib/cart-store";
+import { pageShell } from "@/lib/layout";
 import { formatPrice, SHIPPING_FLAT } from "@/lib/currency";
 
 export const Route = createFileRoute("/checkout")({
@@ -29,7 +30,7 @@ function CheckoutPage() {
 
   if (priced.length === 0) {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-24 text-center">
+      <div className={`py-24 text-center ${pageShell}`}>
         <h1 className="type-h-large text-foreground">Nothing to check out</h1>
         <p className="mt-3 type-body text-muted-foreground">Add items to your cart first.</p>
         <Link
@@ -43,11 +44,11 @@ function CheckoutPage() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+    <div className={`py-8 sm:py-12 ${pageShell}`}>
       <h1 className="type-h-large text-foreground">Checkout</h1>
 
       <form
-        className="mt-8 grid gap-8 md:grid-cols-[1fr_min(360px,100%)] md:gap-10"
+        className="mt-8 grid gap-8 lg:grid-cols-[1fr_min(400px,100%)] lg:gap-12"
         onSubmit={(e) => {
           e.preventDefault();
           alert("Payments coming soon. Order not placed.");

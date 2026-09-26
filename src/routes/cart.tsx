@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { useCart, priceLines } from "@/lib/cart-store";
+import { pageShell } from "@/lib/layout";
 import { formatPrice, CURRENCIES } from "@/lib/currency";
 import { ProductImage } from "@/components/product-image";
 
@@ -31,7 +32,7 @@ function CartPage() {
 
   if (priced.length === 0) {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-24 text-center">
+      <div className={`py-24 text-center ${pageShell}`}>
         <h1 className="type-h-large text-foreground">Your cart is empty</h1>
         <p className="mt-3 type-body text-muted-foreground">
           Find something you love in the shop.
@@ -47,7 +48,7 @@ function CartPage() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+    <div className={`py-8 sm:py-12 ${pageShell}`}>
       <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <h1 className="type-h-large text-foreground">Your cart</h1>
         <div className="inline-flex w-fit items-center rounded-full border border-border bg-card p-0.5 text-xs font-semibold">
@@ -69,7 +70,7 @@ function CartPage() {
         </div>
       </header>
 
-      <div className="grid gap-8 md:grid-cols-[1fr_min(360px,100%)] md:gap-10">
+      <div className="grid gap-8 lg:grid-cols-[1fr_min(400px,100%)] lg:gap-12">
         <ul className="divide-y divide-border rounded-xl border border-border bg-card">
           {priced.map(({ line, product, unitPrice, subtotal: rowTotal }) => (
             <li

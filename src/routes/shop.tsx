@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import { ProductCard } from "@/components/product-card";
+import { pageShell } from "@/lib/layout";
 import { CATEGORIES, PRODUCTS, type Category } from "@/lib/products";
 
 export const Route = createFileRoute("/shop")({
@@ -36,7 +37,7 @@ function ShopPage() {
   }, [category, query]);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+    <div className={`py-8 sm:py-12 ${pageShell}`}>
       <header className="mb-8">
         <span className="type-eyebrow text-brand-dark">Catalogue</span>
         <h1 className="mt-2 type-h-large text-foreground">Shop Spur Afrika</h1>
@@ -46,7 +47,7 @@ function ShopPage() {
       </header>
 
       <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <div className="-mx-4 flex snap-x gap-2 overflow-x-auto px-4 pb-2 sm:-mx-6 sm:px-6 lg:mx-0 lg:flex-wrap lg:overflow-visible lg:px-0">
+        <div className="-mx-4 flex snap-x gap-2 overflow-x-auto px-4 pb-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:flex-wrap lg:overflow-visible lg:px-8 xl:-mx-10 xl:px-10">
           <CategoryChip active={category === "all"} onClick={() => setCategory("all")}>All</CategoryChip>
           {CATEGORIES.map((c) => (
             <CategoryChip key={c.id} active={category === c.id} onClick={() => setCategory(c.id)}>

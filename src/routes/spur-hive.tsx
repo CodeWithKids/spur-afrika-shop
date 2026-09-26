@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { pageShell } from "@/lib/layout";
 
 export const Route = createFileRoute("/spur-hive")({
   head: () => ({
@@ -48,7 +49,7 @@ function SpurHivePage() {
     <div>
       {/* Page hero */}
       <section className="bg-spruce text-[var(--white-text)]">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+        <div className={`py-14 sm:py-20 ${pageShell}`}>
           <span className="type-eyebrow" style={{ color: "var(--brand-light-green)" }}>
             Spur Hive
           </span>
@@ -65,7 +66,7 @@ function SpurHivePage() {
       </section>
 
       {/* What the Hive does */}
-      <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+      <section className={`py-12 sm:py-16 ${pageShell}`}>
         <h2 className="type-h-large text-foreground">What the Hive makes possible</h2>
         <p className="mt-5 type-body-lg text-muted-foreground">
           Hive members pool their time, skills and resources to keep children in
@@ -82,7 +83,7 @@ function SpurHivePage() {
 
       {/* Experiences */}
       <section className="bg-muted-grey">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+        <div className={`py-12 sm:py-16 ${pageShell}`}>
           <h2 className="max-w-2xl type-h-large text-foreground">
             Experiences & initiatives
           </h2>
@@ -111,7 +112,7 @@ function SpurHivePage() {
 
       {/* Join CTA */}
       <section>
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+        <div className={`py-12 sm:py-16 ${pageShell}`}>
           <div
             className="rounded-2xl px-6 py-10 text-center"
             style={{ background: "var(--spruce)", color: "var(--white-text)" }}

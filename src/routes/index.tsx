@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ProductCard } from "@/components/product-card";
 import heroImage from "@/assets/hero-team.jpg";
+import { pageShell } from "@/lib/layout";
 import { PRODUCTS } from "@/lib/products";
 
 export const Route = createFileRoute("/")({
@@ -46,7 +47,7 @@ function Index() {
           }}
           aria-hidden
         />
-        <div className="relative mx-auto flex min-h-[min(78svh,640px)] max-w-6xl items-end px-4 py-10 sm:items-center sm:px-6 sm:py-16 md:min-h-[min(72vh,640px)] md:py-24">
+        <div className={`relative flex min-h-[min(78svh,640px)] items-end py-10 sm:items-center sm:py-16 md:min-h-[min(72vh,640px)] md:py-24 ${pageShell}`}>
           <div className="max-w-xl">
             <span className="type-eyebrow" style={{ color: "var(--brand-light-green)" }}>
               Spur Afrika · Merch
@@ -81,7 +82,7 @@ function Index() {
 
       {/* Mission strip — real Spur Afrika impact stats */}
       <section style={{ background: "var(--dark-spruce)", color: "var(--white-text)" }}>
-        <div className="mx-auto grid max-w-6xl gap-7 px-4 py-9 sm:grid-cols-2 sm:px-6 sm:py-12 lg:grid-cols-4">
+        <div className={`grid gap-7 py-9 sm:grid-cols-2 sm:py-12 lg:grid-cols-4 ${pageShell}`}>
           {[
             { n: "100%", t: "of profit reinvested in our Elimisha sponsorship kitty, keeping more children in school" },
             { n: "16", t: "years transforming lives through education, mentorship and opportunity" },
@@ -97,39 +98,52 @@ function Index() {
       </section>
 
       {/* About — merged from the About page */}
-      <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-        <span className="type-eyebrow text-brand-dark">About</span>
-        <h2 className="mt-2 type-h-large text-foreground">More than merchandise</h2>
-        <p className="mt-6 type-body-lg text-muted-foreground">
-          Every purchase from the Spur Afrika Shop helps fund programs that equip
-          children and young people with education, mentorship, and opportunities
-          to thrive. From classrooms to communities, your support helps transform
-          lives and create lasting impact.
-        </p>
-        <p className="mt-4 type-body text-muted-foreground">
-          Spur Afrika Kenya is based at Olympic Estate, Nairobi,
-          working alongside children and families in Kibera and surrounding
-          communities. Shop with purpose — impact a future.
-        </p>
-        <h3 className="mt-12 type-h text-foreground">From your cart to their future</h3>
-        <ul className="mt-4 space-y-3 type-body text-muted-foreground">
-          <li>• School fees, uniforms and learning materials for sponsored children.</li>
-          <li>• Mentorship and life-skills programming for teens and young adults.</li>
-          <li>• Family livelihood support — food security, microenterprise grants.</li>
-          <li>• Community health outreach and trauma-informed care.</li>
-        </ul>
-        <Link
-          to="/shop"
-          className="mt-10 inline-flex items-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] hover:bg-brand"
-        >
-          Shop the collection
-        </Link>
+      <section className={`py-12 sm:py-16 ${pageShell}`}>
+        <div className="grid items-center gap-8 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:gap-10 lg:gap-14">
+          <div className="overflow-hidden rounded-2xl bg-muted-grey">
+            <img
+              src={heroImage}
+              alt="Spur Afrika team members in branded apparel outdoors"
+              className="aspect-[4/3] w-full object-cover object-[center_30%] md:aspect-[3/4] md:min-h-[420px]"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div className="min-w-0">
+            <span className="type-eyebrow text-brand-dark">About</span>
+            <h2 className="mt-2 type-h-large text-foreground">More than merchandise</h2>
+            <p className="mt-6 type-body-lg text-muted-foreground">
+              Every purchase from the Spur Afrika Shop helps fund programs that equip
+              children and young people with education, mentorship, and opportunities
+              to thrive. From classrooms to communities, your support helps transform
+              lives and create lasting impact.
+            </p>
+            <p className="mt-4 type-body text-muted-foreground">
+              Spur Afrika Kenya is based at Olympic Estate, Nairobi,
+              working alongside children and families in Kibera and surrounding
+              communities. Shop with purpose — impact a future.
+            </p>
+            <h3 className="mt-10 type-h text-foreground sm:mt-12">From your cart to their future</h3>
+            <ul className="mt-4 space-y-3 type-body text-muted-foreground">
+              <li>• School fees, uniforms and learning materials for sponsored children.</li>
+              <li>• Mentorship and life-skills programming for teens and young adults.</li>
+              <li>• Family livelihood support — food security, microenterprise grants.</li>
+              <li>• Community health outreach and trauma-informed care.</li>
+            </ul>
+            <Link
+              to="/shop"
+              className="mt-10 inline-flex items-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] hover:bg-brand"
+            >
+              Shop the collection
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* Spur Hive teaser — full details on /spur-hive */}
       <section style={{ background: "var(--muted-grey)" }}>
-        <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-12 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-14">
-          <div className="max-w-2xl">
+        <div className={`flex flex-col items-start gap-6 py-12 sm:flex-row sm:items-center sm:justify-between sm:py-14 ${pageShell}`}>
+          <div className="min-w-0 flex-1">
             <span className="type-eyebrow text-brand-dark">Spur Hive</span>
             <h2 className="mt-2 type-h-large text-foreground">
               A community of changemakers
@@ -150,7 +164,7 @@ function Index() {
       </section>
 
       {/* Featured products */}
-      <section className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+      <section className={`py-12 sm:py-16 ${pageShell}`}>
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-3">
           <h2 className="min-w-0 type-h-large text-foreground">Featured products</h2>
           <Link to="/shop" className="shrink-0 type-body-sm font-semibold text-brand-dark hover:underline">

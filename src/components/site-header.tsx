@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, ShoppingBag } from "lucide-react";
+import { pageShell } from "@/lib/layout";
 import { useCart, cartCount } from "@/lib/cart-store";
 import { CURRENCIES } from "@/lib/currency";
 import { SpurLogo } from "./logo";
@@ -61,7 +62,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-[var(--off-white)]/95 backdrop-blur">
-      <div className="mx-auto grid max-w-6xl grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 px-4 py-3 sm:gap-3 sm:py-4">
+      <div className={`grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 py-3 sm:gap-3 sm:py-4 ${pageShell}`}>
         <Link to="/" aria-label="Spur Afrika home" className="shrink-0">
           <SpurLogo variant="dark-green" />
         </Link>

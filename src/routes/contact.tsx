@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Facebook, Instagram, Mail, MapPin, Phone, Youtube } from "lucide-react";
+import { pageShell } from "@/lib/layout";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -18,7 +19,7 @@ export const Route = createFileRoute("/contact")({
 function ContactPage() {
   return (
     <>
-      <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+      <article className={`py-12 sm:py-16 ${pageShell}`}>
         <span className="type-eyebrow text-brand-dark">Contact</span>
         <h1 className="mt-2 type-h-large text-foreground">We'd love to hear from you</h1>
         <p className="mt-4 type-body text-muted-foreground">
@@ -41,11 +42,8 @@ function ContactPage() {
         </ul>
       </article>
 
-      <section
-        className="px-4 py-14 sm:px-6 sm:py-20"
-        style={{ background: "var(--muted-grey)" }}
-      >
-        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+      <section className="py-14 sm:py-20" style={{ background: "var(--muted-grey)" }}>
+        <div className={`flex flex-col items-center text-center ${pageShell}`}>
           <h2 className="type-h-large text-foreground">Find us on social media</h2>
           <p className="mt-4 max-w-md type-body text-muted-foreground">
             Connect with us through any of the following social media platforms!
