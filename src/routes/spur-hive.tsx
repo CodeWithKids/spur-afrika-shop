@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import spurHiveHero from "@/assets/products/mug-hive-lifestyle.jpg";
+import hiveImpactImage from "@/assets/hero-team.jpg";
 import { pageShell } from "@/lib/layout";
 
 export const Route = createFileRoute("/spur-hive")({
@@ -48,8 +50,20 @@ function SpurHivePage() {
   return (
     <div>
       {/* Page hero */}
-      <section className="bg-spruce text-[var(--white-text)]">
-        <div className={`py-14 sm:py-20 ${pageShell}`}>
+      <section className="relative min-h-[min(48vh,440px)] overflow-hidden text-[var(--white-text)] sm:min-h-[min(52vh,480px)]">
+        <img
+          src={spurHiveHero}
+          alt="Spur Hive branded drinkware in a community setting"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          fetchPriority="high"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-[#0D1D23]/92 via-[#0D1D23]/75 to-[#0D1D23]/35"
+          aria-hidden
+        />
+        <div
+          className={`relative flex min-h-[min(48vh,440px)] flex-col justify-end py-12 sm:min-h-[min(52vh,480px)] sm:justify-center sm:py-16 ${pageShell}`}
+        >
           <span className="type-eyebrow" style={{ color: "var(--brand-light-green)" }}>
             Spur Hive
           </span>
@@ -67,18 +81,31 @@ function SpurHivePage() {
 
       {/* What the Hive does */}
       <section className={`py-12 sm:py-16 ${pageShell}`}>
-        <h2 className="type-h-large text-foreground">What the Hive makes possible</h2>
-        <p className="mt-5 type-body-lg text-muted-foreground">
-          Hive members pool their time, skills and resources to keep children in
-          school through the Elimisha sponsorship program — 227 children supported
-          to date, with 172 currently active. Members get front-row access to the
-          work their generosity makes possible.
-        </p>
-        <ul className="mt-6 space-y-3 type-body text-muted-foreground">
-          <li>• Sponsoring learners through school fees, uniforms and learning materials.</li>
-          <li>• Backing mentorship and life-skills programs for teens and young adults.</li>
-          <li>• Taking part in community experiences, events and fundraising drives.</li>
-        </ul>
+        <div className="grid gap-8 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:gap-10 lg:gap-14">
+          <div className="min-w-0 md:flex md:flex-col md:justify-center">
+            <h2 className="type-h-large text-foreground">What the Hive makes possible</h2>
+            <p className="mt-5 type-body-lg text-muted-foreground">
+              Hive members pool their time, skills and resources to keep children in
+              school through the Elimisha sponsorship program — 227 children supported
+              to date, with 172 currently active. Members get front-row access to the
+              work their generosity makes possible.
+            </p>
+            <ul className="mt-6 space-y-3 type-body text-muted-foreground">
+              <li>• Sponsoring learners through school fees, uniforms and learning materials.</li>
+              <li>• Backing mentorship and life-skills programs for teens and young adults.</li>
+              <li>• Taking part in community experiences, events and fundraising drives.</li>
+            </ul>
+          </div>
+          <div className="relative min-h-64 overflow-hidden rounded-2xl bg-muted-grey md:min-h-0 md:h-full md:self-stretch">
+            <img
+              src={hiveImpactImage}
+              alt="Spur Afrika team and community members outdoors"
+              className="absolute inset-0 h-full w-full object-cover object-[center_30%]"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
       </section>
 
       {/* Experiences */}
