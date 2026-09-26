@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ProductCard } from "@/components/product-card";
+import { HomeHeroSlider } from "@/components/home-hero-slider";
 import heroImage from "@/assets/hero-team.jpg";
 import { pageShell } from "@/lib/layout";
 import { PRODUCTS } from "@/lib/products";
@@ -27,58 +28,7 @@ function Index() {
 
   return (
     <div>
-      {/* Hero — team photo with mission copy overlay */}
-      <section className="relative min-h-[min(78svh,640px)] overflow-hidden md:min-h-[min(72vh,640px)]">
-        <img
-          src={heroImage}
-          alt="Spur Afrika team members wearing branded hoodies outdoors"
-          className="absolute inset-0 h-full w-full object-cover object-[center_30%] md:object-[center_35%]"
-          fetchPriority="high"
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-[#0D1D23]/92 via-[#0D1D23]/82 to-[#0D1D23]/45 md:hidden"
-          aria-hidden
-        />
-        <div
-          className="absolute inset-0 hidden md:block"
-          style={{
-            background:
-              "linear-gradient(105deg, rgba(13, 29, 35, 0.88) 0%, rgba(13, 29, 35, 0.72) 42%, rgba(13, 29, 35, 0.2) 100%)",
-          }}
-          aria-hidden
-        />
-        <div className={`relative flex min-h-[min(78svh,640px)] items-end py-10 sm:items-center sm:py-16 md:min-h-[min(72vh,640px)] md:py-24 ${pageShell}`}>
-          <div className="max-w-xl">
-            <span className="type-eyebrow" style={{ color: "var(--brand-light-green)" }}>
-              Spur Afrika · Merch
-            </span>
-            <h1 className="mt-4 type-display" style={{ color: "var(--white-text)" }}>
-              Wear the mission.{" "}
-              <span style={{ color: "var(--brand-light-green)" }}>Fund the impact.</span>
-            </h1>
-            <p className="mt-4 max-w-lg type-body-lg sm:mt-6" style={{ color: "var(--white-text)", opacity: 0.9 }}>
-              Every tee, hoodie and mug helps fund education, mentorship and
-              community programs for children and families in Kenya.
-            </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:mt-8">
-              <Link
-                to="/shop"
-                className="inline-flex items-center justify-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand"
-              >
-                Shop the collection
-              </Link>
-              <a
-                href="https://spurafrika.org"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-full border border-[var(--white-text)]/30 bg-[var(--white-text)]/10 px-6 py-3 text-center text-sm font-semibold text-[var(--white-text)] backdrop-blur-sm transition hover:bg-[var(--white-text)]/20"
-              >
-                Learn about Spur Afrika
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HomeHeroSlider />
 
       {/* Mission strip — real Spur Afrika impact stats */}
       <section style={{ background: "var(--dark-spruce)", color: "var(--white-text)" }}>
