@@ -1,6 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import spurHiveHero from "@/assets/products/mug-hive-lifestyle.jpg";
-import hiveImpactImage from "@/assets/hero-team.jpg";
+import spurHiveHero from "@/assets/hero-team.jpg";
+import sponsoredLearnerPortrait from "@/assets/spur-hive/sponsored-learner-portrait.jpg";
+import elimishaStudent from "@/assets/spur-hive/elimisha-student-uniform.jpg";
+import olympicPrimary from "@/assets/spur-hive/olympic-primary-students.jpg";
+import communityCelebration from "@/assets/spur-hive/community-celebration.jpg";
+import shoeDistributionGroup from "@/assets/spur-hive/shoe-distribution-group.jpg";
+import communityShoeGiveaway from "@/assets/spur-hive/community-shoe-giveaway.jpg";
 import { pageShell } from "@/lib/layout";
 
 export const Route = createFileRoute("/spur-hive")({
@@ -46,6 +51,39 @@ const experiences = [
   },
 ];
 
+const impactGallery = [
+  {
+    src: elimishaStudent,
+    alt: "Smiling Elimisha sponsored learner in school uniform",
+    caption: "School uniforms and fees keep learners in class.",
+  },
+  {
+    src: olympicPrimary,
+    alt: "Students in uniform at Olympic Primary School",
+    caption: "Partnership with schools across Nairobi communities.",
+  },
+  {
+    src: communityCelebration,
+    alt: "Children celebrating together outdoors",
+    caption: "Community programs that nurture joy and belonging.",
+  },
+  {
+    src: shoeDistributionGroup,
+    alt: "Young people receiving new school shoes",
+    caption: "Essential supplies so children can learn with dignity.",
+  },
+  {
+    src: sponsoredLearnerPortrait,
+    alt: "Portrait of a sponsored learner smiling at camera",
+    caption: "Every learner supported through Elimisha.",
+  },
+  {
+    src: communityShoeGiveaway,
+    alt: "Large group of children holding shoe donation boxes",
+    caption: "Hive generosity reaching dozens of families at once.",
+  },
+] as const;
+
 function SpurHivePage() {
   return (
     <div>
@@ -53,8 +91,8 @@ function SpurHivePage() {
       <section className="relative min-h-[min(48vh,440px)] overflow-hidden text-[var(--white-text)] sm:min-h-[min(52vh,480px)]">
         <img
           src={spurHiveHero}
-          alt="Spur Hive branded drinkware in a community setting"
-          className="absolute inset-0 h-full w-full object-cover object-center"
+          alt="Spur Afrika team members wearing branded hoodies and jackets outdoors"
+          className="absolute inset-0 h-full w-full object-cover object-[center_35%]"
           fetchPriority="high"
         />
         <div
@@ -86,7 +124,7 @@ function SpurHivePage() {
             <h2 className="type-h-large text-foreground">What the Hive makes possible</h2>
             <p className="mt-5 type-body-lg text-muted-foreground">
               Hive members pool their time, skills and resources to keep children in
-              school through the Elimisha sponsorship program — 227 children supported
+              school through the Elimisha sponsorship program 227 children supported
               to date, with 172 currently active. Members get front-row access to the
               work their generosity makes possible.
             </p>
@@ -98,9 +136,9 @@ function SpurHivePage() {
           </div>
           <div className="relative min-h-64 overflow-hidden rounded-2xl bg-muted-grey md:min-h-0 md:h-full md:self-stretch">
             <img
-              src={hiveImpactImage}
-              alt="Spur Afrika team and community members outdoors"
-              className="absolute inset-0 h-full w-full object-cover object-[center_30%]"
+              src={olympicPrimary}
+              alt="Students in uniform at Olympic Primary School"
+              className="absolute inset-0 h-full w-full object-cover object-[center_40%]"
               loading="lazy"
               decoding="async"
             />
@@ -108,8 +146,39 @@ function SpurHivePage() {
         </div>
       </section>
 
+      {/* Elimisha & program impact — photo gallery */}
+      <section style={{ background: "var(--muted-grey)" }}>
+        <div className={`py-12 sm:py-16 ${pageShell}`}>
+          <span className="type-eyebrow text-brand-dark">Elimisha in Kenya</span>
+          <h2 className="mt-2 type-h-large text-foreground">See the impact you help create</h2>
+          <p className="mt-4 max-w-3xl type-body text-muted-foreground">
+            These moments from Spur Afrika&apos;s work show what Hive membership makes
+            possible — children in school, supplied for learning, and supported by a
+            community that shows up.
+          </p>
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {impactGallery.map((photo) => (
+              <li key={photo.src}>
+                <figure className="overflow-hidden rounded-2xl bg-background shadow-sm">
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="aspect-[4/3] w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption className="px-4 py-3 type-body-sm text-muted-foreground">
+                    {photo.caption}
+                  </figcaption>
+                </figure>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* Experiences */}
-      <section className="bg-muted-grey">
+      <section className="bg-background">
         <div className={`py-12 sm:py-16 ${pageShell}`}>
           <h2 className="max-w-2xl type-h-large text-foreground">
             Experiences & initiatives

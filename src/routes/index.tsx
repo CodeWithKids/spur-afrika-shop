@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ProductCard } from "@/components/product-card";
 import { HomeHeroSlider } from "@/components/home-hero-slider";
 import { ImpactStatsStrip } from "@/components/impact-stats-strip";
-import heroImage from "@/assets/hero-team.jpg";
+import elimishaStudent from "@/assets/spur-hive/elimisha-student-uniform.jpg";
 import { pageShell } from "@/lib/layout";
 import { PRODUCTS } from "@/lib/products";
 
@@ -38,9 +38,9 @@ function Index() {
         <div className="grid gap-8 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:gap-10 lg:gap-14">
           <div className="relative min-h-64 overflow-hidden rounded-2xl bg-muted-grey md:min-h-0 md:h-full md:self-stretch">
             <img
-              src={heroImage}
-              alt="Spur Afrika team members in branded apparel outdoors"
-              className="absolute inset-0 h-full w-full object-cover object-[center_30%]"
+              src={elimishaStudent}
+              alt="Smiling Elimisha sponsored learner in school uniform"
+              className="absolute inset-0 h-full w-full object-cover object-[center_25%]"
               loading="lazy"
               decoding="async"
             />

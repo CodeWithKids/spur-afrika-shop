@@ -150,33 +150,33 @@ function ProductPage() {
             </div>
           )}
 
-          <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-center">
-            <div className="inline-flex w-fit items-center rounded-full border border-border bg-card">
+          <div className="mt-8 flex flex-wrap items-center gap-2">
+            <div className="inline-flex h-9 shrink-0 items-center rounded-full border border-border bg-card">
               <button
                 type="button"
                 aria-label="Decrease quantity"
                 onClick={() => setQty((q) => Math.max(1, q - 1))}
-                className="min-h-11 min-w-11 p-3 text-foreground hover:text-brand-dark"
+                className="flex h-9 w-9 items-center justify-center text-foreground hover:text-brand-dark"
               >
-                <Minus className="size-4" />
+                <Minus className="size-3.5" />
               </button>
-              <span className="w-10 text-center text-sm font-semibold">{qty}</span>
+              <span className="w-8 text-center text-sm font-semibold tabular-nums">{qty}</span>
               <button
                 type="button"
                 aria-label="Increase quantity"
                 onClick={() => setQty((q) => q + 1)}
-                className="min-h-11 min-w-11 p-3 text-foreground hover:text-brand-dark"
+                className="flex h-9 w-9 items-center justify-center text-foreground hover:text-brand-dark"
               >
-                <Plus className="size-4" />
+                <Plus className="size-3.5" />
               </button>
             </div>
             <button
               type="button"
               disabled={!inStock}
               onClick={() => handleAdd(false)}
-              className="inline-flex min-h-11 w-full flex-1 items-center justify-center gap-2 rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+              className="inline-flex h-9 items-center justify-center gap-1.5 rounded-full bg-brand-dark px-4 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand disabled:cursor-not-allowed disabled:opacity-50"
             >
-              <ShoppingBag className="size-4" />
+              <ShoppingBag className="size-3.5" />
               {inStock ? "Add to cart" : "Out of stock"}
             </button>
           </div>
@@ -184,7 +184,7 @@ function ProductPage() {
             type="button"
             disabled={!inStock}
             onClick={() => handleAdd(true)}
-            className="mt-3 w-full rounded-full border border-brand-dark px-6 py-3 text-sm font-semibold text-brand-dark transition hover:bg-muted-green disabled:cursor-not-allowed disabled:opacity-50"
+            className="mt-2 inline-flex h-9 w-full max-w-xs items-center justify-center rounded-full border border-brand-dark px-4 text-sm font-semibold text-brand-dark transition hover:bg-muted-green disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
           >
             Buy now
           </button>

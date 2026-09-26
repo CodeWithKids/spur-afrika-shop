@@ -3,9 +3,10 @@ import { Link } from "@tanstack/react-router";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import heroTeam from "@/assets/hero-team.jpg";
-import hiveDynamicDuo from "@/assets/products/dynamic-duo-set.jpg";
 import jacketLifestyle from "@/assets/jackets/black-couple-lifestyle.jpg";
-import spurHoodieMustard from "@/assets/spur-hoodie-mustard-front.jpg";
+import olympicPrimary from "@/assets/spur-hive/olympic-primary-students.jpg";
+import shoeDistributionGroup from "@/assets/spur-hive/shoe-distribution-group.jpg";
+import communityShoeGiveaway from "@/assets/spur-hive/community-shoe-giveaway.jpg";
 import {
   Carousel,
   CarouselContent,
@@ -22,8 +23,8 @@ const SLIDES = [
     objectPosition: "center 30%",
   },
   {
-    src: spurHoodieMustard,
-    alt: "Spur Afrika mustard hoodie with branded stripe detail",
+    src: olympicPrimary,
+    alt: "Students in uniform at Olympic Primary School",
     objectPosition: "center 40%",
   },
   {
@@ -32,9 +33,14 @@ const SLIDES = [
     objectPosition: "center 35%",
   },
   {
-    src: hiveDynamicDuo,
-    alt: "Spur Hive reusable bottle and insulated hex flask",
-    objectPosition: "center 45%",
+    src: shoeDistributionGroup,
+    alt: "Young people receiving new school shoes",
+    objectPosition: "center 35%",
+  },
+  {
+    src: communityShoeGiveaway,
+    alt: "Children holding shoe donation boxes at a community giveaway",
+    objectPosition: "center 40%",
   },
 ] as const;
 
