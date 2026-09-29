@@ -1,10 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import spurHiveHero from "@/assets/spur-hive/spur-hive-team.jpg";
-import sponsoredLearnerPortrait from "@/assets/spur-hive/sponsored-learner-portrait.jpg";
-import elimishaStudent from "@/assets/spur-hive/elimisha-student-uniform.jpg";
-import olympicPrimary from "@/assets/spur-hive/olympic-primary-students.jpg";
-import communityCelebration from "@/assets/spur-hive/community-celebration.jpg";
-import shoeDistributionGroup from "@/assets/spur-hive/shoe-distribution-group.jpg";
+import spurHiveHero from "@/assets/spur-hive/spur-hive-hero-community.jpg";
+import shoeBeforeAfter from "@/assets/spur-hive/shoe-before-after.jpg";
 import communityShoeGiveaway from "@/assets/spur-hive/community-shoe-giveaway.jpg";
 import { pageShell, sectionPadding } from "@/lib/layout";
 
@@ -51,62 +47,29 @@ const experiences = [
   },
 ];
 
-const impactGallery = [
-  {
-    src: elimishaStudent,
-    alt: "Smiling Elimisha sponsored learner in school uniform",
-    caption: "School uniforms and fees keep learners in class.",
-  },
-  {
-    src: olympicPrimary,
-    alt: "Students in uniform at Olympic Primary School",
-    caption: "Partnership with schools across Nairobi communities.",
-  },
-  {
-    src: communityCelebration,
-    alt: "Children celebrating together outdoors",
-    caption: "Community programs that nurture joy and belonging.",
-  },
-  {
-    src: shoeDistributionGroup,
-    alt: "Young people receiving new school shoes",
-    caption: "Essential supplies so children can learn with dignity.",
-  },
-  {
-    src: sponsoredLearnerPortrait,
-    alt: "Portrait of a sponsored learner smiling at camera",
-    caption: "Every learner supported through Elimisha.",
-  },
-  {
-    src: communityShoeGiveaway,
-    alt: "Large group of children holding shoe donation boxes",
-    caption: "Hive generosity reaching dozens of families at once.",
-  },
-] as const;
-
 function SpurHivePage() {
   return (
     <div>
       {/* Page hero */}
-      <section className="relative min-h-[min(48vh,440px)] overflow-hidden text-[var(--white-text)] sm:min-h-[min(52vh,480px)]">
+      <section className="relative min-h-[min(52vh,480px)] overflow-hidden text-[var(--white-text)]">
         <img
           src={spurHiveHero}
-          alt="Spur Afrika team members in branded jackets"
-          className="absolute inset-0 h-full w-full object-cover object-[center_28%]"
+          alt="Spur Afrika community members and children gathered outdoors"
+          className="absolute inset-0 h-full w-full object-cover object-[center_20%]"
           fetchPriority="high"
         />
         <div
-          className="absolute inset-0 bg-gradient-to-b from-[#2f2f2f]/28 via-[#2f2f2f]/42 to-[#2f2f2f]/88 sm:bg-gradient-to-r sm:from-[#2f2f2f]/92 sm:via-[#2f2f2f]/52 sm:to-[#2f2f2f]/18"
+          className="absolute inset-0 bg-gradient-to-r from-[#2f2f2f]/92 via-[#2f2f2f]/52 to-[#2f2f2f]/18"
           aria-hidden
         />
         <div
-          className={`relative flex min-h-[min(48vh,440px)] flex-col justify-end py-12 sm:min-h-[min(52vh,480px)] sm:justify-center sm:py-16 ${pageShell}`}
+          className={`relative flex min-h-[min(52vh,480px)] flex-col justify-center py-12 sm:py-16 ${pageShell}`}
         >
           <span className="type-eyebrow" style={{ color: "var(--brand-light-green)" }}>
             Spur Hive
           </span>
-          <h1 className="mt-3 max-w-2xl type-display">
-            A community of <span style={{ color: "var(--brand-light-green)" }}>changemakers</span>
+          <h1 className="mt-3 max-w-2xl type-display text-[var(--white-text)]">
+            A community of changemakers
           </h1>
           <p className="mt-5 max-w-2xl type-body-lg" style={{ opacity: 0.9 }}>
             The Spur Hive is more than a giving community — it is a platform that
@@ -134,11 +97,11 @@ function SpurHivePage() {
               <li>• Taking part in community experiences, events and fundraising drives.</li>
             </ul>
           </div>
-          <div className="relative min-h-64 overflow-hidden rounded-2xl bg-muted-grey md:min-h-0 md:h-full md:self-stretch">
+          <div className="overflow-hidden rounded-2xl bg-muted-grey">
             <img
-              src={olympicPrimary}
-              alt="Students in uniform at Olympic Primary School"
-              className="absolute inset-0 h-full w-full object-cover object-[center_40%]"
+              src={shoeBeforeAfter}
+              alt="Learner showing worn shoes beside new Toughees school shoes from Hive support"
+              className="block h-auto w-full object-contain object-center"
               loading="lazy"
               decoding="async"
             />
@@ -146,40 +109,9 @@ function SpurHivePage() {
         </div>
       </section>
 
-      {/* Elimisha & program impact — photo gallery */}
-      <section style={{ background: "var(--muted-grey)" }}>
-        <div className={`${sectionPadding} ${pageShell}`}>
-          <span className="type-eyebrow text-brand-dark">Elimisha in Kenya</span>
-          <h2 className="mt-2 type-h-large text-foreground">See the impact you help create</h2>
-          <p className="mt-4 max-w-3xl type-body text-muted-foreground">
-            These moments from Spur Afrika&apos;s work show what Hive membership makes
-            possible — children in school, supplied for learning, and supported by a
-            community that shows up.
-          </p>
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {impactGallery.map((photo) => (
-              <li key={photo.src}>
-                <figure className="overflow-hidden rounded-2xl bg-background shadow-sm">
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    className="aspect-[4/3] w-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption className="px-4 py-3 type-body-sm text-muted-foreground">
-                    {photo.caption}
-                  </figcaption>
-                </figure>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       {/* Experiences */}
       <section className="bg-background">
-        <div className={`${sectionPadding} ${pageShell}`}>
+        <div className={`pt-2 pb-6 sm:pt-4 sm:pb-8 ${pageShell}`}>
           <h2 className="max-w-2xl type-h-large text-foreground">
             Experiences & initiatives
           </h2>
@@ -208,7 +140,7 @@ function SpurHivePage() {
 
       {/* Join CTA */}
       <section>
-        <div className={`${sectionPadding} ${pageShell}`}>
+        <div className={`pt-2 pb-12 sm:pt-4 sm:pb-16 ${pageShell}`}>
           <div className="relative min-h-[420px] overflow-hidden rounded-2xl sm:min-h-[380px] md:grid md:min-h-[340px] md:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
             <img
               src={communityShoeGiveaway}

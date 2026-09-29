@@ -36,7 +36,7 @@ export function SiteFooter() {
             <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="grid size-11 place-items-center">
               <Instagram className="h-5 w-5" />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid size-11 place-items-center">
+            <a href="https://www.linkedin.com/company/spurafrika-ke/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid size-11 place-items-center">
               <Linkedin className="h-5 w-5" />
             </a>
             <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube" className="grid size-11 place-items-center">

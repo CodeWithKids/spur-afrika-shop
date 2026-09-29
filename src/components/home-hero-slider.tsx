@@ -3,9 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import heroTeam from "@/assets/hero-team.jpg";
-import jacketLifestyle from "@/assets/jackets/black-couple-lifestyle.jpg";
 import spurHiveTeam from "@/assets/spur-hive/spur-hive-team.jpg";
-import shoeDistributionGroup from "@/assets/spur-hive/shoe-distribution-group.jpg";
 import artWorkshop from "@/assets/spur-hive/art-workshop.jpg";
 import {
   Carousel,
@@ -20,42 +18,22 @@ const SLIDES = [
   {
     src: heroTeam,
     alt: "Spur Afrika team members wearing branded hoodies outdoors",
-    objectPosition: "50% 18%",
-    objectPositionMd: "50% 16%",
+    objectPosition: "50% 17%",
   },
   {
     src: spurHiveTeam,
     alt: "Spur Afrika team members in branded jackets",
-    objectPosition: "55% 24%",
-    objectPositionMd: "62% 26%",
-  },
-  {
-    src: jacketLifestyle,
-    alt: "Couple wearing Spur Afrika jackets outdoors",
-    objectPosition: "58% 15%",
-    objectPositionMd: "67% 17%",
-  },
-  {
-    src: shoeDistributionGroup,
-    alt: "Young people receiving new school shoes",
-    objectPosition: "52% 28%",
-    objectPositionMd: "58% 30%",
+    objectPosition: "58% 25%",
   },
   {
     src: artWorkshop,
     alt: "Children at a creative art workshop with easels and paint supplies",
-    objectPosition: "58% 28%",
-    objectPositionMd: "62% 30%",
+    objectPosition: "60% 29%",
   },
 ] as const;
 
-const JACKET_LIFESTYLE_SLIDE_INDEX = 2;
-
 const DESKTOP_OVERLAY_DEFAULT =
   "linear-gradient(105deg, rgba(47, 47, 47, 0.9) 0%, rgba(47, 47, 47, 0.52) 34%, rgba(47, 47, 47, 0.12) 100%)";
-
-const DESKTOP_OVERLAY_JACKET =
-  "linear-gradient(105deg, rgba(47, 47, 47, 0.86) 0%, rgba(47, 47, 47, 0.34) 30%, rgba(47, 47, 47, 0.04) 100%)";
 
 const AUTOPLAY_MS = 6000;
 
@@ -81,24 +59,9 @@ const heroContentPadding = cn(
 const heroControlsPadding =
   "pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))] sm:pb-[calc(1.75rem+env(safe-area-inset-bottom,0px))]";
 
-function useMediaQuery(query: string) {
-  const [matches, setMatches] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia(query);
-    const update = () => setMatches(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, [query]);
-
-  return matches;
-}
-
 export function HomeHeroSlider() {
   const [api, setApi] = useState<CarouselApi>();
   const [active, setActive] = useState(0);
-  const isMdUp = useMediaQuery("(min-width: 768px)");
   const autoplay = useRef(
     Autoplay({
       delay: AUTOPLAY_MS,
@@ -140,11 +103,7 @@ export function HomeHeroSlider() {
                   src={slide.src}
                   alt={slide.alt}
                   className="absolute inset-0 h-full w-full object-cover"
-                  style={{
-                    objectPosition: isMdUp
-                      ? slide.objectPositionMd
-                      : slide.objectPosition,
-                  }}
+                  style={{ objectPosition: slide.objectPosition }}
                   fetchPriority={index === 0 ? "high" : undefined}
                   loading={index === 0 ? "eager" : "lazy"}
                   decoding="async"
@@ -155,25 +114,10 @@ export function HomeHeroSlider() {
         </CarouselContent>
       </Carousel>
 
-      {/* Mobile + narrow tablet: lighter top for faces, darker bottom for copy + controls */}
+      {/* Diagonal wash at all breakpoints — copy left, photo on the right */}
       <div
-        className={cn(
-          "pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b transition-[background] duration-700 md:hidden",
-          active === JACKET_LIFESTYLE_SLIDE_INDEX
-            ? "from-[#2f2f2f]/18 via-[#2f2f2f]/38 to-[#2f2f2f]/86 sm:from-[#2f2f2f]/20 sm:via-[#2f2f2f]/40 sm:to-[#2f2f2f]/84"
-            : "from-[#2f2f2f]/22 via-[#2f2f2f]/45 to-[#2f2f2f]/90 sm:from-[#2f2f2f]/24 sm:via-[#2f2f2f]/48 sm:to-[#2f2f2f]/88",
-        )}
-        aria-hidden
-      />
-      {/* md+: diagonal wash — copy left, photo + faces right */}
-      <div
-        className="pointer-events-none absolute inset-0 z-[1] hidden transition-[background] duration-700 md:block"
-        style={{
-          background:
-            active === JACKET_LIFESTYLE_SLIDE_INDEX
-              ? DESKTOP_OVERLAY_JACKET
-              : DESKTOP_OVERLAY_DEFAULT,
-        }}
+        className="pointer-events-none absolute inset-0 z-[1] transition-[background] duration-700"
+        style={{ background: DESKTOP_OVERLAY_DEFAULT }}
         aria-hidden
       />
       <div

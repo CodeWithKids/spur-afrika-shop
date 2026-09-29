@@ -55,7 +55,7 @@ function ContactPage() {
             <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="grid size-12 place-items-center transition hover:opacity-70">
               <Instagram className="size-8" />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid size-12 place-items-center transition hover:opacity-70">
+            <a href="https://www.linkedin.com/company/spurafrika-ke/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid size-12 place-items-center transition hover:opacity-70">
               <Linkedin className="size-8" />
             </a>
             <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube" className="grid size-12 place-items-center transition hover:opacity-70">
