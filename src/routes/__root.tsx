@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import favicon from "../assets/spur-afrika-logo.png?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "../components/site-header";
 import { SiteFooter } from "../components/site-footer";
@@ -21,7 +22,7 @@ function NotFoundComponent() {
       <div className="max-w-md text-center">
         <h1 className="type-display text-brand-dark">404</h1>
         <h2 className="mt-4 type-h text-foreground">Page not found</h2>
-        <p className="mt-2 type-body-sm text-muted-foreground">
+        <p className="mt-2 type-body text-muted-foreground">
           The page you're looking for doesn't exist or has been moved.
         </p>
         <Link
@@ -46,7 +47,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-[60vh] items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="type-h text-foreground">This page didn't load</h1>
-        <p className="mt-2 type-body-sm text-muted-foreground">
+        <p className="mt-2 type-body text-muted-foreground">
           Something went wrong on our end. Try refreshing or head back home.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
@@ -79,13 +80,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Buy Spur Afrika branded merchandise — tees, hoodies, mugs, stationery — and support our programs in Kenya.",
       },
-      { name: "theme-color", content: "#FAFAFA" },
+      { name: "theme-color", content: "#2F2F2F" },
       { property: "og:title", content: "Spur Afrika Shop" },
       { property: "og:description", content: "Branded merchandise that funds Spur Afrika's programs in Kenya." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
     links: [
+      { rel: "icon", href: favicon, type: "image/png" },
+      { rel: "apple-touch-icon", href: favicon },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },

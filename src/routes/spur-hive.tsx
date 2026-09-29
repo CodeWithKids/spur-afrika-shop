@@ -1,12 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import spurHiveHero from "@/assets/hero-team.jpg";
+import spurHiveHero from "@/assets/spur-hive/spur-hive-team.jpg";
 import sponsoredLearnerPortrait from "@/assets/spur-hive/sponsored-learner-portrait.jpg";
 import elimishaStudent from "@/assets/spur-hive/elimisha-student-uniform.jpg";
 import olympicPrimary from "@/assets/spur-hive/olympic-primary-students.jpg";
 import communityCelebration from "@/assets/spur-hive/community-celebration.jpg";
 import shoeDistributionGroup from "@/assets/spur-hive/shoe-distribution-group.jpg";
 import communityShoeGiveaway from "@/assets/spur-hive/community-shoe-giveaway.jpg";
-import { pageShell } from "@/lib/layout";
+import { pageShell, sectionPadding } from "@/lib/layout";
 
 export const Route = createFileRoute("/spur-hive")({
   head: () => ({
@@ -91,12 +91,12 @@ function SpurHivePage() {
       <section className="relative min-h-[min(48vh,440px)] overflow-hidden text-[var(--white-text)] sm:min-h-[min(52vh,480px)]">
         <img
           src={spurHiveHero}
-          alt="Spur Afrika team members wearing branded hoodies and jackets outdoors"
-          className="absolute inset-0 h-full w-full object-cover object-[center_35%]"
+          alt="Spur Afrika team members in branded jackets"
+          className="absolute inset-0 h-full w-full object-cover object-[center_28%]"
           fetchPriority="high"
         />
         <div
-          className="absolute inset-0 bg-gradient-to-r from-[#0D1D23]/92 via-[#0D1D23]/75 to-[#0D1D23]/35"
+          className="absolute inset-0 bg-gradient-to-b from-[#2f2f2f]/28 via-[#2f2f2f]/42 to-[#2f2f2f]/88 sm:bg-gradient-to-r sm:from-[#2f2f2f]/92 sm:via-[#2f2f2f]/52 sm:to-[#2f2f2f]/18"
           aria-hidden
         />
         <div
@@ -118,11 +118,11 @@ function SpurHivePage() {
       </section>
 
       {/* What the Hive does */}
-      <section className={`py-12 sm:py-16 ${pageShell}`}>
+      <section className={`${sectionPadding} ${pageShell}`}>
         <div className="grid gap-8 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:gap-10 lg:gap-14">
           <div className="min-w-0 md:flex md:flex-col md:justify-center">
             <h2 className="type-h-large text-foreground">What the Hive makes possible</h2>
-            <p className="mt-5 type-body-lg text-muted-foreground">
+            <p className="mt-5 type-body text-muted-foreground">
               Hive members pool their time, skills and resources to keep children in
               school through the Elimisha sponsorship program 227 children supported
               to date, with 172 currently active. Members get front-row access to the
@@ -148,7 +148,7 @@ function SpurHivePage() {
 
       {/* Elimisha & program impact — photo gallery */}
       <section style={{ background: "var(--muted-grey)" }}>
-        <div className={`py-12 sm:py-16 ${pageShell}`}>
+        <div className={`${sectionPadding} ${pageShell}`}>
           <span className="type-eyebrow text-brand-dark">Elimisha in Kenya</span>
           <h2 className="mt-2 type-h-large text-foreground">See the impact you help create</h2>
           <p className="mt-4 max-w-3xl type-body text-muted-foreground">
@@ -179,7 +179,7 @@ function SpurHivePage() {
 
       {/* Experiences */}
       <section className="bg-background">
-        <div className={`py-12 sm:py-16 ${pageShell}`}>
+        <div className={`${sectionPadding} ${pageShell}`}>
           <h2 className="max-w-2xl type-h-large text-foreground">
             Experiences & initiatives
           </h2>
@@ -191,7 +191,7 @@ function SpurHivePage() {
               >
                 <h3 className="type-h-small text-foreground">{item.t}</h3>
                 <p className="mt-1 type-body-sm font-semibold text-brand-dark">{item.s}</p>
-                <p className="mt-3 type-body-sm text-muted-foreground">{item.d}</p>
+                <p className="mt-3 type-body text-muted-foreground">{item.d}</p>
                 <a
                   href="https://spurafrika.org"
                   target="_blank"
@@ -208,34 +208,51 @@ function SpurHivePage() {
 
       {/* Join CTA */}
       <section>
-        <div className={`py-12 sm:py-16 ${pageShell}`}>
-          <div
-            className="rounded-2xl px-6 py-10 text-center"
-            style={{ background: "var(--spruce)", color: "var(--white-text)" }}
-          >
-            <h2 className="type-h-large">Join the Hive</h2>
-            <p className="mx-auto mt-4 max-w-xl type-body-lg" style={{ opacity: 0.85 }}>
-              Become part of a community that believes every learner deserves the
-              opportunity to thrive. Join the Spur Hive today and support
-              initiatives that create lasting impact.
-            </p>
-            <a
-              href="https://spurafrika.org"
-              target="_blank"
-              rel="noreferrer"
-              className="mt-7 inline-flex items-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand"
-            >
-              Join the Spur Hive
-            </a>
-            <p className="mt-5 type-body-sm" style={{ opacity: 0.7 }}>
-              Questions? Email{" "}
-              <a
-                href="mailto:spurafrikake@gmail.com"
-                className="font-semibold underline underline-offset-2"
+        <div className={`${sectionPadding} ${pageShell}`}>
+          <div className="relative min-h-[420px] overflow-hidden rounded-2xl sm:min-h-[380px] md:grid md:min-h-[340px] md:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
+            <img
+              src={communityShoeGiveaway}
+              alt=""
+              aria-hidden
+              className="absolute inset-0 h-full w-full object-cover object-[center_32%]"
+              loading="lazy"
+              decoding="async"
+            />
+            <div
+              className="absolute inset-0 bg-gradient-to-b from-[var(--spruce)]/92 via-[var(--spruce)]/55 to-[var(--spruce)]/32 md:bg-gradient-to-r md:from-[var(--spruce)]/94 md:via-[var(--spruce)]/58 md:to-[var(--spruce)]/22"
+              aria-hidden
+            />
+            <div className="relative z-[1] flex flex-col justify-start px-6 pb-12 pt-10 text-center text-[var(--white-text)] md:justify-center md:px-8 md:py-12 md:text-left">
+              <h2 className="type-h-large [text-shadow:0_1px_14px_rgba(0,0,0,0.35)]">
+                Join the Hive
+              </h2>
+              <p
+                className="mx-auto mt-4 max-w-xl type-body md:mx-0 [text-shadow:0_1px_10px_rgba(0,0,0,0.3)]"
+                style={{ opacity: 0.95 }}
               >
-                spurafrikake@gmail.com
+                Become part of a community that believes every learner deserves the
+                opportunity to thrive. Join the Spur Hive today and support
+                initiatives that create lasting impact.
+              </p>
+              <a
+                href="https://spurafrika.org"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-7 inline-flex items-center justify-center self-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand md:self-start"
+              >
+                Join the Spur Hive
               </a>
-            </p>
+              <p className="mt-5 type-body-sm [text-shadow:0_1px_8px_rgba(0,0,0,0.28)]" style={{ opacity: 0.9 }}>
+                Questions? Email{" "}
+                <a
+                  href="mailto:spurafrikake@gmail.com"
+                  className="font-semibold underline underline-offset-2"
+                >
+                  spurafrikake@gmail.com
+                </a>
+              </p>
+            </div>
+            <div className="relative z-[1] hidden min-h-[12rem] md:block" aria-hidden />
           </div>
           <p className="mt-8 text-center type-body-sm text-muted-foreground">
             Want to support while you shop?{" "}

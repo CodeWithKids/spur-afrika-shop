@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { pageShell } from "@/lib/layout";
+import { pageShell, sectionPadding } from "@/lib/layout";
 
 const IMPACT_STATS = [
   {
@@ -72,7 +72,7 @@ function AnimatedStat({
         {display}
         {suffix}
       </div>
-      <p className="mt-2 type-body-sm" style={{ opacity: 0.85 }}>
+      <p className="mt-2 type-body" style={{ opacity: 0.85 }}>
         {text}
       </p>
     </div>
@@ -106,7 +106,7 @@ export function ImpactStatsStrip() {
       ref={sectionRef}
       style={{ background: "var(--dark-spruce)", color: "var(--white-text)" }}
     >
-      <div className={`grid gap-7 py-9 sm:grid-cols-2 sm:py-12 lg:grid-cols-4 ${pageShell}`}>
+      <div className={`grid gap-7 sm:grid-cols-2 lg:grid-cols-4 ${sectionPadding} ${pageShell}`}>
         {IMPACT_STATS.map((stat) => (
           <AnimatedStat key={stat.text} active={active} {...stat} />
         ))}

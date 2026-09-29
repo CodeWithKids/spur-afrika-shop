@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { pageShell } from "@/lib/layout";
+import { pageShell, sectionPadding } from "@/lib/layout";
 
 export const Route = createFileRoute("/shipping-returns")({
   head: () => ({
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/shipping-returns")({
     ],
   }),
   component: () => (
-    <article className={`py-12 sm:py-16 ${pageShell}`}>
+    <article className={`${sectionPadding} ${pageShell}`}>
       <span className="type-eyebrow text-brand-dark">Policies</span>
       <h1 className="mt-2 type-h-large text-foreground">Shipping & returns</h1>
 

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Facebook, Instagram, Mail, MapPin, Phone, Youtube } from "lucide-react";
-import { pageShell } from "@/lib/layout";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
+import { pageShell, sectionPadding } from "@/lib/layout";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/contact")({
 function ContactPage() {
   return (
     <>
-      <article className={`py-12 sm:py-16 ${pageShell}`}>
+      <article className={`${sectionPadding} ${pageShell}`}>
         <span className="type-eyebrow text-brand-dark">Contact</span>
         <h1 className="mt-2 type-h-large text-foreground">We'd love to hear from you</h1>
         <p className="mt-4 type-body text-muted-foreground">
@@ -42,8 +42,8 @@ function ContactPage() {
         </ul>
       </article>
 
-      <section className="py-14 sm:py-20" style={{ background: "var(--muted-grey)" }}>
-        <div className={`flex flex-col items-center text-center ${pageShell}`}>
+      <section style={{ background: "var(--muted-grey)" }}>
+        <div className={`flex flex-col items-center text-center ${sectionPadding} ${pageShell}`}>
           <h2 className="type-h-large text-foreground">Find us on social media</h2>
           <p className="mt-4 max-w-md type-body text-muted-foreground">
             Connect with us through any of the following social media platforms!
@@ -54,6 +54,9 @@ function ContactPage() {
             </a>
             <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="grid size-12 place-items-center transition hover:opacity-70">
               <Instagram className="size-8" />
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid size-12 place-items-center transition hover:opacity-70">
+              <Linkedin className="size-8" />
             </a>
             <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube" className="grid size-12 place-items-center transition hover:opacity-70">
               <Youtube className="size-8" />

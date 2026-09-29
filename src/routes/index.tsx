@@ -3,7 +3,8 @@ import { ProductCard } from "@/components/product-card";
 import { HomeHeroSlider } from "@/components/home-hero-slider";
 import { ImpactStatsStrip } from "@/components/impact-stats-strip";
 import elimishaStudent from "@/assets/spur-hive/elimisha-student-uniform.jpg";
-import { pageShell } from "@/lib/layout";
+import spurHiveTeam from "@/assets/spur-hive/spur-hive-team.jpg";
+import { pageShell, sectionPadding } from "@/lib/layout";
 import { PRODUCTS } from "@/lib/products";
 
 export const Route = createFileRoute("/")({
@@ -34,7 +35,7 @@ function Index() {
       <ImpactStatsStrip />
 
       {/* About — merged from the About page */}
-      <section className={`py-12 sm:py-16 ${pageShell}`}>
+      <section className={`${sectionPadding} ${pageShell}`}>
         <div className="grid gap-8 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:gap-10 lg:gap-14">
           <div className="relative min-h-64 overflow-hidden rounded-2xl bg-muted-grey md:min-h-0 md:h-full md:self-stretch">
             <img
@@ -48,7 +49,7 @@ function Index() {
           <div className="min-w-0 md:flex md:flex-col md:justify-center">
             <span className="type-eyebrow text-brand-dark">About</span>
             <h2 className="mt-2 type-h-large text-foreground">More than merchandise</h2>
-            <p className="mt-6 type-body-lg text-muted-foreground">
+            <p className="mt-6 type-body text-muted-foreground">
               Every purchase from the Spur Afrika Shop helps fund programs that equip
               children and young people with education, mentorship, and opportunities
               to thrive. From classrooms to communities, your support helps transform
@@ -78,29 +79,40 @@ function Index() {
 
       {/* Spur Hive teaser — full details on /spur-hive */}
       <section style={{ background: "var(--muted-grey)" }}>
-        <div className={`flex flex-col items-start gap-6 py-12 sm:flex-row sm:items-center sm:justify-between sm:py-14 ${pageShell}`}>
-          <div className="min-w-0 flex-1">
-            <span className="type-eyebrow text-brand-dark">Spur Hive</span>
-            <h2 className="mt-2 type-h-large text-foreground">
-              A community of changemakers
-            </h2>
-            <p className="mt-3 type-body text-muted-foreground">
-              Experience Kibera, attend the Fundraising Gala, run the Spur
-              Marathon — see how the Hive invests in education one learner at a
-              time.
-            </p>
+        <div className={`${sectionPadding} ${pageShell}`}>
+          <div className="grid gap-8 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:gap-10 lg:gap-14">
+            <div className="min-w-0 md:flex md:flex-col md:justify-center">
+              <span className="type-eyebrow text-brand-dark">Spur Hive</span>
+              <h2 className="mt-2 type-h-large text-foreground">
+                A community of changemakers
+              </h2>
+              <p className="mt-3 type-body text-muted-foreground">
+                Experience Kibera, attend the Fundraising Gala, run the Spur
+                Marathon — see how the Hive invests in education one learner at a
+                time.
+              </p>
+              <Link
+                to="/spur-hive"
+                className="mt-6 inline-flex w-fit max-w-full items-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand"
+              >
+                Explore the Spur Hive
+              </Link>
+            </div>
+            <div className="relative min-h-64 overflow-hidden rounded-2xl bg-background shadow-sm md:min-h-0 md:h-full md:min-h-[18rem] md:self-stretch lg:min-h-[20rem]">
+              <img
+                src={spurHiveTeam}
+                alt="Spur Afrika team members in branded jackets"
+                className="absolute inset-0 h-full w-full object-cover object-[center_28%]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
-          <Link
-            to="/spur-hive"
-            className="inline-flex shrink-0 items-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand"
-          >
-            Explore the Spur Hive
-          </Link>
         </div>
       </section>
 
       {/* Featured products */}
-      <section className={`py-12 sm:py-16 ${pageShell}`}>
+      <section className={`${sectionPadding} ${pageShell}`}>
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-3">
           <h2 className="min-w-0 type-h-large text-foreground">Featured products</h2>
           <Link to="/shop" className="shrink-0 type-body-sm font-semibold text-brand-dark hover:underline">

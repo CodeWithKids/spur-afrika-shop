@@ -17,6 +17,9 @@ import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
+import { Route as CheckoutSuccessRouteImport } from './routes/checkout.success'
+import { Route as ApiCheckoutRouteImport } from './routes/api/checkout'
+import { Route as ApiPublicPaymentsPayheroWebhookRouteImport } from './routes/api/public/payments/payhero/webhook'
 
 const SpurHiveRoute = SpurHiveRouteImport.update({
   id: '/spur-hive',
@@ -58,37 +61,62 @@ const ProductSlugRoute = ProductSlugRouteImport.update({
   path: '/product/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CheckoutSuccessRoute = CheckoutSuccessRouteImport.update({
+  id: '/success',
+  path: '/success',
+  getParentRoute: () => CheckoutRoute,
+} as any)
+const ApiCheckoutRoute = ApiCheckoutRouteImport.update({
+  id: '/api/checkout',
+  path: '/api/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicPaymentsPayheroWebhookRoute =
+  ApiPublicPaymentsPayheroWebhookRouteImport.update({
+    id: '/api/public/payments/payhero/webhook',
+    path: '/api/public/payments/payhero/webhook',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
-  '/checkout': typeof CheckoutRoute
+  '/checkout': typeof CheckoutRouteWithChildren
   '/contact': typeof ContactRoute
   '/shipping-returns': typeof ShippingReturnsRoute
   '/shop': typeof ShopRoute
   '/spur-hive': typeof SpurHiveRoute
+  '/api/checkout': typeof ApiCheckoutRoute
+  '/checkout/success': typeof CheckoutSuccessRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/api/public/payments/payhero/webhook': typeof ApiPublicPaymentsPayheroWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
-  '/checkout': typeof CheckoutRoute
+  '/checkout': typeof CheckoutRouteWithChildren
   '/contact': typeof ContactRoute
   '/shipping-returns': typeof ShippingReturnsRoute
   '/shop': typeof ShopRoute
   '/spur-hive': typeof SpurHiveRoute
+  '/api/checkout': typeof ApiCheckoutRoute
+  '/checkout/success': typeof CheckoutSuccessRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/api/public/payments/payhero/webhook': typeof ApiPublicPaymentsPayheroWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
-  '/checkout': typeof CheckoutRoute
+  '/checkout': typeof CheckoutRouteWithChildren
   '/contact': typeof ContactRoute
   '/shipping-returns': typeof ShippingReturnsRoute
   '/shop': typeof ShopRoute
   '/spur-hive': typeof SpurHiveRoute
+  '/api/checkout': typeof ApiCheckoutRoute
+  '/checkout/success': typeof CheckoutSuccessRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/api/public/payments/payhero/webhook': typeof ApiPublicPaymentsPayheroWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -100,7 +128,10 @@ export interface FileRouteTypes {
     | '/shipping-returns'
     | '/shop'
     | '/spur-hive'
+    | '/api/checkout'
+    | '/checkout/success'
     | '/product/$slug'
+    | '/api/public/payments/payhero/webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -110,7 +141,10 @@ export interface FileRouteTypes {
     | '/shipping-returns'
     | '/shop'
     | '/spur-hive'
+    | '/api/checkout'
+    | '/checkout/success'
     | '/product/$slug'
+    | '/api/public/payments/payhero/webhook'
   id:
     | '__root__'
     | '/'
@@ -120,18 +154,23 @@ export interface FileRouteTypes {
     | '/shipping-returns'
     | '/shop'
     | '/spur-hive'
+    | '/api/checkout'
+    | '/checkout/success'
     | '/product/$slug'
+    | '/api/public/payments/payhero/webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CartRoute: typeof CartRoute
-  CheckoutRoute: typeof CheckoutRoute
+  CheckoutRoute: typeof CheckoutRouteWithChildren
   ContactRoute: typeof ContactRoute
   ShippingReturnsRoute: typeof ShippingReturnsRoute
   ShopRoute: typeof ShopRoute
   SpurHiveRoute: typeof SpurHiveRoute
+  ApiCheckoutRoute: typeof ApiCheckoutRoute
   ProductSlugRoute: typeof ProductSlugRoute
+  ApiPublicPaymentsPayheroWebhookRoute: typeof ApiPublicPaymentsPayheroWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -192,18 +231,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/checkout/success': {
+      id: '/checkout/success'
+      path: '/success'
+      fullPath: '/checkout/success'
+      preLoaderRoute: typeof CheckoutSuccessRouteImport
+      parentRoute: typeof CheckoutRoute
+    }
+    '/api/checkout': {
+      id: '/api/checkout'
+      path: '/api/checkout'
+      fullPath: '/api/checkout'
+      preLoaderRoute: typeof ApiCheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/payments/payhero/webhook': {
+      id: '/api/public/payments/payhero/webhook'
+      path: '/api/public/payments/payhero/webhook'
+      fullPath: '/api/public/payments/payhero/webhook'
+      preLoaderRoute: typeof ApiPublicPaymentsPayheroWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
+
+interface CheckoutRouteChildren {
+  CheckoutSuccessRoute: typeof CheckoutSuccessRoute
+}
+
+const CheckoutRouteChildren: CheckoutRouteChildren = {
+  CheckoutSuccessRoute: CheckoutSuccessRoute,
+}
+
+const CheckoutRouteWithChildren = CheckoutRoute._addFileChildren(
+  CheckoutRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CartRoute: CartRoute,
-  CheckoutRoute: CheckoutRoute,
+  CheckoutRoute: CheckoutRouteWithChildren,
   ContactRoute: ContactRoute,
   ShippingReturnsRoute: ShippingReturnsRoute,
   ShopRoute: ShopRoute,
   SpurHiveRoute: SpurHiveRoute,
+  ApiCheckoutRoute: ApiCheckoutRoute,
   ProductSlugRoute: ProductSlugRoute,
+  ApiPublicPaymentsPayheroWebhookRoute: ApiPublicPaymentsPayheroWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

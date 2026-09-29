@@ -29,10 +29,6 @@ import waterBottleBlack from "@/assets/products/water-bottle-black.jpg";
 import waterBottleBlackAlt from "@/assets/products/water-bottle-black-alt.jpg";
 import waterBottleFrosted from "@/assets/products/water-bottle-frosted.jpg";
 import waterBottleDuo from "@/assets/products/water-bottle-duo.jpg";
-import mugThankYou from "@/assets/products/mug-thank-you.jpg";
-import mugSpurAfrika from "@/assets/products/mug-spur-afrika.jpg";
-import mugHivePattern from "@/assets/products/mug-hive-pattern.jpg";
-import mugHiveLifestyle from "@/assets/products/mug-hive-lifestyle.jpg";
 import chargingKitOpen from "@/assets/products/charging-kit-open.jpg";
 import dynamicDuoSet from "@/assets/products/dynamic-duo-set.jpg";
 import christmasBucketCampaign from "@/assets/products/christmas-bucket-campaign.jpg";
@@ -275,19 +271,6 @@ export const PRODUCTS: Product[] = [
     priceAUD: 23,
     accent: "spruce",
     images: [waterBottleBlack, waterBottleBlackAlt, waterBottleFrosted, waterBottleDuo],
-  },
-  {
-    slug: "two-tone-mug",
-    name: "Two Tone Mug",
-    category: "drinkware",
-    shortDescription: "Start your day with gratitude.",
-    description:
-      "Start your day with gratitude and purpose. Our Spur Afrika two-tone mug features a clean white finish and a variety of colours. Perfect for coffee, tea, or gifting, this mug is designed to bring joy to your desk and warmth to your moments. Personalise it with a name to make it uniquely yours. Every mug purchased helps us continue empowering children and youth through education, mentorship, and holistic support.",
-    priceKES: 1500,
-    priceUSD: 12,
-    priceAUD: 19,
-    accent: "muted-green",
-    images: [mugThankYou, mugSpurAfrika, mugHivePattern, mugHiveLifestyle],
   },
   {
     slug: "charging-kit",

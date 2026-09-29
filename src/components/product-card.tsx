@@ -24,7 +24,7 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
       <div className="flex flex-1 flex-col gap-1 px-1 pb-1">
         <h3 className="type-h-small break-words text-foreground">{product.name}</h3>
-        <p className="line-clamp-2 type-body-sm text-muted-foreground">{product.shortDescription}</p>
+        <p className="line-clamp-2 type-body text-muted-foreground">{product.shortDescription}</p>
         <div className="mt-auto flex items-center justify-between gap-2 pt-2">
           <span className="min-w-0 break-words type-h-small text-brand-dark">{formatPrice(price, currency)}</span>
           <span className="text-xs font-semibold uppercase tracking-wider text-brand-dark group-hover:underline">

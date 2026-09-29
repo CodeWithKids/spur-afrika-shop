@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Youtube, Mail } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Youtube, Mail } from "lucide-react";
 import { pageShell } from "@/lib/layout";
 import charityBadge from "@/assets/registered-charity-badge.png";
 
@@ -20,7 +20,7 @@ function FooterLogo() {
 
 export function SiteFooter() {
   return (
-    <footer className="mt-12 bg-spruce text-[var(--white-text)] md:mt-20">
+    <footer className="mt-12 bg-spruce text-[var(--white-text)] md:mt-16">
       <div className={`grid gap-10 py-10 md:grid-cols-[1fr_auto] md:py-14 ${pageShell}`}>
         {/* Left column */}
         <div className="flex flex-col items-center gap-6 text-center md:items-start md:gap-8 md:text-left">
@@ -35,6 +35,9 @@ export function SiteFooter() {
             </a>
             <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="grid size-11 place-items-center">
               <Instagram className="h-5 w-5" />
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid size-11 place-items-center">
+              <Linkedin className="h-5 w-5" />
             </a>
             <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube" className="grid size-11 place-items-center">
               <Youtube className="h-5 w-5" />

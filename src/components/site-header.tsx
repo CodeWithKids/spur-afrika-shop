@@ -23,7 +23,7 @@ const nav = [
 ] as const;
 
 const navLinkClass =
-  "type-body-sm font-medium text-foreground transition hover:text-brand-dark";
+  "type-body-sm font-extrabold uppercase tracking-wide text-brand transition hover:text-brand-dark";
 
 function NavItem({
   item,
@@ -53,7 +53,7 @@ function NavItem({
       to={item.to}
       onClick={onNavigate}
       className={className}
-      activeProps={{ className: "text-brand-dark underline underline-offset-4" }}
+      activeProps={{ className: "font-extrabold uppercase tracking-wide text-brand-dark underline underline-offset-4" }}
     >
       {item.label}
     </Link>
