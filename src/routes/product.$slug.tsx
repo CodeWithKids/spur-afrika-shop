@@ -238,7 +238,11 @@ function ProductGallery({ product, colorId }: { product: Product; colorId?: stri
               <img
                 src={src}
                 alt=""
-                className="aspect-square w-full object-cover object-[center_20%]"
+                className={
+                  product.category === "spur-varsity"
+                    ? "aspect-[3/4] w-full bg-muted-grey object-contain object-center"
+                    : "aspect-square w-full object-cover object-[center_20%]"
+                }
               />
             </button>
           ))}
