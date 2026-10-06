@@ -223,7 +223,12 @@ function ProductGallery({ product, colorId }: { product: Product; colorId?: stri
         images={images}
       />
       {images.length > 1 && (
-        <div className="flex gap-3 overflow-x-auto pb-1 sm:grid sm:grid-cols-4 sm:overflow-visible">
+        <div
+          className={
+            "flex gap-3 overflow-x-auto pb-1 sm:grid sm:overflow-visible " +
+            (images.length >= 5 ? "sm:grid-cols-5" : "sm:grid-cols-4")
+          }
+        >
           {images.map((src, index) => (
             <button
               key={`${colorId ?? "default"}-${index}`}
@@ -241,7 +246,9 @@ function ProductGallery({ product, colorId }: { product: Product; colorId?: stri
                 className={
                   product.category === "spur-varsity"
                     ? "aspect-[3/4] w-full bg-muted-grey object-contain object-center"
-                    : "aspect-square w-full object-cover object-[center_20%]"
+                    : product.slug === "baseball-cap"
+                      ? "aspect-square w-full bg-muted-grey object-contain object-center"
+                      : "aspect-square w-full object-cover object-[center_20%]"
                 }
               />
             </button>

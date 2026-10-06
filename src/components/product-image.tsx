@@ -18,6 +18,7 @@ export function ProductImage({
   const safeIndex = Math.min(imageIndex, Math.max(0, (images?.length ?? 1) - 1));
   const image = images?.[safeIndex];
   const varsityMockup = product.category === "spur-varsity";
+  const catalogPhoto = varsityMockup || product.slug === "baseball-cap";
 
   if (image) {
     return (
@@ -25,8 +26,8 @@ export function ProductImage({
         src={image}
         alt={product.name}
         className={cn(
-          varsityMockup
-            ? "aspect-[3/4] w-full rounded-lg bg-muted-grey object-contain object-center"
+          catalogPhoto
+            ? "aspect-square w-full rounded-lg bg-muted-grey object-contain object-center"
             : "aspect-square w-full rounded-lg object-cover object-[center_20%]",
           className,
         )}
