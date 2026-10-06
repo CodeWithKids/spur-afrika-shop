@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ProductCard } from "@/components/product-card";
-import { HomeHeroSlider } from "@/components/home-hero-slider";
+import { HomeHeroSlider, homeHeroLcpSrc } from "@/components/home-hero-slider";
 import { ImpactStatsStrip } from "@/components/impact-stats-strip";
 import elimishaStudent from "@/assets/spur-hive/elimisha-student-uniform.jpg";
 import spurHiveTeam from "@/assets/spur-hive/spur-hive-team.jpg";
@@ -20,6 +20,14 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "Branded merchandise that funds Spur Afrika's programs in Kenya." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+    ],
+    links: [
+      {
+        rel: "preload",
+        as: "image",
+        href: homeHeroLcpSrc,
+        fetchPriority: "high",
+      },
     ],
   }),
   component: Index,

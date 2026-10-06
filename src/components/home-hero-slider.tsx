@@ -32,6 +32,14 @@ const SLIDES = [
   },
 ] as const;
 
+/** First slide URL — use for `<link rel="preload">` on the home route. */
+export const homeHeroLcpSrc = SLIDES[0].src;
+
+function shouldLoadSlideImage(index: number, active: number, total: number) {
+  if (index === active) return true;
+  return index === (active + 1) % total;
+}
+
 const DESKTOP_OVERLAY_DEFAULT =
   "linear-gradient(105deg, rgba(47, 47, 47, 0.9) 0%, rgba(47, 47, 47, 0.52) 34%, rgba(47, 47, 47, 0.12) 100%)";
 
@@ -88,8 +96,14 @@ export function HomeHeroSlider() {
     };
   }, [api, onSelect]);
 
+  useEffect(() => {
+    const next = (active + 1) % SLIDES.length;
+    const img = new Image();
+    img.src = SLIDES[next].src;
+  }, [active]);
+
   return (
-    <section className={cn("relative isolate overflow-hidden", heroMinHeight)}>
+    <section className={cn("relative isolate overflow-hidden bg-[#2f2f2f]", heroMinHeight)}>
       <Carousel
         className="absolute inset-0 h-full w-full"
         opts={{ loop: true, duration: 35 }}
@@ -99,16 +113,18 @@ export function HomeHeroSlider() {
         <CarouselContent className="-ml-0 h-full">
           {SLIDES.map((slide, index) => (
             <CarouselItem key={slide.src} className="h-full basis-full pl-0">
-              <div className={cn("relative h-full w-full", heroMinHeight)}>
-                <img
-                  src={slide.src}
-                  alt={slide.alt}
-                  className="absolute inset-0 h-full w-full object-cover"
-                  style={{ objectPosition: slide.objectPosition }}
-                  fetchPriority={index === 0 ? "high" : undefined}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                />
+              <div className={cn("relative h-full w-full bg-[#2f2f2f]", heroMinHeight)}>
+                {shouldLoadSlideImage(index, active, SLIDES.length) ? (
+                  <img
+                    src={slide.src}
+                    alt={slide.alt}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    style={{ objectPosition: slide.objectPosition }}
+                    fetchPriority={index === 0 ? "high" : undefined}
+                    loading={index === active ? "eager" : "lazy"}
+                    decoding={index === 0 ? "sync" : "async"}
+                  />
+                ) : null}
               </div>
             </CarouselItem>
           ))}
