@@ -32,7 +32,7 @@ export const Route = createFileRoute("/api/public/payments/payhero/webhook")({
 
         const response = body.response;
         const externalReference = response?.ExternalReference?.trim();
-        if (!externalReference) {
+        if (!response || !externalReference) {
           return Response.json({ error: "Missing ExternalReference" }, { status: 400 });
         }
 
