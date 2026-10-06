@@ -1,23 +1,14 @@
-import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import type { SupabaseClient } from "@supabase/supabase-js";
 
-let admin: SupabaseClient | null = null;
-
-export function getSupabaseAdmin(): SupabaseClient {
-  if (admin) return admin;
-
-  const url = process.env.SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-  if (!url || !key) {
-    throw new Error(
-      "Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY. Add them to your host env and run the orders migration.",
-    );
-  }
-
-  admin = createClient(url, key, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  });
-  return admin;
+/**
+ * Server-only admin client (service role, bypasses RLS).
+ * Delegates to the generated Lovable Cloud client, which handles
+ * the new opaque sb_* API keys correctly. Loaded lazily so this
+ * module never pulls server-only code into the client bundle.
+ */
+export async function getSupabaseAdmin(): Promise<SupabaseClient> {
+  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+  return supabaseAdmin as unknown as SupabaseClient;
 }
 
 export function isSupabaseConfigured(): boolean {

@@ -107,7 +107,7 @@ export async function insertPendingOrder(
   payload: CheckoutPayload,
   computed: ReturnType<typeof buildOrderFromPayload>,
 ): Promise<OrderRecord> {
-  const supabase = getSupabaseAdmin();
+  const supabase = await getSupabaseAdmin();
 
   const { data, error } = await supabase
     .from("orders")
@@ -139,7 +139,7 @@ export async function markOrderQueued(
   externalReference: string,
   payhero: { checkoutRequestId: string; reference?: string },
 ): Promise<void> {
-  const supabase = getSupabaseAdmin();
+  const supabase = await getSupabaseAdmin();
   const { error } = await supabase
     .from("orders")
     .update({
@@ -155,7 +155,7 @@ export async function markOrderQueued(
 export async function getOrderByExternalReference(
   externalReference: string,
 ): Promise<OrderRecord | null> {
-  const supabase = getSupabaseAdmin();
+  const supabase = await getSupabaseAdmin();
   const { data, error } = await supabase
     .from("orders")
     .select("*")
@@ -175,7 +175,7 @@ export async function applyPayHeroCallback(payload: {
   mpesaReceipt?: string;
   raw: unknown;
 }): Promise<OrderRecord | null> {
-  const supabase = getSupabaseAdmin();
+  const supabase = await getSupabaseAdmin();
   const order = await getOrderByExternalReference(payload.externalReference);
   if (!order) return null;
 

@@ -12,8 +12,9 @@ const searchSchema = z.object({
 
 export const Route = createFileRoute("/checkout/success")({
   validateSearch: searchSchema,
-  loader: async ({ search }) => {
-    const ref = search.ref;
+  loaderDeps: ({ search }) => ({ ref: search.ref }),
+  loader: async ({ deps }) => {
+    const ref = deps.ref;
     if (!ref || !isSupabaseConfigured()) {
       return { order: null as null, ref };
     }
