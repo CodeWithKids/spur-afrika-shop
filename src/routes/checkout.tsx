@@ -130,7 +130,14 @@ function CheckoutPage() {
             <Field label="Full name" name="name" required />
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Email" name="email" type="email" required />
-              <Field label="Phone number" name="phone" type="tel" placeholder="07… or +254…" required />
+              <Field
+                label="Phone number (M-Pesa)"
+                name="phone"
+                type="tel"
+                placeholder="07… or +254…"
+                hint="We’ll send the payment prompt to this Safaricom number."
+                required
+              />
             </div>
           </fieldset>
 
@@ -161,10 +168,6 @@ function CheckoutPage() {
             )}
           </fieldset>
 
-          <fieldset className="min-w-0 space-y-3 rounded-xl border border-border bg-card p-4 sm:p-6">
-            <legend className="type-h-small px-2 text-foreground">Payment method</legend>
-            <RadioCard checked title="PayHero (M-Pesa)" desc="STK push to your phone" name="payment" onChange={() => {}} />
-          </fieldset>
         </div>
 
         <aside className="h-fit min-w-0 rounded-xl border border-border bg-card p-4 sm:p-6 md:sticky md:top-24">
@@ -193,10 +196,14 @@ function CheckoutPage() {
             <span className="type-h-small">Total</span>
             <span className="type-h text-brand-dark">{formatPrice(total, currency)}</span>
           </div>
+          <p className="mt-6 rounded-lg border border-border bg-muted px-3 py-3 type-body-sm text-muted-foreground">
+            <span className="font-semibold text-foreground">M-Pesa</span> — after you place the order,
+            enter your PIN on the STK push sent to your phone. Powered by PayHero.
+          </p>
           <button
             type="submit"
             disabled={submitting || currency !== "KES"}
-            className="mt-6 w-full rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand disabled:cursor-not-allowed disabled:opacity-50"
+            className="mt-4 w-full rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand disabled:cursor-not-allowed disabled:opacity-50"
           >
             {submitting ? "Starting M-Pesa…" : "Pay with M-Pesa"}
           </button>
@@ -215,12 +222,14 @@ function Field({
   type = "text",
   required,
   placeholder,
+  hint,
 }: {
   label: string;
   name: string;
   type?: string;
   required?: boolean;
   placeholder?: string;
+  hint?: string;
 }) {
   return (
     <label className="block">
@@ -234,6 +243,7 @@ function Field({
         placeholder={placeholder}
         className="mt-1 min-h-11 w-full rounded-md border border-border bg-background px-3 py-2 type-body-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
       />
+      {hint && <span className="mt-1.5 block type-body-sm text-muted-foreground">{hint}</span>}
     </label>
   );
 }
