@@ -71,6 +71,7 @@ export function HomeHeroSlider() {
   );
 
   const onSelect = useCallback((carouselApi: CarouselApi) => {
+    if (!carouselApi) return;
     setActive(carouselApi.selectedScrollSnap());
   }, []);
 
