@@ -197,7 +197,7 @@ function CheckoutPage() {
             <span className="type-h text-brand-dark">{formatPrice(total, currency)}</span>
           </div>
           <p className="mt-6 rounded-lg border border-border bg-muted px-3 py-3 type-body-sm text-muted-foreground">
-            <span className="font-semibold text-foreground">M-Pesa</span> — after you place the order,
+            <span className="font-semibold text-foreground">M-Pesa</span>. After you place the order,
             enter your PIN on the STK push sent to your phone. Powered by PayHero.
           </p>
           <button

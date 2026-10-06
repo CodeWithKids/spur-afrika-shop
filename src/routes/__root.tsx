@@ -79,7 +79,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Buy Spur Afrika branded merchandise — tees, hoodies, mugs, stationery — and support our programs in Kenya.",
+          "Buy Spur Afrika branded merchandise: tees, hoodies, mugs, stationery, and support our programs in Kenya.",
       },
       { name: "theme-color", content: "#2F2F2F" },
       { property: "og:title", content: "Spur Afrika Shop" },

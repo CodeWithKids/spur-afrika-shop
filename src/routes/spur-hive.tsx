@@ -11,7 +11,7 @@ export const Route = createFileRoute("/spur-hive")({
       {
         name: "description",
         content:
-          "Join the Spur Hive — a community of changemakers supporting education in Kenya through the Kibera Community Experience, the Spur Fundraising Gala and the Spur Marathon.",
+          "Join the Spur Hive, a community of changemakers supporting education in Kenya through the Kibera Community Experience, the Spur Fundraising Gala and the Spur Marathon.",
       },
       { property: "og:title", content: "Spur Hive — Spur Afrika" },
       {
@@ -42,7 +42,7 @@ const experiences = [
   {
     t: "The Spur Marathon",
     s: "Every step creates opportunity",
-    d: "Runners, walkers and supporters commit their kilometres to a greater purpose — raising awareness and funds so children from underserved communities can access life-changing education.",
+    d: "Runners, walkers and supporters commit their kilometres to a greater purpose: raising awareness and funds so children from underserved communities can access life-changing education.",
     cta: "Run for a cause",
   },
 ];
@@ -72,7 +72,7 @@ function SpurHivePage() {
             A community of changemakers
           </h1>
           <p className="mt-5 max-w-2xl type-body-lg" style={{ opacity: 0.9 }}>
-            The Spur Hive is more than a giving community — it is a platform that
+            The Spur Hive is more than a giving community. It is a platform that
             lets members actively participate in experiences and initiatives that
             create meaningful impact for learners and communities, investing in
             education one learner at a time.

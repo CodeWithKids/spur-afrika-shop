@@ -47,7 +47,7 @@ function CheckoutSuccessPage() {
       {ref && !order && (
         <p className="mt-4 type-body text-muted-foreground">
           We could not find order <span className="font-semibold">{ref}</span>. If you
-          just paid, wait a moment and refresh — M-Pesa confirmations can take a
+          just paid, wait a moment and refresh. M-Pesa confirmations can take a
           short time.
         </p>
       )}
@@ -72,7 +72,7 @@ function CheckoutSuccessPage() {
           )}
           {order.status === "paid" && (
             <p className="mt-4 type-body text-muted-foreground">
-              Thank you — your payment was received
+              Thank you. Your payment was received
               {order.mpesa_receipt_number
                 ? ` (M-Pesa receipt ${order.mpesa_receipt_number})`
                 : ""}

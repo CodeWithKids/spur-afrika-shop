@@ -66,13 +66,13 @@ function Index() {
             <p className="mt-4 type-body text-muted-foreground">
               Spur Afrika Kenya is based at Olympic Estate, Nairobi,
               working alongside children and families in Kibera and surrounding
-              communities. Shop with purpose — impact a future.
+              communities. Shop with purpose and impact a future.
             </p>
             <h3 className="mt-10 type-h text-foreground sm:mt-12">From your cart to their future</h3>
             <ul className="mt-4 space-y-3 type-body text-muted-foreground">
               <li>• School fees, uniforms and learning materials for sponsored children.</li>
               <li>• Mentorship and life-skills programming for teens and young adults.</li>
-              <li>• Family livelihood support — food security, microenterprise grants.</li>
+              <li>• Family livelihood support, food security, microenterprise grants.</li>
               <li>• Community health outreach and trauma-informed care.</li>
             </ul>
             <Link
@@ -96,7 +96,7 @@ function Index() {
               </h2>
               <p className="mt-3 type-body text-muted-foreground">
                 Experience Kibera, attend the Fundraising Gala, run the Spur
-                Marathon — see how the Hive invests in education one learner at a
+                Marathon. See how the Hive invests in education one learner at a
                 time.
               </p>
               <Link

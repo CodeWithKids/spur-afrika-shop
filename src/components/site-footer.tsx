@@ -102,14 +102,14 @@ function CharityBadge() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="View Spur Afrika's profile on the ACNC charity register (opens in a new tab)"
-      title="Registered with the ACNC — view profile"
+      title="Registered with the ACNC, view profile"
       data-analytics-id="acnc-badge"
       onClick={trackAcncClick}
       className="inline-flex shrink-0 rounded-full transition hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-spruce"
     >
       <img
         src={charityBadge}
-        alt="ACNC Registered Charity — Australian Charities and Not-for-profits Commission"
+        alt="ACNC Registered Charity, Australian Charities and Not-for-profits Commission"
         width={262}
         height={262}
         loading="lazy"

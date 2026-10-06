@@ -18,8 +18,11 @@ import jacketOrangeFront1 from "@/assets/jackets/orange-front-1.jpg";
 import jacketOrangeFront2 from "@/assets/jackets/orange-front-2.jpg";
 import teeFrontBack from "@/assets/products/tee-front-back.jpg";
 import hoodieCharcoal from "@/assets/products/hoodie-charcoal.jpg";
-import capsTrio1 from "@/assets/products/caps-trio-1.jpg";
-import capsTrio2 from "@/assets/products/caps-trio-2.jpg";
+import capSpurHiveLifestyle from "@/assets/products/cap-spur-hive/01-lifestyle.png";
+import capSpurHiveFront from "@/assets/products/cap-spur-hive/02-front.png";
+import capSpurHiveSide from "@/assets/products/cap-spur-hive/03-side.png";
+import capSpurHiveBack from "@/assets/products/cap-spur-hive/04-back.png";
+import capSpurHiveEmbroidery from "@/assets/products/cap-spur-hive/05-embroidery.png";
 import bambooFlaskBranded from "@/assets/products/bamboo-flask-branded.jpg";
 import bambooFlaskPersonalized from "@/assets/products/bamboo-flask-personalized.jpg";
 import bambooFlaskNames from "@/assets/products/bamboo-flask-names.jpg";
@@ -111,7 +114,7 @@ export const PRODUCTS: Product[] = [
     category: "apparel",
     shortDescription: "Stay warm, stylish, and purposeful.",
     description:
-      "A premium heavyweight hoodie with the Spur Afrika mark. Available in Mustard, Sand, Charcoal, and Red. Cozy, durable, and made to be worn often — your purchase fuels our programs across Kenya.",
+      "A premium heavyweight hoodie with the Spur Afrika mark. Available in Mustard, Sand, Charcoal, and Red. Cozy, durable, and made to be worn often. Your purchase fuels our programs across Kenya.",
     priceKES: 5000,
     priceUSD: 38,
     priceAUD: 59,
@@ -153,7 +156,7 @@ export const PRODUCTS: Product[] = [
     category: "apparel",
     shortDescription: "Lightweight hooded jacket for every season.",
     description:
-      "A versatile zip-up windbreaker with the Spur Afrika mark. Available in White, Black, and Orange. Water-resistant, packable, and built for everyday wear — your purchase fuels our programs across Kenya.",
+      "A versatile zip-up windbreaker with the Spur Afrika mark. Available in White, Black, and Orange. Water-resistant, packable, and built for everyday wear. Your purchase fuels our programs across Kenya.",
     priceKES: 7500,
     priceUSD: 58,
     priceAUD: 89,
@@ -206,33 +209,27 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "baseball-cap",
-    name: "Baseball Cap",
+    name: "Spur Hive Baseball Cap",
     category: "apparel",
-    shortDescription: "Classic, adjustable baseball cap.",
+    shortDescription: "Vintage-wash cap with Spur Hive embroidery.",
     description:
-      "A classic, adjustable baseball cap with a comfortable fit and breathable fabric. Perfect for sunny days, active wear, or pairing with your casual outfits. Proceeds from cap sales help sustain community outreach and children wellness initiatives.",
+      "Premium cotton six-panel cap with a vintage wash finish, detailed Spur Hive embroidery, and an adjustable strap. Crown in washed teal with a cream brim. Front reads Spur Hive · Est. 2025; back arc: Grow. Connect. Thrive. Proceeds support Spur Afrika community and learner programs.",
     priceKES: 1500,
     priceUSD: 12,
     priceAUD: 19,
     colorLabel: "Colour",
     colors: [
       {
-        id: "white",
-        label: "White",
-        swatch: "#F4F4F0",
-        images: [capsTrio1, capsTrio2],
-      },
-      {
-        id: "navy",
-        label: "Navy",
-        swatch: "#1B2A4A",
-        images: [capsTrio1, capsTrio2],
-      },
-      {
-        id: "burgundy",
-        label: "Burgundy",
-        swatch: "#6B1E2F",
-        images: [capsTrio1, capsTrio2],
+        id: "teal-cream",
+        label: "Teal / Cream",
+        swatch: "#5A8F9A",
+        images: [
+          capSpurHiveLifestyle,
+          capSpurHiveFront,
+          capSpurHiveSide,
+          capSpurHiveBack,
+          capSpurHiveEmbroidery,
+        ],
       },
     ],
     accent: "brand-dark",
@@ -295,7 +292,7 @@ export const PRODUCTS: Product[] = [
     category: "drinkware",
     shortDescription: "Reusable bottle and insulated hex flask bundle.",
     description:
-      "The Dynamic Duo brings together two essentials: a reusable water bottle and an insulated hex flask. Practical, durable, and purposeful — each bundle supports learners on their journey to quality education.",
+      "The Dynamic Duo brings together two essentials: a reusable water bottle and an insulated hex flask. Practical, durable, and purposeful. Each bundle supports learners on their journey to quality education.",
     priceKES: 4300,
     priceUSD: 33,
     priceAUD: 51,
@@ -309,7 +306,7 @@ export const PRODUCTS: Product[] = [
     category: "gifts",
     shortDescription: "Bless a family with a Christmas food pack.",
     description:
-      "Share the joy of giving this festive season with our Christmas Bucket campaign. This gift represents a contribution toward a 5,500/- food bag for a Spur Afrika family — a meaningful way to spread hope, warmth, and practical love at Christmas. Each gift directly supports a family in need, helping us reach our goal of blessing families with a Christmas food pack and a touch of chapati love.",
+      "Share the joy of giving this festive season with our Christmas Bucket campaign. This gift represents a contribution toward a 5,500/- food bag for a Spur Afrika family: a meaningful way to spread hope, warmth, and practical love at Christmas. Each gift directly supports a family in need, helping us reach our goal of blessing families with a Christmas food pack and a touch of chapati love.",
     priceKES: 5500,
     priceUSD: 42,
     priceAUD: 65,
