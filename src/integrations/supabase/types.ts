@@ -14,7 +14,78 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      orders: {
+        Row: {
+          created_at: string
+          currency: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          delivery_address: Json | null
+          external_reference: string
+          fulfilment: string
+          id: string
+          line_items: Json
+          mpesa_receipt_number: string | null
+          payhero_checkout_request_id: string | null
+          payhero_reference: string | null
+          payment_result_code: number | null
+          payment_result_desc: string | null
+          raw_callback: Json | null
+          shipping: number
+          status: string
+          subtotal: number
+          total: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          currency: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          delivery_address?: Json | null
+          external_reference: string
+          fulfilment: string
+          id?: string
+          line_items: Json
+          mpesa_receipt_number?: string | null
+          payhero_checkout_request_id?: string | null
+          payhero_reference?: string | null
+          payment_result_code?: number | null
+          payment_result_desc?: string | null
+          raw_callback?: Json | null
+          shipping: number
+          status?: string
+          subtotal: number
+          total: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          currency?: string
+          customer_email?: string
+          customer_name?: string
+          customer_phone?: string
+          delivery_address?: Json | null
+          external_reference?: string
+          fulfilment?: string
+          id?: string
+          line_items?: Json
+          mpesa_receipt_number?: string | null
+          payhero_checkout_request_id?: string | null
+          payhero_reference?: string | null
+          payment_result_code?: number | null
+          payment_result_desc?: string | null
+          raw_callback?: Json | null
+          shipping?: number
+          status?: string
+          subtotal?: number
+          total?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
