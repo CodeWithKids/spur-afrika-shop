@@ -33,16 +33,20 @@ import chargingKitOpen from "@/assets/products/charging-kit-open.jpg";
 import dynamicDuoSet from "@/assets/products/dynamic-duo-set.jpg";
 import christmasBucketCampaign from "@/assets/products/christmas-bucket-campaign.jpg";
 import christmasBucketFlyer from "@/assets/products/christmas-bucket-flyer.jpg";
-import varsityCrewneckBlack from "@/assets/varsity/crewneck-black.png.asset.json";
-import varsityCrewneckWhite from "@/assets/varsity/crewneck-white.png.asset.json";
-import varsityCrewneckNavy from "@/assets/varsity/crewneck-navy.png.asset.json";
-import varsityHoodieNavyGreen from "@/assets/varsity/hoodie-navy-green.png.asset.json";
-import varsityHoodieForestGreen from "@/assets/varsity/hoodie-forest-green.webp.asset.json";
-import varsityHoodieRed from "@/assets/varsity/hoodie-red.webp.asset.json";
-import varsityHoodieGrey from "@/assets/varsity/hoodie-grey.webp.asset.json";
-import varsityHoodieWhite from "@/assets/varsity/hoodie-white.png.asset.json";
-import varsityHoodieBlack from "@/assets/varsity/hoodie-black.webp.asset.json";
-import varsityHoodieDeepRed from "@/assets/varsity/hoodie-deep-red.webp.asset.json";
+import varsityCrewneckBlack from "@/assets/varsity/crewneck-black.jpg";
+import varsityCrewneckWhite from "@/assets/varsity/crewneck-white.jpg";
+import varsityCrewneckNavy from "@/assets/varsity/crewneck-navy.jpg";
+import varsityCrewneckNavyGreen from "@/assets/varsity/crewneck-navy-green.jpg";
+import varsityCrewneckForestGreen from "@/assets/varsity/crewneck-forest-green.jpg";
+import varsityCrewneckCharcoal from "@/assets/varsity/crewneck-charcoal.jpg";
+import varsityCrewneckHeatherGrey from "@/assets/varsity/crewneck-heather-grey.jpg";
+import varsityHoodieForestGreen from "@/assets/varsity/hoodie-forest-green.jpg";
+import varsityHoodieWhite from "@/assets/varsity/hoodie-white.jpg";
+import varsityHoodieRed from "@/assets/varsity/hoodie-red.jpg";
+import varsityHoodieSand from "@/assets/varsity/hoodie-sand.jpg";
+import varsityHoodieGrey from "@/assets/varsity/hoodie-grey.jpg";
+import varsityHoodieBlack from "@/assets/varsity/hoodie-black.jpg";
+import varsityHoodieDeepRed from "@/assets/varsity/hoodie-deep-red.jpg";
 
 
 /**
@@ -329,19 +333,43 @@ export const PRODUCTS: Product[] = [
         id: "black",
         label: "Black",
         swatch: "#1C1C1C",
-        images: [varsityCrewneckBlack.url],
+        images: [varsityCrewneckBlack],
       },
       {
         id: "white",
         label: "White",
         swatch: "#F4F4F0",
-        images: [varsityCrewneckWhite.url],
+        images: [varsityCrewneckWhite],
       },
       {
         id: "navy",
         label: "Navy",
         swatch: "#1B2A4A",
-        images: [varsityCrewneckNavy.url],
+        images: [varsityCrewneckNavy],
+      },
+      {
+        id: "navy-green",
+        label: "Navy / Green",
+        swatch: "#1B2A4A",
+        images: [varsityCrewneckNavyGreen],
+      },
+      {
+        id: "forest-green",
+        label: "Forest Green",
+        swatch: "#18611C",
+        images: [varsityCrewneckForestGreen],
+      },
+      {
+        id: "charcoal",
+        label: "Charcoal",
+        swatch: "#4A4A4A",
+        images: [varsityCrewneckCharcoal],
+      },
+      {
+        id: "heather-grey",
+        label: "Heather Grey",
+        swatch: "#8D8D8D",
+        images: [varsityCrewneckHeatherGrey],
       },
     ],
     variantLabel: "Size",
@@ -361,46 +389,46 @@ export const PRODUCTS: Product[] = [
     colorLabel: "Colour",
     colors: [
       {
-        id: "navy-green",
-        label: "Navy / Green",
-        swatch: "#1B2A4A",
-        images: [varsityHoodieNavyGreen.url],
-      },
-      {
         id: "forest-green",
         label: "Forest Green",
         swatch: "#18611C",
-        images: [varsityHoodieForestGreen.url],
-      },
-      {
-        id: "red",
-        label: "Red",
-        swatch: "#C41E3A",
-        images: [varsityHoodieRed.url],
-      },
-      {
-        id: "grey",
-        label: "Grey",
-        swatch: "#8D8D8D",
-        images: [varsityHoodieGrey.url],
+        images: [varsityHoodieForestGreen],
       },
       {
         id: "white",
         label: "White",
         swatch: "#F4F4F0",
-        images: [varsityHoodieWhite.url],
+        images: [varsityHoodieWhite],
+      },
+      {
+        id: "red",
+        label: "Red",
+        swatch: "#C41E3A",
+        images: [varsityHoodieRed],
+      },
+      {
+        id: "sand",
+        label: "Sand",
+        swatch: "#C8B89A",
+        images: [varsityHoodieSand],
+      },
+      {
+        id: "grey",
+        label: "Grey",
+        swatch: "#8D8D8D",
+        images: [varsityHoodieGrey],
       },
       {
         id: "black",
         label: "Black",
         swatch: "#1C1C1C",
-        images: [varsityHoodieBlack.url],
+        images: [varsityHoodieBlack],
       },
       {
         id: "deep-red",
         label: "Deep Red",
         swatch: "#9B1B30",
-        images: [varsityHoodieDeepRed.url],
+        images: [varsityHoodieDeepRed],
       },
     ],
     variantLabel: "Size",
