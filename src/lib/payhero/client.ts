@@ -86,10 +86,14 @@ export async function initiateMpesaStkPush(input: {
   const body = (await response.json().catch(() => ({}))) as Record<string, unknown>;
 
   if (!response.ok) {
-    const message =
+    const raw =
       (typeof body.message === "string" && body.message) ||
       (typeof body.error === "string" && body.error) ||
       `PayHero request failed (${response.status})`;
+    const message =
+      response.status === 401 || response.status === 403
+        ? "The shop's payment credentials were rejected by PayHero. Please try again shortly, or contact us and we'll take your order directly."
+        : raw;
     return { success: false, message };
   }
 
