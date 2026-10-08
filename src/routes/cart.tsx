@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { useCart, priceLines } from "@/lib/cart-store";
 import { pageShell } from "@/lib/layout";
+import { ctaPrimaryBlockClassName, ctaPrimaryClassName } from "@/lib/cta-button";
 import { formatPrice, CURRENCIES } from "@/lib/currency";
 import { ProductImage } from "@/components/product-image";
 
@@ -39,7 +40,7 @@ function CartPage() {
         </p>
         <Link
           to="/shop"
-          className="mt-8 inline-flex items-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] hover:bg-brand"
+          className={ctaPrimaryClassName("mt-8")}
         >
           Browse products
         </Link>
@@ -51,14 +52,14 @@ function CartPage() {
     <div className={`py-8 sm:py-12 ${pageShell}`}>
       <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <h1 className="type-h-large text-foreground">Your cart</h1>
-        <div className="inline-flex w-fit items-center rounded-full border border-border bg-card p-0.5 text-xs font-semibold">
+        <div className="inline-flex w-fit max-w-full items-center rounded-full border border-border bg-card p-0.5 text-[10px] font-semibold sm:text-xs">
           {CURRENCIES.map((c) => (
             <button
               key={c}
               type="button"
               onClick={() => setCurrency(c)}
               className={
-                "rounded-full px-3 py-1 transition " +
+                "min-h-8 rounded-full px-2.5 py-1 transition sm:min-h-9 sm:px-3 " +
                 (currency === c
                   ? "bg-brand-dark text-[var(--white-text)]"
                   : "text-muted-foreground hover:text-foreground")
@@ -148,7 +149,7 @@ function CartPage() {
           </div>
           <Link
             to="/checkout"
-            className="mt-6 block rounded-full bg-brand-dark px-6 py-3 text-center text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand"
+            className={ctaPrimaryBlockClassName("mt-6 w-full text-center")}
           >
             Proceed to checkout
           </Link>

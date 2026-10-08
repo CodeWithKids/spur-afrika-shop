@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { useCart, priceLines } from "@/lib/cart-store";
 import { pageShell } from "@/lib/layout";
 import { CHECKOUT_COUNTRIES } from "@/lib/countries";
+import { ctaPrimaryBlockClassName, ctaPrimaryClassName } from "@/lib/cta-button";
 import { formatPrice, SHIPPING_FLAT } from "@/lib/currency";
 
 export const Route = createFileRoute("/checkout")({
@@ -47,7 +48,7 @@ function CheckoutPage() {
         <p className="mt-3 type-body text-muted-foreground">Add items to your cart first.</p>
         <Link
           to="/shop"
-          className="mt-8 inline-flex items-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] hover:bg-brand"
+          className={ctaPrimaryClassName("mt-8")}
         >
           Browse products
         </Link>
@@ -204,7 +205,9 @@ function CheckoutPage() {
           <button
             type="submit"
             disabled={submitting || currency !== "KES"}
-            className="mt-4 w-full rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand disabled:cursor-not-allowed disabled:opacity-50"
+            className={ctaPrimaryBlockClassName(
+              "mt-4 w-full disabled:cursor-not-allowed disabled:opacity-50",
+            )}
           >
             {submitting ? "Starting M-Pesa…" : "Pay with M-Pesa"}
           </button>

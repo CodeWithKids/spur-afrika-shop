@@ -74,7 +74,7 @@ export function SiteHeader() {
           <Link
             to="/cart"
             aria-label={`Cart, ${count} item${count === 1 ? "" : "s"}`}
-            className="relative inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full bg-brand-dark px-3 py-2 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand sm:min-w-0 sm:px-4"
+            className="relative inline-flex min-h-10 min-w-10 items-center justify-center gap-1.5 rounded-full bg-brand-dark px-2.5 py-2 text-xs font-semibold text-[var(--white-text)] transition hover:bg-brand sm:min-h-11 sm:min-w-0 sm:gap-2 sm:px-4 sm:text-sm"
           >
             <ShoppingBag className="size-4" aria-hidden />
             <span className="hidden sm:inline">Cart</span>

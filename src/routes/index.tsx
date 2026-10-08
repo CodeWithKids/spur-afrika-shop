@@ -4,6 +4,7 @@ import { HomeHeroSlider, homeHeroLcpSrc } from "@/components/home-hero-slider";
 import { ImpactStatsStrip } from "@/components/impact-stats-strip";
 import elimishaStudent from "@/assets/spur-hive/elimisha-student-uniform.jpg";
 import spurHiveTeam from "@/assets/spur-hive/spur-hive-team.jpg";
+import { ctaPrimaryClassName } from "@/lib/cta-button";
 import { pageShell, sectionPadding } from "@/lib/layout";
 import { PRODUCTS } from "@/lib/products";
 
@@ -77,7 +78,7 @@ function Index() {
             </ul>
             <Link
               to="/shop"
-              className="mt-10 inline-flex w-fit max-w-full items-center justify-center self-start rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] hover:bg-brand"
+              className={ctaPrimaryClassName("mt-10 w-fit self-start")}
             >
               Shop the collection
             </Link>
@@ -101,7 +102,7 @@ function Index() {
               </p>
               <Link
                 to="/spur-hive"
-                className="mt-6 inline-flex w-fit max-w-full items-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand"
+                className={ctaPrimaryClassName("mt-6 w-fit")}
               >
                 Explore the Spur Hive
               </Link>

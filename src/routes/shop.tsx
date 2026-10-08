@@ -96,7 +96,7 @@ function CategoryChip({
       type="button"
       onClick={onClick}
       className={
-        "min-h-11 shrink-0 snap-start rounded-full border px-4 py-2 text-sm font-semibold transition " +
+        "min-h-9 shrink-0 snap-start rounded-full border px-3 py-1.5 text-xs font-semibold transition sm:min-h-11 sm:px-4 sm:py-2 sm:text-sm " +
         (active
           ? "border-brand-dark bg-brand-dark text-[var(--white-text)]"
           : "border-border bg-card text-foreground hover:bg-muted")

@@ -6,6 +6,7 @@ import { ProductCard } from "@/components/product-card";
 import { ProductImage, ProductPhoto } from "@/components/product-image";
 import { useCart } from "@/lib/cart-store";
 import { formatPrice } from "@/lib/currency";
+import { ctaOutlineClassName, ctaPrimaryClassName } from "@/lib/cta-button";
 import { pageShell } from "@/lib/layout";
 import { getProduct, categoryLabel, productImages, productPrice, relatedProducts, type Product } from "@/lib/products";
 
@@ -150,33 +151,35 @@ function ProductPage() {
             </div>
           )}
 
-          <div className="mt-8 flex flex-wrap items-center gap-2">
-            <div className="inline-flex h-9 shrink-0 items-center rounded-full border border-border bg-card">
+          <div className="mt-8 flex flex-row flex-wrap items-center gap-2 sm:gap-3">
+            <div className="inline-flex h-9 shrink-0 items-center self-start rounded-full border border-border bg-card sm:min-h-11">
               <button
                 type="button"
                 aria-label="Decrease quantity"
                 onClick={() => setQty((q) => Math.max(1, q - 1))}
-                className="flex h-9 w-9 items-center justify-center text-foreground hover:text-brand-dark"
+                className="flex size-9 items-center justify-center text-foreground hover:text-brand-dark sm:size-11"
               >
-                <Minus className="size-3.5" />
+                <Minus className="size-3.5 sm:size-4" />
               </button>
-              <span className="w-8 text-center text-sm font-semibold tabular-nums">{qty}</span>
+              <span className="w-8 text-center text-sm font-semibold tabular-nums sm:w-10">{qty}</span>
               <button
                 type="button"
                 aria-label="Increase quantity"
                 onClick={() => setQty((q) => q + 1)}
-                className="flex h-9 w-9 items-center justify-center text-foreground hover:text-brand-dark"
+                className="flex size-9 items-center justify-center text-foreground hover:text-brand-dark sm:size-11"
               >
-                <Plus className="size-3.5" />
+                <Plus className="size-3.5 sm:size-4" />
               </button>
             </div>
             <button
               type="button"
               disabled={!inStock}
               onClick={() => handleAdd(false)}
-              className="inline-flex h-9 items-center justify-center gap-1.5 rounded-full bg-brand-dark px-4 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand disabled:cursor-not-allowed disabled:opacity-50"
+              className={ctaPrimaryClassName(
+                "min-w-[9rem] flex-1 gap-1.5 disabled:cursor-not-allowed disabled:opacity-50 sm:flex-none",
+              )}
             >
-              <ShoppingBag className="size-3.5" />
+              <ShoppingBag className="size-3.5 sm:size-4" />
               {inStock ? "Add to cart" : "Out of stock"}
             </button>
           </div>
@@ -184,7 +187,9 @@ function ProductPage() {
             type="button"
             disabled={!inStock}
             onClick={() => handleAdd(true)}
-            className="mt-2 inline-flex h-9 w-full max-w-xs items-center justify-center rounded-full border border-brand-dark px-4 text-sm font-semibold text-brand-dark transition hover:bg-muted-green disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+            className={ctaOutlineClassName(
+              "mt-2 w-full border-brand-dark text-brand-dark hover:bg-muted-green disabled:cursor-not-allowed disabled:opacity-50 sm:max-w-xs sm:w-auto",
+            )}
           >
             Buy now
           </button>

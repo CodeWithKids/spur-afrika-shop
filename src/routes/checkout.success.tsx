@@ -3,6 +3,7 @@ import { z } from "zod";
 import { pageShell } from "@/lib/layout";
 import { getOrderByExternalReference } from "@/lib/orders/service";
 import { isSupabaseConfigured } from "@/lib/supabase/admin";
+import { ctaOutlineClassName, ctaPrimaryClassName } from "@/lib/cta-button";
 import { formatPrice } from "@/lib/currency";
 import type { Currency } from "@/lib/currency";
 
@@ -90,18 +91,15 @@ function CheckoutSuccessPage() {
         </div>
       )}
 
-      <div className="mt-8 flex flex-wrap gap-4">
-        <Link
-          to="/shop"
-          className="inline-flex rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] hover:bg-brand"
-        >
+      <div className="mt-8 flex flex-row flex-wrap items-center gap-2 sm:gap-3">
+        <Link to="/shop" className={ctaPrimaryClassName("flex-1 min-[420px]:flex-none sm:flex-none")}>
           Continue shopping
         </Link>
         {ref && (
           <Link
             to="/checkout/success"
             search={{ ref }}
-            className="inline-flex rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted"
+            className={ctaOutlineClassName("flex-1 min-[420px]:flex-none sm:flex-none")}
           >
             Refresh status
           </Link>

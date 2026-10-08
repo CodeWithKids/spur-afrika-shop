@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import spurHiveHero from "@/assets/spur-hive/hive-hero.jpg";
 import shoeBeforeAfter from "@/assets/spur-hive/shoe-before-after.jpg";
 import communityShoeGiveaway from "@/assets/spur-hive/community-shoe-giveaway.jpg";
+import { ctaPrimaryClassName } from "@/lib/cta-button";
 import { pageShell, sectionPadding } from "@/lib/layout";
 
 export const Route = createFileRoute("/spur-hive")({
@@ -170,7 +171,7 @@ function SpurHivePage() {
                 href="https://spurafrika.org"
                 target="_blank"
                 rel="noreferrer"
-                className="mt-7 inline-flex items-center justify-center self-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand md:self-start"
+                className={ctaPrimaryClassName("mt-7 w-full self-center sm:w-auto md:self-start")}
               >
                 Join the Spur Hive
               </a>

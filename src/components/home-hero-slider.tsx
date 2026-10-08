@@ -12,6 +12,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
+import { ctaHeroGhostClassName, ctaHeroRowClassName, ctaPrimaryClassName } from "@/lib/cta-button";
 import { pageShell } from "@/lib/layout";
 
 const SLIDES = [
@@ -180,10 +181,10 @@ export function HomeHeroSlider() {
             Every tee, hoodie and mug helps fund education, mentorship and community programs for
             children and families in Kenya.
           </p>
-          <div className="mt-4 flex flex-row flex-wrap items-center gap-2 sm:mt-7 sm:gap-3 md:mt-8">
+          <div className={cn("mt-4 sm:mt-7 md:mt-8", ctaHeroRowClassName)}>
             <Link
               to="/shop"
-              className="inline-flex min-h-9 flex-1 items-center justify-center rounded-full bg-brand-dark px-3 py-2 text-xs font-semibold text-[var(--white-text)] transition hover:bg-brand min-[420px]:flex-none min-[420px]:px-4 sm:min-h-11 sm:px-6 sm:py-3 sm:text-sm"
+              className={ctaPrimaryClassName("min-h-9 flex-1 min-[420px]:flex-none sm:min-h-11")}
             >
               Shop the collection
             </Link>
@@ -191,7 +192,7 @@ export function HomeHeroSlider() {
               href="https://spurafrika.org"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-9 flex-1 items-center justify-center rounded-full border border-[var(--white-text)]/30 bg-[var(--white-text)]/10 px-3 py-2 text-center text-xs font-semibold leading-tight text-[var(--white-text)] backdrop-blur-sm transition hover:bg-[var(--white-text)]/20 min-[420px]:flex-none min-[420px]:px-4 sm:min-h-11 sm:px-6 sm:py-3 sm:text-sm"
+              className={ctaHeroGhostClassName("flex-1 min-[420px]:flex-none")}
             >
               Learn about Spur Afrika
             </a>
