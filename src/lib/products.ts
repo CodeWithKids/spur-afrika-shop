@@ -18,12 +18,13 @@ import jacketOrangeFront1 from "@/assets/jackets/orange-front-1.jpg";
 import jacketOrangeFront2 from "@/assets/jackets/orange-front-2.jpg";
 import teeFrontBack from "@/assets/products/tee-front-back.jpg";
 import hoodieCharcoal from "@/assets/products/hoodie-charcoal.jpg";
-import baseballCap from "@/assets/products/baseball-cap-trio-1.jpg";
+import baseballCap from "@/assets/products/baseball-cap.jpg";
 import capTealModel from "@/assets/products/cap-spur-hive/teal-model.png";
 import capTealLifestyle from "@/assets/products/cap-spur-hive/01-lifestyle.png";
 import capTealCollage from "@/assets/products/cap-spur-hive/teal-collage.jpg";
 import capTealFeatures from "@/assets/products/cap-spur-hive/teal-features.jpg";
 import capBlackCreamHero from "@/assets/products/cap-black-cream/black-hero.jpg";
+import capBlackCreamModel from "@/assets/products/cap-black-cream/black-cream-model.png";
 import capBlackFeatures from "@/assets/products/cap-black-cream/black-features.jpg";
 import capMaroonCreamModel from "@/assets/products/cap-maroon-cream/maroon-model.jpg";
 import capMaroonFeatures from "@/assets/products/cap-maroon-cream/maroon-features.jpg";
@@ -148,7 +149,6 @@ export const PRODUCTS: Product[] = [
     variantLabel: "Size",
     variants: sizeVariants(6),
     accent: "spruce",
-    badge: "Best seller",
   },
   {
     slug: "spur-jacket",
@@ -191,6 +191,7 @@ export const PRODUCTS: Product[] = [
     variantLabel: "Size",
     variants: sizeVariants(8),
     accent: "brand-dark",
+    badge: "Best seller",
   },
   {
     slug: "heavy-polyester-tee",
@@ -229,7 +230,7 @@ export const PRODUCTS: Product[] = [
         id: "black-cream",
         label: "Black / Cream",
         swatch: "#1C1C1C",
-        images: [capBlackCreamHero, capBlackFeatures],
+        images: [capBlackCreamHero, capBlackCreamModel, capBlackFeatures],
       },
       {
         id: "maroon-cream",
