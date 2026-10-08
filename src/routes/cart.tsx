@@ -77,8 +77,12 @@ function CartPage() {
               key={`${product.slug}-${line.colorId ?? ""}-${line.variantId ?? ""}`}
               className="grid grid-cols-[5rem_minmax(0,1fr)] gap-3 p-3 sm:grid-cols-[6rem_minmax(0,1fr)] sm:gap-4 sm:p-4"
             >
-              <div className="w-20 shrink-0 sm:w-24">
-                <ProductImage product={product} colorId={line.colorId} />
+              <div className="aspect-square w-20 shrink-0 overflow-hidden rounded-lg bg-muted-grey sm:w-24">
+                <ProductImage
+                  product={product}
+                  colorId={line.colorId}
+                  className="size-full rounded-none"
+                />
               </div>
               <div className="flex min-w-0 flex-1 flex-col">
                 <div className="flex items-start justify-between gap-4">

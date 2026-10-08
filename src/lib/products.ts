@@ -18,20 +18,18 @@ import jacketOrangeFront1 from "@/assets/jackets/orange-front-1.jpg";
 import jacketOrangeFront2 from "@/assets/jackets/orange-front-2.jpg";
 import teeFrontBack from "@/assets/products/tee-front-back.jpg";
 import hoodieCharcoal from "@/assets/products/hoodie-charcoal.jpg";
+import baseballCap from "@/assets/products/baseball-cap.jpg";
 import capSpurHiveLifestyle from "@/assets/products/cap-spur-hive/01-lifestyle.png";
-import capSpurHiveFront from "@/assets/products/cap-spur-hive/02-front.png";
-import capSpurHiveSide from "@/assets/products/cap-spur-hive/03-side.png";
-import capSpurHiveBack from "@/assets/products/cap-spur-hive/04-back.png";
 import capSpurHiveEmbroidery from "@/assets/products/cap-spur-hive/05-embroidery.png";
+import capBlackCreamLifestyle from "@/assets/products/cap-black-cream/01-lifestyle.png";
+import capBlackCreamEmbroidery from "@/assets/products/cap-black-cream/05-embroidery.png";
+import capMaroonCreamLifestyle from "@/assets/products/cap-maroon-cream/01-lifestyle.png";
+import capMaroonCreamEmbroidery from "@/assets/products/cap-maroon-cream/05-embroidery.png";
 import bambooFlaskBranded from "@/assets/products/bamboo-flask-branded.jpg";
 import bambooFlaskPersonalized from "@/assets/products/bamboo-flask-personalized.jpg";
 import bambooFlaskNames from "@/assets/products/bamboo-flask-names.jpg";
 import hexFlaskWhite from "@/assets/products/hex-flask-white.jpg";
 import hexFlaskJoin from "@/assets/products/hex-flask-join.jpg";
-import waterBottleBlack from "@/assets/products/water-bottle-black.jpg";
-import waterBottleBlackAlt from "@/assets/products/water-bottle-black-alt.jpg";
-import waterBottleFrosted from "@/assets/products/water-bottle-frosted.jpg";
-import waterBottleDuo from "@/assets/products/water-bottle-duo.jpg";
 import chargingKitOpen from "@/assets/products/charging-kit-open.jpg";
 import dynamicDuoSet from "@/assets/products/dynamic-duo-set.jpg";
 import christmasBucketCampaign from "@/assets/products/christmas-bucket-campaign.jpg";
@@ -208,28 +206,67 @@ export const PRODUCTS: Product[] = [
     images: [teeFrontBack],
   },
   {
-    slug: "baseball-cap",
+    slug: "spur-hive-baseball-cap",
     name: "Spur Hive Baseball Cap",
     category: "apparel",
     shortDescription: "Vintage-wash cap with Spur Hive embroidery.",
     description:
-      "Premium cotton six-panel cap with a vintage wash finish, detailed Spur Hive embroidery, and an adjustable strap. Crown in washed teal with a cream brim. Front reads Spur Hive · Est. 2025; back arc: Grow. Connect. Thrive. Proceeds support Spur Afrika community and learner programs.",
-    priceKES: 1500,
-    priceUSD: 12,
-    priceAUD: 19,
+      "Premium cotton six-panel cap with detailed Spur Hive embroidery and an adjustable strap. Available in Teal / Cream, Black / Cream, and Maroon / Cream. Front reads Spur Hive · Est. 2025; back arc: Grow. Connect. Thrive. Proceeds support Spur Afrika community and learner programs.",
+    priceKES: 2500,
+    priceUSD: 19,
+    priceAUD: 29,
     colorLabel: "Colour",
     colors: [
       {
         id: "teal-cream",
         label: "Teal / Cream",
         swatch: "#5A8F9A",
-        images: [
-          capSpurHiveLifestyle,
-          capSpurHiveFront,
-          capSpurHiveSide,
-          capSpurHiveBack,
-          capSpurHiveEmbroidery,
-        ],
+        images: [capSpurHiveLifestyle, capSpurHiveEmbroidery],
+      },
+      {
+        id: "black-cream",
+        label: "Black / Cream",
+        swatch: "#1C1C1C",
+        images: [capBlackCreamLifestyle, capBlackCreamEmbroidery],
+      },
+      {
+        id: "maroon-cream",
+        label: "Maroon / Cream",
+        swatch: "#6B1E2F",
+        images: [capMaroonCreamLifestyle, capMaroonCreamEmbroidery],
+      },
+    ],
+    accent: "brand-dark",
+  },
+  {
+    slug: "baseball-cap",
+    name: "Baseball Cap",
+    category: "apparel",
+    shortDescription: "Structured cap with Spur Hive embroidery.",
+    description:
+      "Classic six-panel baseball cap with Spur Hive embroidery on the front (Est. 2025). Comfortable fit for everyday wear. Available in White, Navy and Maroon. Proceeds support Spur Afrika community and learner programs.",
+    priceKES: 1500,
+    priceUSD: 12,
+    priceAUD: 19,
+    colorLabel: "Colour",
+    colors: [
+      {
+        id: "white",
+        label: "White",
+        swatch: "#F4F4F0",
+        images: [baseballCap],
+      },
+      {
+        id: "navy",
+        label: "Navy",
+        swatch: "#1B2A4A",
+        images: [baseballCap],
+      },
+      {
+        id: "maroon",
+        label: "Maroon",
+        swatch: "#6B1E2F",
+        images: [baseballCap],
       },
     ],
     accent: "brand-dark",
@@ -259,19 +296,6 @@ export const PRODUCTS: Product[] = [
     priceAUD: 29,
     accent: "brand-light",
     images: [hexFlaskWhite, hexFlaskJoin],
-  },
-  {
-    slug: "reusable-water-bottle",
-    name: "Reusable Water Bottle",
-    category: "drinkware",
-    shortDescription: "Stay hydrated while supporting the mission.",
-    description:
-      "Stay hydrated while supporting education. This lightweight, durable water bottle is designed for on-the-go use and helps reduce plastic waste. Perfect for school, office, gym, or travel.",
-    priceKES: 2000,
-    priceUSD: 15,
-    priceAUD: 23,
-    accent: "spruce",
-    images: [waterBottleBlack, waterBottleBlackAlt, waterBottleFrosted, waterBottleDuo],
   },
   {
     slug: "charging-kit",

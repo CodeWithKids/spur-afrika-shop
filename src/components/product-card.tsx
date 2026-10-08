@@ -14,8 +14,8 @@ export function ProductCard({ product }: { product: Product }) {
       params={{ slug: product.slug }}
       className="group flex h-full min-w-0 flex-col gap-3 rounded-xl bg-card p-3 transition hover:shadow-md"
     >
-      <div className="relative">
-        <ProductImage product={product} />
+      <div className="relative aspect-square overflow-hidden rounded-lg bg-muted-grey">
+        <ProductImage product={product} className="size-full rounded-none" />
         {product.badge && (
           <span className="absolute left-2 top-2 rounded-full bg-brand-dark px-2.5 py-1 text-[10px] font-semibold text-[var(--white-text)] sm:left-3 sm:top-3 sm:px-3 sm:text-xs">
             {product.badge}

@@ -1,6 +1,14 @@
 import { productImages, ACCENT_BG, type Product } from "@/lib/products";
 import { cn } from "@/lib/utils";
 
+/** Square catalogue frame: full photo visible, no crop (shop grid, PDP, cart). */
+export function productPhotoClassName(className?: string) {
+  return cn(
+    "aspect-square w-full rounded-lg bg-muted-grey object-contain object-center",
+    className,
+  );
+}
+
 export function ProductImage({
   product,
   className,
@@ -17,20 +25,15 @@ export function ProductImage({
   const images = imagesOverride ?? productImages(product, colorId);
   const safeIndex = Math.min(imageIndex, Math.max(0, (images?.length ?? 1) - 1));
   const image = images?.[safeIndex];
-  const varsityMockup = product.category === "spur-varsity";
-  const catalogPhoto = varsityMockup || product.slug === "baseball-cap";
 
   if (image) {
     return (
       <img
         src={image}
         alt={product.name}
-        className={cn(
-          catalogPhoto
-            ? "aspect-square w-full rounded-lg bg-muted-grey object-contain object-center"
-            : "aspect-square w-full rounded-lg object-cover object-[center_20%]",
-          className,
-        )}
+        className={productPhotoClassName(className)}
+        loading="lazy"
+        decoding="async"
       />
     );
   }

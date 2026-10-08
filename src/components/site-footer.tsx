@@ -26,8 +26,7 @@ export function SiteFooter() {
         <div className="flex flex-col items-center gap-6 text-center md:items-start md:gap-8 md:text-left">
           <FooterLogo />
           <div className="type-body-sm" style={{ opacity: 0.85 }}>
-            <div>© {new Date().getFullYear()} Spur Afrika Australia Ltd</div>
-            <div>ABN 34 169 636 631</div>
+            <div>© {new Date().getFullYear()} Spur Afrika</div>
           </div>
           <div className="flex items-center gap-2" style={{ opacity: 0.7 }}>
             <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook" className="grid size-11 place-items-center">

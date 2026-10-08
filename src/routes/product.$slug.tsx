@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Minus, Plus, ShoppingBag } from "lucide-react";
 import { toast } from "sonner";
 import { ProductCard } from "@/components/product-card";
-import { ProductImage } from "@/components/product-image";
+import { ProductImage, productPhotoClassName } from "@/components/product-image";
 import { useCart } from "@/lib/cart-store";
 import { formatPrice } from "@/lib/currency";
 import { pageShell } from "@/lib/layout";
@@ -240,17 +240,7 @@ function ProductGallery({ product, colorId }: { product: Product; colorId?: stri
                 (safeIndex === index ? "border-brand-dark" : "border-transparent hover:border-border")
               }
             >
-              <img
-                src={src}
-                alt=""
-                className={
-                  product.category === "spur-varsity"
-                    ? "aspect-[3/4] w-full bg-muted-grey object-contain object-center"
-                    : product.slug === "baseball-cap"
-                      ? "aspect-square w-full bg-muted-grey object-contain object-center"
-                      : "aspect-square w-full object-cover object-[center_20%]"
-                }
-              />
+              <img src={src} alt="" className={productPhotoClassName()} />
             </button>
           ))}
         </div>
