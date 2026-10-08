@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import spurHiveHero from "@/assets/spur-hive/spur-hive-hero-community.jpg";
+import spurHiveHero from "@/assets/spur-hive/hive-hero.jpg";
 import shoeBeforeAfter from "@/assets/spur-hive/shoe-before-after.jpg";
 import communityShoeGiveaway from "@/assets/spur-hive/community-shoe-giveaway.jpg";
 import { pageShell, sectionPadding } from "@/lib/layout";
@@ -51,11 +51,11 @@ function SpurHivePage() {
   return (
     <div>
       {/* Page hero */}
-      <section className="relative min-h-[min(52vh,480px)] overflow-hidden text-[var(--white-text)]">
+      <section className="relative min-h-[min(58vh,540px)] overflow-hidden text-[var(--white-text)] sm:min-h-[min(62vh,580px)]">
         <img
           src={spurHiveHero}
-          alt="Spur Afrika community members and children gathered outdoors"
-          className="absolute inset-0 h-full w-full object-cover object-[center_20%]"
+          alt="Children and Spur Afrika team holding artwork at a community gathering"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_12%] sm:object-[50%_18%]"
           fetchPriority="high"
         />
         <div
@@ -63,7 +63,7 @@ function SpurHivePage() {
           aria-hidden
         />
         <div
-          className={`relative flex min-h-[min(52vh,480px)] flex-col justify-center py-12 sm:py-16 ${pageShell}`}
+          className={`relative flex min-h-[min(58vh,540px)] flex-col justify-center py-12 sm:min-h-[min(62vh,580px)] sm:py-16 ${pageShell}`}
         >
           <span className="type-eyebrow" style={{ color: "var(--brand-light-green)" }}>
             Spur Hive
