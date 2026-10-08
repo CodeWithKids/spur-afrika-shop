@@ -51,27 +51,27 @@ function SpurHivePage() {
   return (
     <div>
       {/* Page hero */}
-      <section className="relative min-h-[min(58vh,540px)] overflow-hidden text-[var(--white-text)] sm:min-h-[min(62vh,580px)]">
+      <section className="relative min-h-[clamp(22rem,58svh,540px)] overflow-hidden text-[var(--white-text)] sm:min-h-[clamp(24rem,62svh,580px)] md:min-h-[clamp(28rem,62vh,620px)]">
         <img
           src={spurHiveHero}
           alt="Children and Spur Afrika team holding artwork at a community gathering"
-          className="absolute inset-0 h-full w-full object-cover object-[50%_12%] sm:object-[50%_18%]"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_10%] sm:object-[50%_14%] md:object-[50%_18%]"
           fetchPriority="high"
         />
         <div
-          className="absolute inset-0 bg-gradient-to-r from-[#2f2f2f]/92 via-[#2f2f2f]/52 to-[#2f2f2f]/18"
+          className="absolute inset-0 bg-gradient-to-t from-[#2f2f2f]/95 via-[#2f2f2f]/55 to-[#2f2f2f]/20 md:bg-gradient-to-r md:from-[#2f2f2f]/92 md:via-[#2f2f2f]/52 md:to-[#2f2f2f]/18"
           aria-hidden
         />
         <div
-          className={`relative flex min-h-[min(58vh,540px)] flex-col justify-center py-12 sm:min-h-[min(62vh,580px)] sm:py-16 ${pageShell}`}
+          className={`relative flex min-h-[clamp(22rem,58svh,540px)] flex-col justify-end py-10 pb-[max(2.5rem,env(safe-area-inset-bottom))] sm:min-h-[clamp(24rem,62svh,580px)] sm:justify-center sm:py-16 md:min-h-[clamp(28rem,62vh,620px)] ${pageShell}`}
         >
           <span className="type-eyebrow" style={{ color: "var(--brand-light-green)" }}>
             Spur Hive
           </span>
-          <h1 className="mt-3 max-w-2xl type-display text-[var(--white-text)]">
+          <h1 className="mt-2 max-w-2xl text-balance type-display text-[var(--white-text)] text-[clamp(1.75rem,5vw+0.75rem,3.75rem)] leading-[1.08] sm:mt-3">
             A community of changemakers
           </h1>
-          <p className="mt-5 max-w-2xl type-body-lg" style={{ opacity: 0.9 }}>
+          <p className="mt-4 max-w-2xl text-pretty type-body-lg sm:mt-5 text-[clamp(1rem,2vw+0.75rem,1.25rem)]" style={{ opacity: 0.9 }}>
             The Spur Hive is more than a giving community. It is a platform that
             lets members actively participate in experiences and initiatives that
             create meaningful impact for learners and communities, investing in

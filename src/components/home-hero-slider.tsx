@@ -18,17 +18,17 @@ const SLIDES = [
   {
     src: heroTeam,
     alt: "Spur Afrika team members wearing branded hoodies outdoors",
-    objectPosition: "50% 17%",
+    imageClass: "object-[50%_28%] md:object-[50%_17%]",
   },
   {
     src: spurHiveTeam,
     alt: "Spur Afrika team members in branded jackets",
-    objectPosition: "58% 25%",
+    imageClass: "object-[55%_32%] md:object-[58%_25%]",
   },
   {
     src: artWorkshop,
     alt: "Children at a creative art workshop with easels and paint supplies",
-    objectPosition: "60% 29%",
+    imageClass: "object-[50%_35%] md:object-[60%_29%]",
   },
 ] as const;
 
@@ -40,32 +40,20 @@ function shouldLoadSlideImage(index: number, active: number, total: number) {
   return index === (active + 1) % total;
 }
 
-const DESKTOP_OVERLAY_DEFAULT =
+const DESKTOP_OVERLAY =
   "linear-gradient(105deg, rgba(47, 47, 47, 0.9) 0%, rgba(47, 47, 47, 0.52) 34%, rgba(47, 47, 47, 0.12) 100%)";
 
 const AUTOPLAY_MS = 6000;
 
-/** Shared min-height across section, slide frames, and content stack. */
-const heroMinHeight = cn(
-  "min-h-[min(100svh,680px)] min-h-[min(100dvh,680px)]",
-  "sm:min-h-[min(92svh,760px)] sm:min-h-[min(92dvh,760px)]",
-  "md:min-h-[min(88vh,820px)]",
-  "lg:min-h-[min(88vh,880px)]",
-  "xl:min-h-[min(85vh,920px)]",
-  "max-h-[32rem]:min-h-[26rem] max-h-[32rem]:sm:min-h-[28rem]",
+/** Min height tuned per breakpoint; landscape phones stay compact via media query class. */
+const heroSectionHeight = cn(
+  "min-h-[clamp(26rem,88svh,36rem)]",
+  "sm:min-h-[clamp(28rem,86svh,44rem)]",
+  "md:min-h-[clamp(32rem,82vh,52rem)]",
+  "lg:min-h-[clamp(34rem,80vh,55rem)]",
+  "xl:min-h-[clamp(36rem,78vh,58rem)]",
+  "hero-landscape-compact",
 );
-
-const heroContentPadding = cn(
-  "flex flex-col justify-end",
-  "pt-8 pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))]",
-  "sm:justify-center sm:pt-12 sm:pb-[calc(6.5rem+env(safe-area-inset-bottom,0px))]",
-  "md:justify-center md:py-20",
-  "lg:py-24",
-  "max-h-[32rem]:justify-center max-h-[32rem]:py-6 max-h-[32rem]:sm:py-8",
-);
-
-const heroControlsPadding =
-  "pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))] sm:pb-[calc(1.75rem+env(safe-area-inset-bottom,0px))]";
 
 export function HomeHeroSlider() {
   const [api, setApi] = useState<CarouselApi>();
@@ -103,9 +91,14 @@ export function HomeHeroSlider() {
   }, [active]);
 
   return (
-    <section className={cn("relative isolate overflow-hidden bg-[#2f2f2f]", heroMinHeight)}>
+    <section
+      className={cn(
+        "relative isolate flex flex-col overflow-hidden bg-[#2f2f2f]",
+        heroSectionHeight,
+      )}
+    >
       <Carousel
-        className="absolute inset-0 h-full w-full"
+        className="absolute inset-0 z-0 h-full w-full [&>div]:h-full"
         opts={{ loop: true, duration: 35 }}
         plugins={[autoplay.current]}
         setApi={setApi}
@@ -113,13 +106,15 @@ export function HomeHeroSlider() {
         <CarouselContent className="-ml-0 h-full">
           {SLIDES.map((slide, index) => (
             <CarouselItem key={slide.src} className="h-full basis-full pl-0">
-              <div className={cn("relative h-full w-full bg-[#2f2f2f]", heroMinHeight)}>
-                {shouldLoadSlideImage(index, active, SLIDES.length) ? (
+              <div className={cn("relative h-full w-full bg-[#2f2f2f]", heroSectionHeight)}>
+                {index === 0 || shouldLoadSlideImage(index, active, SLIDES.length) ? (
                   <img
                     src={slide.src}
                     alt={slide.alt}
-                    className="absolute inset-0 h-full w-full object-cover"
-                    style={{ objectPosition: slide.objectPosition }}
+                    className={cn(
+                      "absolute inset-0 h-full w-full object-cover",
+                      slide.imageClass,
+                    )}
                     fetchPriority={index === 0 ? "high" : undefined}
                     loading={index === active ? "eager" : "lazy"}
                     decoding={index === 0 ? "sync" : "async"}
@@ -131,10 +126,15 @@ export function HomeHeroSlider() {
         </CarouselContent>
       </Carousel>
 
-      {/* Diagonal wash at all breakpoints — copy left, photo on the right */}
+      {/* Mobile / tablet: strong bottom wash for copy legibility */}
       <div
-        className="pointer-events-none absolute inset-0 z-[1] transition-[background] duration-700"
-        style={{ background: DESKTOP_OVERLAY_DEFAULT }}
+        className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-[#2f2f2f]/95 via-[#2f2f2f]/72 to-[#2f2f2f]/25 md:hidden"
+        aria-hidden
+      />
+      {/* md+: diagonal wash — copy left, photo right */}
+      <div
+        className="pointer-events-none absolute inset-0 z-[1] hidden md:block"
+        style={{ background: DESKTOP_OVERLAY }}
         aria-hidden
       />
       <div
@@ -142,14 +142,16 @@ export function HomeHeroSlider() {
         aria-hidden
       />
 
-      <div
-        className={cn(
-          "relative z-[2] w-full",
-          heroMinHeight,
-          heroContentPadding,
-          pageShell,
-        )}
-      >
+      <div className="relative z-[2] flex min-h-0 flex-1 flex-col">
+        <div
+          className={cn(
+            "flex flex-1 flex-col justify-end",
+            "pb-4 pt-[max(1.25rem,env(safe-area-inset-top))]",
+            "sm:justify-center sm:pb-6 sm:pt-10",
+            "md:justify-center md:py-16 lg:py-20",
+            pageShell,
+          )}
+        >
         <div
           className={cn(
             "w-full max-w-xl [text-shadow:0_1px_12px_rgba(0,0,0,0.35)]",
@@ -160,23 +162,28 @@ export function HomeHeroSlider() {
             Spur Afrika · Merch
           </span>
           <h1
-            className="mt-3 type-display sm:mt-4 max-[380px]:text-[1.85rem] max-[380px]:leading-[1.12]"
+            className={cn(
+              "mt-2 type-display text-balance sm:mt-3",
+              "text-[clamp(1.75rem,6.5vw+0.5rem,3.75rem)] leading-[1.08]",
+            )}
             style={{ color: "var(--white-text)" }}
           >
-            Wear the mission.{" "}
-            <span style={{ color: "var(--brand-light-green)" }}>Fund the impact.</span>
+            Wear the mission. Fund the impact.
           </h1>
           <p
-            className="mt-3 max-w-lg type-body-lg sm:mt-5 md:mt-6 max-[380px]:text-base"
+            className={cn(
+              "mt-3 max-w-lg text-pretty type-body-lg sm:mt-5 md:mt-6",
+              "text-[clamp(1rem,2.5vw+0.75rem,1.25rem)] leading-snug sm:leading-relaxed",
+            )}
             style={{ color: "var(--white-text)", opacity: 0.9 }}
           >
             Every tee, hoodie and mug helps fund education, mentorship and community programs for
             children and families in Kenya.
           </p>
-          <div className="mt-5 flex flex-col gap-3 sm:mt-7 sm:flex-row sm:flex-wrap md:mt-8">
+          <div className="mt-4 flex flex-row flex-wrap items-center gap-2 sm:mt-7 sm:gap-3 md:mt-8">
             <Link
               to="/shop"
-              className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-brand-dark px-6 py-3 text-sm font-semibold text-[var(--white-text)] transition hover:bg-brand sm:w-auto"
+              className="inline-flex min-h-9 flex-1 items-center justify-center rounded-full bg-brand-dark px-3 py-2 text-xs font-semibold text-[var(--white-text)] transition hover:bg-brand min-[420px]:flex-none min-[420px]:px-4 sm:min-h-11 sm:px-6 sm:py-3 sm:text-sm"
             >
               Shop the collection
             </Link>
@@ -184,21 +191,21 @@ export function HomeHeroSlider() {
               href="https://spurafrika.org"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-[var(--white-text)]/30 bg-[var(--white-text)]/10 px-6 py-3 text-center text-sm font-semibold text-[var(--white-text)] backdrop-blur-sm transition hover:bg-[var(--white-text)]/20 sm:w-auto"
+              className="inline-flex min-h-9 flex-1 items-center justify-center rounded-full border border-[var(--white-text)]/30 bg-[var(--white-text)]/10 px-3 py-2 text-center text-xs font-semibold leading-tight text-[var(--white-text)] backdrop-blur-sm transition hover:bg-[var(--white-text)]/20 min-[420px]:flex-none min-[420px]:px-4 sm:min-h-11 sm:px-6 sm:py-3 sm:text-sm"
             >
               Learn about Spur Afrika
             </a>
           </div>
         </div>
-      </div>
+        </div>
 
-      <div
-        className={cn(
-          "absolute bottom-0 left-0 right-0 z-[2]",
-          heroControlsPadding,
-          pageShell,
-        )}
-      >
+        <div
+          className={cn(
+            "w-full shrink-0",
+            "pb-[max(1rem,env(safe-area-inset-bottom))] pt-2 sm:pb-[max(1.25rem,env(safe-area-inset-bottom))]",
+            pageShell,
+          )}
+        >
         <div className="flex items-center justify-between gap-3 sm:gap-4">
           <div
             className="flex min-w-0 flex-1 flex-wrap gap-1.5 sm:gap-2"
@@ -214,10 +221,10 @@ export function HomeHeroSlider() {
                 aria-label={`Go to slide ${index + 1}: ${slide.alt}`}
                 onClick={() => api?.scrollTo(index)}
                 className={cn(
-                  "h-2 shrink-0 rounded-full transition-all",
+                  "h-2.5 shrink-0 rounded-full transition-all sm:h-2",
                   active === index
                     ? "w-7 bg-[var(--brand-light-green)] sm:w-8"
-                    : "w-2 bg-[var(--white-text)]/40 hover:bg-[var(--white-text)]/70",
+                    : "w-2.5 bg-[var(--white-text)]/40 hover:bg-[var(--white-text)]/70 sm:w-2",
                 )}
               />
             ))}
@@ -227,7 +234,7 @@ export function HomeHeroSlider() {
               type="button"
               aria-label="Previous slide"
               onClick={() => api?.scrollPrev()}
-              className="inline-flex size-10 items-center justify-center rounded-full border border-[var(--white-text)]/30 bg-[var(--white-text)]/10 text-[var(--white-text)] transition hover:bg-[var(--white-text)]/20 sm:size-9"
+              className="inline-flex size-11 items-center justify-center rounded-full border border-[var(--white-text)]/30 bg-[var(--white-text)]/10 text-[var(--white-text)] transition hover:bg-[var(--white-text)]/20 sm:size-10"
             >
               <ChevronLeft className="size-5" aria-hidden />
             </button>
@@ -235,11 +242,12 @@ export function HomeHeroSlider() {
               type="button"
               aria-label="Next slide"
               onClick={() => api?.scrollNext()}
-              className="inline-flex size-10 items-center justify-center rounded-full border border-[var(--white-text)]/30 bg-[var(--white-text)]/10 text-[var(--white-text)] transition hover:bg-[var(--white-text)]/20 sm:size-9"
+              className="inline-flex size-11 items-center justify-center rounded-full border border-[var(--white-text)]/30 bg-[var(--white-text)]/10 text-[var(--white-text)] transition hover:bg-[var(--white-text)]/20 sm:size-10"
             >
               <ChevronRight className="size-5" aria-hidden />
             </button>
           </div>
+        </div>
         </div>
       </div>
     </section>

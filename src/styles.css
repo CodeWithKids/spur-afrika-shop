@@ -6,7 +6,7 @@
 
 /*
  * Design tokens aligned with https://spurafrika.org/
- * Inter + primary green #97C93D + secondary greys #434343 / #2F2F2F.
+ * Inter + primary green matched to logo (#A4D037) + secondary greys #434343 / #2F2F2F.
  */
 
 @theme inline {
@@ -56,17 +56,17 @@
   --font-inter: "Inter", ui-sans-serif, system-ui, sans-serif;
   --radius: 0.5rem;
 
-  /* Matches spurafrika.org Tailwind palette */
-  --brand-light-green: #c9e4a5; /* primary-200 */
-  --brand-green: #97c93d; /* primary */
-  --brand-dark-green: #85b234; /* primary-500 */
+  /* Brand greens — primary sampled from spur-afrika-logo.png */
+  --brand-green: #a4d037;
+  --brand-dark-green: #8fbb2f;
+  --brand-light-green: #cfe6a5;
 
   --spruce: #434343; /* secondary */
   --dark-spruce: #2f2f2f; /* secondary-600 */
 
   --off-white: #ffffff;
   --muted-grey: #eaeaea; /* secondary-50 */
-  --muted-green: #eef5e4;
+  --muted-green: #f0f6e4;
   --grey: #dddddd; /* secondary-100 */
 
   --text: #434343;
@@ -114,6 +114,13 @@
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 15%);
   --ring: var(--brand-light-green);
+}
+
+/* Home hero: shorter band on landscape phones so copy + controls fit */
+@media (max-height: 32rem) and (orientation: landscape) {
+  .hero-landscape-compact {
+    min-height: 22rem;
+  }
 }
 
 @layer base {
