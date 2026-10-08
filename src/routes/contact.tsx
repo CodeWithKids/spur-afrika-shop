@@ -33,7 +33,7 @@ function ContactPage() {
           </li>
           <li className="flex items-start gap-3">
             <Phone className="mt-0.5 size-5 shrink-0 text-brand-dark" />
-            <a className="hover:underline" href="tel:+254119011808">+254 119 011808</a>
+            <a className="hover:underline" href="tel:+254720625685">+254 720 625685</a>
           </li>
           <li className="flex items-start gap-3">
             <MapPin className="mt-0.5 size-5 shrink-0 text-brand-dark" />

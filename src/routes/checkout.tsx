@@ -3,6 +3,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { useCart, priceLines } from "@/lib/cart-store";
 import { pageShell } from "@/lib/layout";
+import { CHECKOUT_COUNTRIES } from "@/lib/countries";
 import { formatPrice, SHIPPING_FLAT } from "@/lib/currency";
 
 export const Route = createFileRoute("/checkout")({
@@ -162,7 +163,7 @@ function CheckoutPage() {
                 <Field label="Delivery address" name="address" required />
                 <div className="grid gap-4 sm:grid-cols-2">
                   <Field label="City / Town" name="city" required />
-                  <Field label="Country" name="country" required />
+                  <SelectField label="Country" name="country" options={CHECKOUT_COUNTRIES} defaultValue="Kenya" required />
                 </div>
               </div>
             )}
@@ -216,6 +217,9 @@ function CheckoutPage() {
   );
 }
 
+const fieldControlClassName =
+  "mt-1 min-h-11 w-full rounded-md border border-border bg-background px-3 py-2 type-body-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30";
+
 function Field({
   label,
   name,
@@ -241,9 +245,43 @@ function Field({
         name={name}
         required={required}
         placeholder={placeholder}
-        className="mt-1 min-h-11 w-full rounded-md border border-border bg-background px-3 py-2 type-body-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+        className={fieldControlClassName}
       />
       {hint && <span className="mt-1.5 block type-body-sm text-muted-foreground">{hint}</span>}
+    </label>
+  );
+}
+
+function SelectField({
+  label,
+  name,
+  options,
+  required,
+  defaultValue,
+}: {
+  label: string;
+  name: string;
+  options: readonly string[];
+  required?: boolean;
+  defaultValue?: string;
+}) {
+  return (
+    <label className="block">
+      <span className="type-body-sm font-semibold text-foreground">
+        {label}{required && <span className="text-destructive"> *</span>}
+      </span>
+      <select
+        name={name}
+        required={required}
+        defaultValue={defaultValue ?? options[0]}
+        className={fieldControlClassName}
+      >
+        {options.map((country) => (
+          <option key={country} value={country}>
+            {country}
+          </option>
+        ))}
+      </select>
     </label>
   );
 }

@@ -18,12 +18,12 @@ import jacketOrangeFront1 from "@/assets/jackets/orange-front-1.jpg";
 import jacketOrangeFront2 from "@/assets/jackets/orange-front-2.jpg";
 import teeFrontBack from "@/assets/products/tee-front-back.jpg";
 import hoodieCharcoal from "@/assets/products/hoodie-charcoal.jpg";
-import baseballCap from "@/assets/products/baseball-cap.jpg";
+import baseballCap from "@/assets/products/baseball-cap-trio-1.jpg";
 import capSpurHiveLifestyle from "@/assets/products/cap-spur-hive/01-lifestyle.png";
 import capSpurHiveEmbroidery from "@/assets/products/cap-spur-hive/05-embroidery.png";
-import capBlackCreamLifestyle from "@/assets/products/cap-black-cream/01-lifestyle.png";
+import capBlackCreamHero from "@/assets/products/cap-black-cream/black-hero.jpg";
 import capBlackCreamEmbroidery from "@/assets/products/cap-black-cream/05-embroidery.png";
-import capMaroonCreamLifestyle from "@/assets/products/cap-maroon-cream/01-lifestyle.png";
+import capMaroonCreamModel from "@/assets/products/cap-maroon-cream/maroon-model.jpg";
 import capMaroonCreamEmbroidery from "@/assets/products/cap-maroon-cream/05-embroidery.png";
 import bambooFlaskBranded from "@/assets/products/bamboo-flask-branded.jpg";
 import bambooFlaskPersonalized from "@/assets/products/bamboo-flask-personalized.jpg";
@@ -108,14 +108,14 @@ const sizeVariants = (stock = 8): ProductVariant[] => [
 export const PRODUCTS: Product[] = [
   {
     slug: "spur-hoodie",
-    name: "Spur Hoodie",
+    name: "Spur Premium Hoodie",
     category: "apparel",
     shortDescription: "Stay warm, stylish, and purposeful.",
     description:
       "A premium heavyweight hoodie with the Spur Afrika mark. Available in Mustard, Sand, Charcoal, and Red. Cozy, durable, and made to be worn often. Your purchase fuels our programs across Kenya.",
-    priceKES: 5000,
-    priceUSD: 38,
-    priceAUD: 59,
+    priceKES: 6500,
+    priceUSD: 50,
+    priceAUD: 78,
     colorLabel: "Colour",
     colors: [
       {
@@ -165,8 +165,8 @@ export const PRODUCTS: Product[] = [
         label: "White",
         swatch: "#F4F4F0",
         images: [
-          jacketWhiteFront1,
           jacketWhiteFront2,
+          jacketWhiteFront1,
           jacketWhiteFront3,
           jacketWhiteBack1,
           jacketWhiteBack2,
@@ -208,10 +208,10 @@ export const PRODUCTS: Product[] = [
   {
     slug: "spur-hive-baseball-cap",
     name: "Spur Hive Baseball Cap",
-    category: "apparel",
-    shortDescription: "Vintage-wash cap with Spur Hive embroidery.",
+    category: "spur-varsity",
+    shortDescription: "Spur Varsity cap with Spur Hive embroidery.",
     description:
-      "Premium cotton six-panel cap with detailed Spur Hive embroidery and an adjustable strap. Available in Teal / Cream, Black / Cream, and Maroon / Cream. Front reads Spur Hive · Est. 2025; back arc: Grow. Connect. Thrive. Proceeds support Spur Afrika community and learner programs.",
+      "Part of the Spur Varsity Collection. Premium cotton six-panel cap with detailed Spur Hive embroidery and an adjustable strap. Available in Teal / Cream, Black / Cream, and Maroon / Cream. Front reads Spur Hive · Est. 2025; back arc: Grow. Connect. Thrive. Proceeds support Spur Afrika community and learner programs.",
     priceKES: 2500,
     priceUSD: 19,
     priceAUD: 29,
@@ -227,13 +227,13 @@ export const PRODUCTS: Product[] = [
         id: "black-cream",
         label: "Black / Cream",
         swatch: "#1C1C1C",
-        images: [capBlackCreamLifestyle, capBlackCreamEmbroidery],
+        images: [capBlackCreamHero, capBlackCreamEmbroidery],
       },
       {
         id: "maroon-cream",
         label: "Maroon / Cream",
         swatch: "#6B1E2F",
-        images: [capMaroonCreamLifestyle, capMaroonCreamEmbroidery],
+        images: [capMaroonCreamModel, capMaroonCreamEmbroidery],
       },
     ],
     accent: "brand-dark",
@@ -404,9 +404,9 @@ export const PRODUCTS: Product[] = [
     shortDescription: "Heavyweight hoodie with the Spur Afrika varsity mark.",
     description:
       "A cozy, heavyweight hoodie built for everyday comfort. Features the Spur Afrika varsity front design and our 'Every initiative spurs impact' statement on the back. Available in a range of colours to match your style.",
-    priceKES: 5500,
-    priceUSD: 42,
-    priceAUD: 65,
+    priceKES: 4500,
+    priceUSD: 35,
+    priceAUD: 54,
     colorLabel: "Colour",
     colors: [
       {

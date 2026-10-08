@@ -1,12 +1,23 @@
 import { productImages, ACCENT_BG, type Product } from "@/lib/products";
 import { cn } from "@/lib/utils";
 
+const CAP_PRODUCT_SLUGS = new Set(["baseball-cap", "spur-hive-baseball-cap"]);
+
+function productPhotoPadding(slug: string) {
+  return CAP_PRODUCT_SLUGS.has(slug) ? "p-4 sm:p-6" : "p-2 sm:p-3";
+}
+
 /** Square catalogue frame: full photo visible, no crop (shop grid, PDP, cart). */
-export function productPhotoClassName(className?: string) {
+export function productPhotoFrameClassName(className?: string, slug?: string) {
   return cn(
-    "aspect-square w-full rounded-lg bg-muted-grey object-contain object-center",
+    "flex aspect-square w-full items-center justify-center overflow-hidden rounded-lg bg-muted-grey",
+    slug && productPhotoPadding(slug),
     className,
   );
+}
+
+export function productPhotoClassName(className?: string) {
+  return cn("max-h-full max-w-full object-contain object-center", className);
 }
 
 export function ProductImage({
@@ -28,13 +39,15 @@ export function ProductImage({
 
   if (image) {
     return (
-      <img
-        src={image}
-        alt={product.name}
-        className={productPhotoClassName(className)}
-        loading="lazy"
-        decoding="async"
-      />
+      <div className={productPhotoFrameClassName(className, product.slug)}>
+        <img
+          src={image}
+          alt={product.name}
+          className={productPhotoClassName()}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
     );
   }
 
@@ -71,6 +84,24 @@ export function ProductImage({
       >
         Spur Afrika
       </span>
+    </div>
+  );
+}
+
+export function ProductPhoto({
+  src,
+  alt,
+  productSlug,
+  className,
+}: {
+  src: string;
+  alt: string;
+  productSlug?: string;
+  className?: string;
+}) {
+  return (
+    <div className={productPhotoFrameClassName(className, productSlug)}>
+      <img src={src} alt={alt} className={productPhotoClassName()} loading="lazy" decoding="async" />
     </div>
   );
 }

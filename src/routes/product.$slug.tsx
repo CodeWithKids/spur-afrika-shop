@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Minus, Plus, ShoppingBag } from "lucide-react";
 import { toast } from "sonner";
 import { ProductCard } from "@/components/product-card";
-import { ProductImage, productPhotoClassName } from "@/components/product-image";
+import { ProductImage, ProductPhoto } from "@/components/product-image";
 import { useCart } from "@/lib/cart-store";
 import { formatPrice } from "@/lib/currency";
 import { pageShell } from "@/lib/layout";
@@ -240,7 +240,7 @@ function ProductGallery({ product, colorId }: { product: Product; colorId?: stri
                 (safeIndex === index ? "border-brand-dark" : "border-transparent hover:border-border")
               }
             >
-              <img src={src} alt="" className={productPhotoClassName()} />
+              <ProductPhoto src={src} alt="" productSlug={product.slug} className="rounded-lg" />
             </button>
           ))}
         </div>

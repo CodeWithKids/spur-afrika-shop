@@ -3,16 +3,8 @@ import { Link } from "@tanstack/react-router";
 import { Menu, ShoppingBag } from "lucide-react";
 import { pageShell } from "@/lib/layout";
 import { useCart, cartCount } from "@/lib/cart-store";
-import { CURRENCIES, type Currency } from "@/lib/currency";
 import { SpurLogo } from "./logo";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -60,30 +52,6 @@ function NavItem({
   );
 }
 
-function CurrencySelect({ id }: { id?: string }) {
-  const currency = useCart((s) => s.currency);
-  const setCurrency = useCart((s) => s.setCurrency);
-
-  return (
-    <Select value={currency} onValueChange={(value) => setCurrency(value as Currency)}>
-      <SelectTrigger
-        id={id}
-        aria-label="Currency"
-        className="h-9 w-[5.25rem] shrink-0 rounded-full border-border bg-card px-3 text-xs font-semibold shadow-none focus:ring-brand-dark sm:w-[5.5rem] sm:text-sm"
-      >
-        <SelectValue />
-      </SelectTrigger>
-      <SelectContent align="end">
-        {CURRENCIES.map((c) => (
-          <SelectItem key={c} value={c}>
-            {c}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
-  );
-}
-
 export function SiteHeader() {
   const lines = useCart((s) => s.lines);
   const count = cartCount(lines);
@@ -103,10 +71,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex min-w-0 items-center justify-end gap-2">
-          <div className="hidden sm:block">
-            <CurrencySelect id="header-currency" />
-          </div>
-
           <Link
             to="/cart"
             aria-label={`Cart, ${count} item${count === 1 ? "" : "s"}`}
@@ -147,10 +111,6 @@ export function SiteHeader() {
                   </div>
                 ))}
               </nav>
-              <div className="mt-6 space-y-2">
-                <span className="type-eyebrow text-muted-foreground">Currency</span>
-                <CurrencySelect id="mobile-currency" />
-              </div>
             </SheetContent>
           </Sheet>
         </div>
