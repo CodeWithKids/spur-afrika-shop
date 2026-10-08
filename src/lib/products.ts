@@ -19,12 +19,14 @@ import jacketOrangeFront2 from "@/assets/jackets/orange-front-2.jpg";
 import teeFrontBack from "@/assets/products/tee-front-back.jpg";
 import hoodieCharcoal from "@/assets/products/hoodie-charcoal.jpg";
 import baseballCap from "@/assets/products/baseball-cap-trio-1.jpg";
-import capSpurHiveLifestyle from "@/assets/products/cap-spur-hive/01-lifestyle.png";
-import capSpurHiveEmbroidery from "@/assets/products/cap-spur-hive/05-embroidery.png";
+import capTealModel from "@/assets/products/cap-spur-hive/teal-model.png";
+import capTealLifestyle from "@/assets/products/cap-spur-hive/01-lifestyle.png";
+import capTealCollage from "@/assets/products/cap-spur-hive/teal-collage.jpg";
+import capTealFeatures from "@/assets/products/cap-spur-hive/teal-features.jpg";
 import capBlackCreamHero from "@/assets/products/cap-black-cream/black-hero.jpg";
-import capBlackCreamEmbroidery from "@/assets/products/cap-black-cream/05-embroidery.png";
+import capBlackFeatures from "@/assets/products/cap-black-cream/black-features.jpg";
 import capMaroonCreamModel from "@/assets/products/cap-maroon-cream/maroon-model.jpg";
-import capMaroonCreamEmbroidery from "@/assets/products/cap-maroon-cream/05-embroidery.png";
+import capMaroonFeatures from "@/assets/products/cap-maroon-cream/maroon-features.jpg";
 import bambooFlaskBranded from "@/assets/products/bamboo-flask-branded.jpg";
 import bambooFlaskPersonalized from "@/assets/products/bamboo-flask-personalized.jpg";
 import bambooFlaskNames from "@/assets/products/bamboo-flask-names.jpg";
@@ -221,19 +223,19 @@ export const PRODUCTS: Product[] = [
         id: "teal-cream",
         label: "Teal / Cream",
         swatch: "#5A8F9A",
-        images: [capSpurHiveLifestyle, capSpurHiveEmbroidery],
+        images: [capTealModel, capTealLifestyle, capTealCollage, capTealFeatures],
       },
       {
         id: "black-cream",
         label: "Black / Cream",
         swatch: "#1C1C1C",
-        images: [capBlackCreamHero, capBlackCreamEmbroidery],
+        images: [capBlackCreamHero, capBlackFeatures],
       },
       {
         id: "maroon-cream",
         label: "Maroon / Cream",
         swatch: "#6B1E2F",
-        images: [capMaroonCreamModel, capMaroonCreamEmbroidery],
+        images: [capMaroonCreamModel, capMaroonFeatures],
       },
     ],
     accent: "brand-dark",
